@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+</head>
+<body>
+    <script src="Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="Scripts/jquery.signalR-0.5.2.min.js" type="text/javascript"></script>
+    <script src="../signalr/hubs"></script>
+    <form id="form1" runat="server">
+        <div>
+            <script type="text/javascript">
+                var chat;
+
+                $(function () {
+                    chat = $.connection.echo;
+
+                    chat.addMessage = onAddMessage;
+
+                    $("#broadcast").click(onBroadcast);
+
+                    $.connection.hub.start();
+                });
+
+                function onAddMessage(message) {
+                    $('#messages').append('<li>' + message + '</li>');
+                }
+
+                function onBroadcast() {
+                    chat.send($('#message').val());
+                }
+            </script>
+            <input type="text" id="message" />
+            <input type="button"value="Broadcast" id="broadcast" />
+            <ul id="messages"></ul>
+        </div>
+    </form>
+</body>
+</html>
