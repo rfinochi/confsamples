@@ -1,0 +1,28 @@
+﻿@inherits System.Web.Mvc.WebViewPage
+
+@{
+    ViewBag.Title = "ListPeople";
+}
+
+
+@section Header
+{
+    FNord
+}
+
+<h2>ListPeople</h2>
+
+@foreach (var persona in ViewBag.Personas)
+{
+    <text>pepe</text>
+	<div style="margin-bottom: 20px;">
+		Nombre: @persona.Nombre<br />
+		Apellido: @persona.Apellido<br />
+		Pais: @persona.Pais
+	</div>
+}
+
+@section Link
+{
+	<a href="http://www.lagash.com">www.lagash.com</a>
+}

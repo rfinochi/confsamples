@@ -1,0 +1,13 @@
+﻿@using FrasesDeTodos.MVCExtension.HtmlExtensions;
+@using System.Web.WebPages.Html;
+@using System.Web.Mvc.Html
+ 
+@helper RenderFrase(FrasesDeTodos.Models.Frase frase, System.Web.Mvc.HtmlHelper html)
+    {
+    <li class="frase" id="templateFrase">
+        @html.LabelLeft(string.Format("{0} dice:", frase.Autor.Nombre))
+        <div class="contenedorFrase">
+            <span class="text">@frase.Texto</span>
+        </div>
+    </li>
+}

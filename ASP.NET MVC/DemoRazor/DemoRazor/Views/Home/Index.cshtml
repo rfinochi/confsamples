@@ -1,0 +1,37 @@
+﻿@inherits System.Web.Mvc.WebViewPage
+
+@{
+    ViewBag.Title = "Home Page <div>";
+
+	var personas = new List<string>() { "Pablo Zaidenvoren", "Rodolfo Finochietti", "Diego Gonzalez" };
+}
+
+@section Header
+{
+	Este es el jider
+}
+
+<h2>@ViewBag.Message</h2>
+<p>
+    Para empezar, que otro mensaje que: <strong>Hola mundo!</strong>
+</p>
+
+@for(int i = 0; i < personas.Count; i++)
+{
+	var persona = personas[i];
+	if (i % 2 == 0)
+	{
+		<span>@persona rodolfof@lagash.com es par!</span><br />
+	}
+	else
+	{
+		<span>@persona es impar!</span><br />
+	}
+}
+@(personas.Count * 10)
+
+
+@section Link
+{
+	<a href="http://www.lagash.com">www.lagash.com</a>
+}
