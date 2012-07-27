@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e3314c50-813c-4a80-af18-db7bcf0aced1" xmlns="urn:schemas-microsoft-com:xml-dataservicemap">
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8000/Games.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.edmx" MetadataType="Edmx" ID="c6b4118a-6508-4800-a6cf-a1f8a75d8756" SourceId="1" SourceUrl="http://localhost:8000/Games.svc" />
+  </Metadata>
+  <Extensions />
+</ReferenceGroup>

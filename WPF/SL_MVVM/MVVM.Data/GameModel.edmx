@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+           xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GamesModel.Store"
+              Alias="Self"
+              Provider="System.Data.SqlClient"
+              ProviderManifestToken="2008"
+              xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator"
+              xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="GamesModelStoreContainer">
+          <EntitySet Name="Game"
+                     EntityType="GamesModel.Store.Game"
+                     store:Type="Tables"
+                     Schema="dbo" />
+          <EntitySet Name="Product"
+                     EntityType="GamesModel.Store.Product"
+                     store:Type="Tables"
+                     Schema="dbo" />
+          <EntitySet Name="Supplier"
+                     EntityType="GamesModel.Store.Supplier"
+                     store:Type="Tables"
+                     Schema="dbo" />
+          <AssociationSet Name="FK_Game_Product"
+                          Association="GamesModel.Store.FK_Game_Product">
+            <End Role="Product"
+                 EntitySet="Product" />
+            <End Role="Game"
+                 EntitySet="Game" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Supplier"
+                          Association="GamesModel.Store.FK_Product_Supplier">
+            <End Role="Supplier"
+                 EntitySet="Supplier" />
+            <End Role="Product"
+                 EntitySet="Product" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID"
+                    Type="int"
+                    Nullable="false" />
+          <Property Name="SystemName"
+                    Type="nvarchar"
+                    Nullable="false"
+                    MaxLength="100" />
+          <Property Name="Rating"
+                    Type="nvarchar"
+                    MaxLength="100" />
+          <Property Name="Genre"
+                    Type="nvarchar"
+                    MaxLength="100" />
+          <Property Name="Publisher"
+                    Type="nvarchar"
+                    MaxLength="100" />
+          <Property Name="Developer"
+                    Type="nvarchar"
+                    MaxLength="100" />
+          <Property Name="RatingUrl"
+                    Type="nvarchar"
+                    MaxLength="250" />
+          <Property Name="PlayerInfo"
+                    Type="nvarchar"
+                    MaxLength="100" />
+          <Property Name="GameVersion"
+                    Type="timestamp"
+                    Nullable="false"
+                    StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID"
+                    Type="int"
+                    Nullable="false"
+                    StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName"
+                    Type="nvarchar"
+                    Nullable="false"
+                    MaxLength="100" />
+          <Property Name="ProductDescription"
+                    Type="nvarchar"
+                    Nullable="false"
+                    MaxLength="1000" />
+          <Property Name="ListPrice"
+                    Type="float"
+                    Nullable="false" />
+          <Property Name="ProductTypeID"
+                    Type="int"
+                    Nullable="false" />
+          <Property Name="SupplierID"
+                    Type="int" />
+          <Property Name="ReleaseDate"
+                    Type="datetime" />
+          <Property Name="ProductImageUrl"
+                    Type="nvarchar"
+                    MaxLength="250" />
+          <Property Name="ListPriceCurrency"
+                    Type="nvarchar"
+                    Nullable="false"
+                    MaxLength="10" />
+          <Property Name="ProductVersion"
+                    Type="timestamp"
+                    Nullable="false"
+                    StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID"
+                    Type="int"
+                    Nullable="false"
+                    StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierName"
+                    Type="nvarchar"
+                    Nullable="false"
+                    MaxLength="50" />
+          <Property Name="SupplierAddress"
+                    Type="nvarchar"
+                    MaxLength="250" />
+          <Property Name="SupplierPhone"
+                    Type="nvarchar"
+                    MaxLength="50" />
+          <Property Name="SupplierVersion"
+                    Type="timestamp"
+                    Nullable="false"
+                    StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <Association Name="FK_Game_Product">
+          <End Role="Product"
+               Type="GamesModel.Store.Product"
+               Multiplicity="1" />
+          <End Role="Game"
+               Type="GamesModel.Store.Game"
+               Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Game">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Supplier">
+          <End Role="Supplier"
+               Type="GamesModel.Store.Supplier"
+               Multiplicity="0..1" />
+          <End Role="Product"
+               Type="GamesModel.Store.Product"
+               Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GamesModel"
+              Alias="Self"
+              xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="GamesEntities">
+          <EntitySet Name="Games"
+                     EntityType="GamesModel.Game" />
+          <EntitySet Name="Suppliers"
+                     EntityType="GamesModel.Supplier" />
+          <AssociationSet Name="FK_Product_Supplier"
+                          Association="GamesModel.FK_Product_Supplier">
+            <End Role="Supplier"
+                 EntitySet="Suppliers" />
+            <End Role="Product"
+                 EntitySet="Games" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            </Key>
+          <Property Name="ProductID"
+                    Type="Int32"
+                    Nullable="false" />
+          <Property Name="ProductName"
+                    Type="String"
+                    Nullable="false"
+                    MaxLength="100"
+                    Unicode="true"
+                    FixedLength="false" />
+          <Property Name="ProductDescription"
+                    Type="String"
+                    Nullable="false"
+                    MaxLength="1000"
+                    Unicode="true"
+                    FixedLength="false" />
+          <Property Name="ListPrice"
+                    Type="Double"
+                    Nullable="false" />
+          <Property Name="ProductTypeID"
+                    Type="Int32"
+                    Nullable="false" />
+          <Property Name="ReleaseDate"
+                    Type="DateTime" />
+          <Property Name="ProductImageUrl"
+                    Type="String"
+                    MaxLength="250"
+                    Unicode="true"
+                    FixedLength="false" />
+          <Property Name="ListPriceCurrency"
+                    Type="String"
+                    Nullable="false"
+                    MaxLength="10"
+                    Unicode="true"
+                    FixedLength="false" />
+          <Property MaxLength="100"
+                    Unicode="true"
+                    FixedLength="false"
+                    Name="SystemName"
+                    Type="String"
+                    Nullable="false" />
+          <Property MaxLength="100"
+                    Unicode="true"
+                    FixedLength="false"
+                    Name="Rating"
+                    Type="String" />
+          <Property MaxLength="100"
+                    Unicode="true"
+                    FixedLength="false"
+                    Name="Genre"
+                    Type="String" />
+          <Property MaxLength="100"
+                    Unicode="true"
+                    FixedLength="false"
+                    Name="Publisher"
+                    Type="String" />
+          <Property MaxLength="100"
+                    Unicode="true"
+                    FixedLength="false"
+                    Name="Developer"
+                    Type="String" />
+          <Property MaxLength="250"
+                    Unicode="true"
+                    FixedLength="false"
+                    Name="RatingUrl"
+                    Type="String" />
+          <Property MaxLength="100"
+                    Unicode="true"
+                    FixedLength="false"
+                    Name="PlayerInfo"
+                    Type="String" />
+          <NavigationProperty Name="Supplier"
+                              Relationship="GamesModel.FK_Product_Supplier"
+                              FromRole="Product"
+                              ToRole="Supplier" />
+          </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID"
+                    Type="Int32"
+                    Nullable="false" />
+          <Property Name="SupplierName"
+                    Type="String"
+                    Nullable="false"
+                    MaxLength="50"
+                    Unicode="true"
+                    FixedLength="false" />
+          <Property Name="SupplierAddress"
+                    Type="String"
+                    MaxLength="250"
+                    Unicode="true"
+                    FixedLength="false" />
+          <Property Name="SupplierPhone"
+                    Type="String"
+                    MaxLength="50"
+                    Unicode="true"
+                    FixedLength="false" />
+          <NavigationProperty Name="Games"
+                              Relationship="GamesModel.FK_Product_Supplier"
+                              FromRole="Supplier"
+                              ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Product_Supplier">
+          <End Role="Supplier"
+               Type="GamesModel.Supplier"
+               Multiplicity="0..1" />
+          <End Role="Product"
+               Type="GamesModel.Game"
+               Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S"
+               xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="GamesModelStoreContainer"
+                                CdmEntityContainer="GamesEntities">
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="IsTypeOf(GamesModel.Game)">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductID"
+                                ColumnName="ProductID" />
+                <ScalarProperty Name="ProductName"
+                                ColumnName="ProductName" />
+                <ScalarProperty Name="ProductDescription"
+                                ColumnName="ProductDescription" />
+                <ScalarProperty Name="ListPrice"
+                                ColumnName="ListPrice" />
+                <ScalarProperty Name="ProductTypeID"
+                                ColumnName="ProductTypeID" />
+                <ScalarProperty Name="ReleaseDate"
+                                ColumnName="ReleaseDate" />
+                <ScalarProperty Name="ProductImageUrl"
+                                ColumnName="ProductImageUrl" />
+                <ScalarProperty Name="ListPriceCurrency"
+                                ColumnName="ListPriceCurrency" />
+                </MappingFragment>
+              <MappingFragment StoreEntitySet="Game">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="PlayerInfo" ColumnName="PlayerInfo" />
+                <ScalarProperty Name="RatingUrl" ColumnName="RatingUrl" />
+                <ScalarProperty Name="Developer" ColumnName="Developer" />
+                <ScalarProperty Name="Publisher" ColumnName="Publisher" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="SystemName" ColumnName="SystemName" />
+                </MappingFragment></EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="IsTypeOf(GamesModel.Supplier)">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="SupplierID"
+                                ColumnName="SupplierID" />
+                <ScalarProperty Name="SupplierName"
+                                ColumnName="SupplierName" />
+                <ScalarProperty Name="SupplierAddress"
+                                ColumnName="SupplierAddress" />
+                <ScalarProperty Name="SupplierPhone"
+                                ColumnName="SupplierPhone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_Product_Supplier"
+                                 TypeName="GamesModel.FK_Product_Supplier"
+                                 StoreEntitySet="Product">
+            <EndProperty Name="Supplier">
+              <ScalarProperty Name="SupplierID"
+                              ColumnName="SupplierID" />
+            </EndProperty>
+            <EndProperty Name="Product">
+              <ScalarProperty Name="ProductID"
+                              ColumnName="ProductID" />
+            </EndProperty>
+            <Condition ColumnName="SupplierID"
+                       IsNull="false" />
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing"
+                          Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild"
+                          Value="true" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="GameModel" ZoomLevel="93">
+        <EntityTypeShape EntityType="GamesModel.Game"
+                         Width="1.5"
+                         PointX="3"
+                         PointY="1"
+                         Height="4.0956022135416656"
+                         IsExpanded="true" />
+        <EntityTypeShape EntityType="GamesModel.Supplier"
+                         Width="1.5"
+                         PointX="0.75"
+                         PointY="1.5"
+                         Height="1.9802864583333339"
+                         IsExpanded="true" />
+        <AssociationConnector Association="GamesModel.FK_Product_Supplier"
+                              ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25"
+                          PointY="2.4901432291666667" />
+          <ConnectorPoint PointX="3"
+                          PointY="2.4901432291666667" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

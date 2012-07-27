@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customers>
+  <customer lastName="aa" firstName="a" isCompany="false" email="a.aa@contoso.com" totalSales="1.00" />
+  <customer lastName="bb" firstName="b" isCompany="false" email="b.bb@contoso.com" totalSales="2.00" />
+  <customer lastName=""   firstName="c" isCompany="true"  email="c@contoso.com"    totalSales="3.00" />
+</customers>

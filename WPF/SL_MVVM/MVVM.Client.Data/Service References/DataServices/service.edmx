@@ -1,0 +1,51 @@
+﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:DataServices>
+    <Schema Namespace="GamesModel" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+      <EntityType Name="Game">
+        <Key>
+          <PropertyRef Name="ProductID" />
+        </Key>
+        <Property Name="ProductID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ProductName" Type="Edm.String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+        <Property Name="ProductDescription" Type="Edm.String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
+        <Property Name="ListPrice" Type="Edm.Double" Nullable="false" />
+        <Property Name="ProductTypeID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ReleaseDate" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="ProductImageUrl" Type="Edm.String" Nullable="true" MaxLength="250" Unicode="true" FixedLength="false" />
+        <Property Name="ListPriceCurrency" Type="Edm.String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+        <Property Name="SystemName" Type="Edm.String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+        <Property Name="Rating" Type="Edm.String" Nullable="true" MaxLength="100" Unicode="true" FixedLength="false" />
+        <Property Name="Genre" Type="Edm.String" Nullable="true" MaxLength="100" Unicode="true" FixedLength="false" />
+        <Property Name="Publisher" Type="Edm.String" Nullable="true" MaxLength="100" Unicode="true" FixedLength="false" />
+        <Property Name="Developer" Type="Edm.String" Nullable="true" MaxLength="100" Unicode="true" FixedLength="false" />
+        <Property Name="RatingUrl" Type="Edm.String" Nullable="true" MaxLength="250" Unicode="true" FixedLength="false" />
+        <Property Name="PlayerInfo" Type="Edm.String" Nullable="true" MaxLength="100" Unicode="true" FixedLength="false" />
+        <NavigationProperty Name="Supplier" Relationship="GamesModel.FK_Product_Supplier" FromRole="Product" ToRole="Supplier" />
+      </EntityType>
+      <EntityType Name="Supplier">
+        <Key>
+          <PropertyRef Name="SupplierID" />
+        </Key>
+        <Property Name="SupplierID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="SupplierName" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        <Property Name="SupplierAddress" Type="Edm.String" Nullable="true" MaxLength="250" Unicode="true" FixedLength="false" />
+        <Property Name="SupplierPhone" Type="Edm.String" Nullable="true" MaxLength="50" Unicode="true" FixedLength="false" />
+        <NavigationProperty Name="Games" Relationship="GamesModel.FK_Product_Supplier" FromRole="Supplier" ToRole="Product" />
+      </EntityType>
+      <Association Name="FK_Product_Supplier">
+        <End Role="Supplier" Type="GamesModel.Supplier" Multiplicity="0..1" />
+        <End Role="Product" Type="GamesModel.Game" Multiplicity="*" />
+      </Association>
+    </Schema>
+    <Schema Namespace="MVVM.Data" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+      <EntityContainer Name="GamesEntities" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="Games" EntityType="GamesModel.Game" />
+        <EntitySet Name="Suppliers" EntityType="GamesModel.Supplier" />
+        <AssociationSet Name="FK_Product_Supplier" Association="GamesModel.FK_Product_Supplier">
+          <End Role="Supplier" EntitySet="Suppliers" />
+          <End Role="Product" EntitySet="Games" />
+        </AssociationSet>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
