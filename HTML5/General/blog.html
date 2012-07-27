@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset=utf-8>
+<title></title>
+<style>
+header, nav, article, footer, address, section {
+ display: block;
+}
+#container {
+ width:900px;
+ margin:auto;
+ background-color:white;
+
+}
+header {
+ background-color:#666;
+}
+nav li {
+ display:inline;
+ padding-right:1em;
+}
+nav a {
+ color:white;
+ text-decoration:none;
+}
+nav a:hover {
+ text-decoration:overline;
+}
+h1, h2 {
+ margin:0px;
+ font-size:1.5em;
+}
+h2 {
+ font-size:1em;
+}
+footer {
+ background-color:#999;
+ text-align:center;
+}
+</style>
+<script>
+document.createElement("article");
+document.createElement("footer");
+document.createElement("header");
+document.createElement("hgroup");
+document.createElement("nav");
+</script>
+</head>
+<body>
+<style>
+mark{
+	background-color:#F3FFA6;
+}
+</style>
+
+<div id="container">
+    <header>
+     <h1>Ejemplo de estructura HTML5</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Productos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+     <hgroup>
+         <h1>Seccion Principal</h1>
+            <h2>Ejemplo de pagina en html5</h2>
+        </hgroup>
+		<article>
+         <p>contenido <mark>para</mark> el primer articulo</p>
+        </article>
+        <article>
+         <p>contenido para el segundo articulo</p>
+        </article>
+    </section>
+    <footer>
+     <p>Footer</p>
+    </footer>
+</div>
+</body>
+</html>

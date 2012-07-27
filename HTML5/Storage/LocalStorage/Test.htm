@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HTML5 Local Storage Demo</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9;FF=3;OtherUA=4" />
+</head>
+<body>
+	<input type="button" value="Mostrar Perfil de Usuario" onclick="displayLocalStorage()" /><br />
+	<input type="button" value="Borrar Perfil de Usuario" onclick="clearLocalStorage()" /><br />
+	<span id="spLocalStorage"></span>
+
+<script type="text/javascript">
+    function $(id) {return document.getElementById(id); }
+
+	function supportsLocalStorage() {
+        return ('localStorage' in window) && window['localStorage'] !== null;
+    }
+
+    Storage.prototype.setObject = function (key, value) {
+        this.setItem(key, JSON.stringify(value));
+    }
+
+    Storage.prototype.getObject = function (key) {
+        return this.getItem(key) && JSON.parse(this.getItem(key));
+    }
+
+    function displayLocalStorage() {
+		var userProfile = localStorage.getObject('UserProfile');
+
+        if (!userProfile) {
+			userProfile = new UserProfile();
+			userProfile.FullName = 'Rodolfo Finochietti';
+			userProfile.EmailAddress = 'rodolfof@lagash.com';
+
+			localStorage.setObject('UserProfile', userProfile);
+
+			$('spLocalStorage').innerHTML = '<br />No hay perfil. <br />Nombre: ' + userProfile.FullName + '<br />Email: ' + userProfile.EmailAddress;
+			return;
+        }
+
+        $('spLocalStorage').innerHTML = '<br />Hay perfil. <br />Nombre: ' + userProfile.FullName + '<br />Email: ' + userProfile.EmailAddress;
+    }
+
+    function clearLocalStorage() {
+		localStorage.removeItem('UserProfile');
+
+        $('spLocalStorage').innerHTML = '<br />No Hay perfil'
+    }
+
+	function UserProfile() {
+        this.FullName = '';
+        this.EmailAddress = '';
+    }
+
+    window.onload = function () {
+        if (!supportsLocalStorage()) {
+            alert('Sorry, your browser does not support Web Storage');
+            return;
+        }
+    }
+</script>
+</body>
+</html>

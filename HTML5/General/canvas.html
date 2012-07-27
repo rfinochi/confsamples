@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset=utf-8>
+<title></title>
+</head>
+<body>
+	<canvas id="canvas" width="800" height="400"><img src="imagen.jpg"></canvas>
+	<br>
+	<input type="button" value="Ejemplo" onclick="ejemplo();">
+	<input type="button" value="Demo 1" onclick="test();">
+	<input type="button" value="Demo 2" onclick="test2();">
+	<input type="button" value="Reset" onclick="resetCanvas();">
+	<script>
+		function resetCanvas() {
+
+			var canvas1=document.getElementById('canvas');
+			var ctx=canvas.getContext('2d');
+
+			//reset Canvas
+			canvas1.width = "800";
+			canvas1.height = "400";
+
+			//clear rect
+			ctx.save();
+			ctx.fillStyle = '#2239ad';
+			ctx.fillRect(0, 0, 800, 400);
+			ctx.restore();
+
+			//clear paths
+			ctx.beginPath();
+
+			//stop the video
+			if (!isNaN(video.duration)) video.pause();
+
+			if (timer1 != null) clearInterval(timer1);
+			if (timer2 != null) clearInterval(timer2);
+		}
+
+		function ejemplo() {
+
+			var canvas=document.getElementById('canvas');
+			var ctx=canvas.getContext('2d');
+
+			ctx.fillStyle='#CCCCCC';
+			ctx.fillRect(20,30,800,300);
+
+			ctx.beginPath();
+			ctx.fillStyle = "rgba(255, 255, 0, 0.75)";
+			ctx.arc(198, 158, 70, 0, 2*Math.PI, true);
+			ctx.fill();
+		}
+
+		function test() {
+			var canvas = document.getElementById('canvas');
+
+			var ctx = canvas.getContext('2d');
+
+			 ctx.beginPath();
+			 ctx.moveTo(194, 104);
+			 ctx.quadraticCurveTo(54, 104, 54, 246);
+			 ctx.quadraticCurveTo(54, 371, 194, 371);
+			 ctx.quadraticCurveTo(324, 371, 338, 272);
+			 ctx.lineTo(240, 272);
+			 ctx.arc(197, 272, 47, 0, Math.PI, false);
+			 ctx.lineTo(150, 256);
+			 ctx.lineTo(338, 256);
+			 ctx.quadraticCurveTo(338, 104, 194, 104);
+			 ctx.moveTo(154, 207);
+			 ctx.fillStyle = "rgb(9, 126, 196)";
+			 ctx.fill();
+			 ctx.closePath();
+
+			 // Inner arc of e
+			 ctx.beginPath();
+			 ctx.fillStyle = "#2239ad";
+			 ctx.lineTo(240, 211);
+			 ctx.arc(197, 211, 47, 0, Math.PI, true);
+			 ctx.fill();
+			 ctx.closePath();
+		}
+
+		function test2(){
+			var canvas = document.getElementById('canvas');
+
+			var ctx = canvas.getContext('2d');
+
+			// Set shadow styles
+			ctx.shadowOffsetX = 10;
+			ctx.shadowOffsetY = 10;
+			ctx.shadowBlur = 10;
+			ctx.shadowColor = "rgba(0, 0, 0, 1)";
+
+			// Set text
+			ctx.fillStyle = "white";
+			ctx.font = "72px Segoe UI";
+			ctx.fillText("HTML 5!", 90, 60);
+
+			// Create gradient
+			var gradient = ctx.createLinearGradient(0, 0, 250, 0);
+			gradient.addColorStop(0, "#0080FF");
+			gradient.addColorStop(1, "#FFFFFF");
+
+			// Add gradient fill to a rectangle
+			ctx.fillStyle = gradient;
+			ctx.fillRect(25, 230, 340, 20);
+
+			// Draw transparent blue circles
+			ctx.beginPath();
+			ctx.fillStyle = "rgba(30, 144, 255, 0.25)";
+			ctx.arc(50, 320, 30, 0, 2 * Math.PI, true);
+			ctx.fill();
+
+			ctx.beginPath();
+			ctx.fillStyle = "rgba(30, 144, 255, 0.5)";
+			ctx.arc(150, 320, 30, 0, 2 * Math.PI, true);
+			ctx.fill();
+
+			ctx.beginPath();
+			ctx.fillStyle = "rgba(30, 144, 255, 0.75)";
+			ctx.arc(250, 320, 30, 0, 2 * Math.PI, true);
+			ctx.fill();
+
+			// Draw opaque blue circle
+			ctx.beginPath();
+			ctx.fillStyle = "rgba(30, 144, 255, 1)";
+			ctx.arc(350, 320, 30, 0, 2 * Math.PI, true);
+			ctx.fill();
+		}
+	</script>
+	<script type="text/javascript">
+		var canvas=document.getElementById('canvas');
+		var ctx=canvas.getContext('2d');
+		resetCanvas();
+	</script>
+</body>
+</html>

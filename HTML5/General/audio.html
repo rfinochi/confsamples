@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset=utf-8>
+<title></title>
+</head>
+<body>
+
+Controles del Browser
+<br />
+<audio autoplay controls loop preload="auto">
+ <source src="song.ogg" type="audio/ogg" />
+ <source src="song.mp3" type="audio/mpeg" />
+ <object type="application/x-shockwave-flash"  
+ data="player.swf?file=song.mp3">
+ <a href="song.mp3">Descargar Canción</a>
+</audio>
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+Controles Personalizados
+<audio id="player" src="song.mp3">
+</audio>
+<div>
+<button onclick="document.getElementById('player').play()">>> Play</button>
+<button onclick="document.getElementById('player').pause()">>> Pause</button>
+<button onclick="document.getElementById('player').volume+=0.1">Volume Up</button>
+<button onclick="document.getElementById('player').volume-=0.1">Volume Down</button>
+</div>
+
+
+</body>
+</html>

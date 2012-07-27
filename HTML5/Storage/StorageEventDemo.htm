@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HTML5 Storage Event Demo</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9;FF=3;OtherUA=4" />
+
+</head>
+<body>
+
+    <h2>StorageEvent Demo</h2>
+    <fieldset style="width:400px;">
+        <label>Key: <input type="text" id="txtKey" /></label>
+        <label>Value: <input type="text" id="txtVal" /></label>
+        <input type="button" value="Add" onclick="localStorage.setItem($('txtKey').value, $('txtVal').value);" />
+    </fieldset>
+    <div id="informationBar"></div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+<script type="text/javascript">
+    function supportsLocalStorage() {
+        return ('localStorage' in window) && window['localStorage'] !== null;
+    }
+
+    function $(id) {return document.getElementById(id); }
+
+    Storage.prototype.setObject = function (key, value) {
+        this.setItem(key, JSON.stringify(value));
+    }
+
+    Storage.prototype.getObject = function (key) {
+        return this.getItem(key) && JSON.parse(this.getItem(key));
+    }
+
+    window.onload = function () {
+        if (!supportsLocalStorage()) {
+            alert('Sorry, your browser does not support Web Storage');
+            return;
+        }
+
+        if (window.addEventListener) { // IE9, FF, Chrome, Safari, Opera
+            window.addEventListener('storage', onStorageChanged, false);
+        }
+        else if (window.attachEvent) {
+            window.attachEvent("onstorage", onStorageChanged); // IE 8
+        }
+        else {
+            alert('Sorry, your browser does not support DOM event subscribtion!');
+            return;
+        }
+    }
+
+    function onStorageChanged(e) { //El evento se dispara a todas las ventanas "relacioanadas"
+        if (e.key != '') {
+            switch (e.key) {
+                default:
+                    $('informationBar').innerHTML += 'Nuevo objeto agregado, Key: [<span style="color:red">' + e.key + '</span>] Value: [<span style="color:red">' + e.newValue + '</span>].<br />';
+                    break;
+            }
+        }
+    }
+</script>
+</body>
+</html>

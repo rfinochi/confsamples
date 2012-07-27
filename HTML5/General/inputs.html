@@ -1,0 +1,370 @@
+﻿<!DOCTYPE html> 
+<html lang="en" class="no-js"> 
+<head> 
+  <title>HTML5 inputs and attribute support</title> 
+  <meta name="keywords" content="html5, input, forms, attributes, browser support" /> 
+  <link rel="stylesheet" href="http://miketaylr.com/css/core.css" /> 
+  <script src="http://miketaylr.com/scripts/modernizr-1.0.js"></script> 
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> 
+  <script src="http://miketaylr.com/scripts/attr_support-min.js"></script> 
+</head> 
+<body id="input-attr-support"> 
+  <header> 
+  	<hgroup> 
+	    <h1>HTML5 inputs and attribute support</h1> 
+      <h3 id="ua"></h3> 
+    </hgroup> 
+  </header> 
+  <p>A red input (followed by frowny faces) indicates the browser does not support the input type.</p> 
+  <table id="text-search-url-tel-table"> 
+    <thead> 
+      <tr> 
+        <th><code>&lt;input&gt;</code></th> 
+        <th>type</th> 
+        <th>autocomplete</th> 
+        <th>autofocus</th> 
+        <th>list</th> 
+        <th>maxlength</th> 
+        <th>pattern</th> 
+        <th>placeholder</th> 
+        <th>readonly</th> 
+        <th>required</th> 
+        <th>size</th> 
+      </tr> 
+    </thead> 
+    <tbody> 
+      <tr id="text-row"> 
+      	<th><input id="text" type="text" /></th> 
+        <th><label for="text">text</label></th> 
+        <td id="t_autocomplete"></td> 
+        <td id="t_autofocus"></td> 
+        <td id="t_list"></td> 
+        <td id="t_maxlength"></td> 
+        <td id="t_pattern"></td> 
+        <td id="t_placeholder"></td> 
+        <td id="t_readonly"></td> 
+        <td id="t_required"></td> 
+        <td id="t_size"></td> 
+      </tr> 
+      <tr id="search-row"> 
+	      <th><input id="search" type="search" /></th> 
+        <th><label for="search">search</label></th> 
+        <td id="s_autocomplete"></td> 
+        <td id="s_autofocus"></td> 
+        <td id="s_list"></td> 
+        <td id="s_maxlength"></td> 
+        <td id="s_pattern"></td> 
+        <td id="s_placeholder"></td> 
+        <td id="s_readonly"></td> 
+        <td id="s_required"></td> 
+        <td id="s_size"></td> 
+      </tr> 
+      <tr id="url-row"> 
+	      <th><input id="url" type="url" /></th> 
+        <th><label for="url">url</label></th> 
+        <td id="u_autocomplete"></td> 
+        <td id="u_autofocus"></td> 
+        <td id="u_list"></td> 
+        <td id="u_maxlength"></td> 
+        <td id="u_pattern"></td> 
+        <td id="u_placeholder"></td> 
+        <td id="u_readonly"></td> 
+        <td id="u_required"></td> 
+        <td id="u_size"></td> 
+      </tr> 
+      <tr id="tel-row"> 
+        <th><input id="tel" type="tel" /></th> 
+        <th><label for="tel">tel</label></th> 
+        <td id="te_autocomplete"></td> 
+        <td id="te_autofocus"></td> 
+        <td id="te_list"></td> 
+        <td id="te_maxlength"></td> 
+        <td id="te_pattern"></td> 
+        <td id="te_placeholder"></td> 
+        <td id="te_readonly"></td> 
+        <td id="te_required"></td> 
+        <td id="te_size"></td> 
+      </tr> 
+    </tbody> 
+  </table> 
+  <table id="email-table"> 
+    <thead> 
+      <tr> 
+        <th><code>&lt;input&gt;</code></th> 
+        <th>type</th> 
+        <th>autocomplete</th> 
+        <th>autofocus</th> 
+        <th>list</th> 
+        <th>maxlength</th> 
+        <th>multiple</th> 
+        <th>pattern</th> 
+        <th>placeholder</th> 
+        <th>readonly</th> 
+        <th>required</th> 
+        <th>size</th> 
+      </tr> 
+    </thead> 
+    <tbody> 
+      <tr id="email-row"> 
+      	<th><input id="email" type="email" /></th> 
+        <th><label for="email">email</label></th> 
+        <td id="e_autocomplete"></td> 
+        <td id="e_autofocus"></td> 
+        <td id="e_list"></td> 
+        <td id="e_maxlength"></td> 
+        <td id="e_multiple"></td> 
+        <td id="e_pattern"></td> 
+        <td id="e_placeholder"></td> 
+        <td id="e_readonly"></td> 
+        <td id="e_required"></td> 
+        <td id="e_size"></td> 
+      </tr> 
+    </tbody> 
+  </table> 
+  <table id="password-table"> 
+    <thead> 
+      <tr> 
+        <th><code>&lt;input&gt;</code></th> 
+        <th>type</th> 
+        <th>autocomplete</th> 
+        <th>autofocus</th> 
+        <th>maxlength</th> 
+        <th>pattern</th> 
+        <th>placeholder</th> 
+        <th>readonly</th> 
+        <th>required</th> 
+        <th>size</th> 
+      </tr> 
+    </thead> 
+    <tbody> 
+      <tr id="password-row"> 
+      	<th><input id="password" type="password" /></th> 
+        <th><label for="password">password</label></th> 
+        <td id="p_autocomplete"></td> 
+        <td id="p_autofocus"></td> 
+        <td id="p_maxlength"></td> 
+        <td id="p_pattern"></td> 
+        <td id="p_placeholder"></td> 
+        <td id="p_readonly"></td> 
+        <td id="p_required"></td> 
+        <td id="p_size"></td> 
+      </tr> 
+    </tbody> 
+  </table> 
+  <table id="datetime-date-month-week-time-table"> 
+    <thead> 
+      <tr> 
+        <th><code>&lt;input&gt;</code></th> 
+        <th>type</th> 
+        <th>autocomplete</th> 
+        <th>autofocus</th> 
+        <th>list</th> 
+        <th>max</th> 
+        <th>min</th> 
+        <th>readonly</th> 
+        <th>required</th> 
+        <th>step</th> 
+      </tr> 
+    </thead> 
+    <tbody> 
+      <tr id="datetime-row"> 
+       	<th><input id="datetime" type="datetime" /></th> 
+        <th><label for="datetime">datetime</label></th> 
+        <td id="dt_autocomplete"></td> 
+        <td id="dt_autofocus"></td> 
+        <td id="dt_list"></td> 
+        <td id="dt_max"></td> 
+        <td id="dt_min"></td> 
+        <td id="dt_readonly"></td> 
+        <td id="dt_required"></td> 
+        <td id="dt_step"></td> 
+      </tr> 
+      <tr id="date-row"> 
+       	<th><input id="date" type="date" /></th> 
+       	<th><label for="date">date</label></th> 
+        <td id="d_autocomplete"></td> 
+        <td id="d_autofocus"></td> 
+        <td id="d_list"></td> 
+        <td id="d_max"></td> 
+        <td id="d_min"></td> 
+        <td id="d_readonly"></td> 
+        <td id="d_required"></td> 
+        <td id="d_step"></td> 
+      </tr> 
+      <tr id="month-row"> 
+       	<th><input id="month" type="month" /></th> 
+        <th><label for="month">month</label></th> 
+        <td id="m_autocomplete"></td> 
+        <td id="m_autofocus"></td> 
+        <td id="m_list"></td> 
+        <td id="m_max"></td> 
+        <td id="m_min"></td> 
+        <td id="m_readonly"></td> 
+        <td id="m_required"></td> 
+        <td id="m_step"></td> 
+      </tr> 
+      <tr id="week-row"> 
+       	<th><input id="week" type="week" /></th> 
+        <th><label for="week">week</label></th> 
+        <td id="w_autocomplete"></td> 
+        <td id="w_autofocus"></td> 
+        <td id="w_list"></td> 
+        <td id="w_max"></td> 
+        <td id="w_min"></td> 
+        <td id="w_readonly"></td> 
+        <td id="w_required"></td> 
+        <td id="w_step"></td> 
+      </tr> 
+      <tr id="time-row"> 
+       	<th><input id="time" type="time" /></th> 
+        <th><label for="time">time</label></th> 
+        <td id="ti_autocomplete"></td> 
+        <td id="ti_autofocus"></td> 
+        <td id="ti_list"></td> 
+        <td id="ti_max"></td> 
+        <td id="ti_min"></td> 
+        <td id="ti_readonly"></td> 
+        <td id="ti_required"></td> 
+        <td id="ti_step"></td> 
+      </tr> 
+    </tbody> 
+  </table> 
+  <table id="datetimelocal-number-table"> 
+    <thead> 
+      <tr> 
+        <th><code>&lt;input&gt;</code></th> 
+        <th>type</th> 
+        <th>autocomplete</th> 
+        <th>autofocus</th> 
+        <th>list</th> 
+        <th>max</th> 
+        <th>min</th> 
+        <th>readonly</th> 
+        <th>required</th> 
+        <th>step</th> 
+      </tr> 
+    </thead> 
+    <tbody> 
+      <tr id="datetimelocal-row"> 
+       	<th><input id="datetime-local" type="datetime-local" /></th> 
+        <th><label for="datetime-local">datetimelocal</label></th> 
+        <td id="dtl_autocomplete"></td> 
+        <td id="dtl_autofocus"></td> 
+        <td id="dtl_list"></td> 
+        <td id="dtl_max"></td> 
+        <td id="dtl_min"></td> 
+        <td id="dtl_readonly"></td> 
+        <td id="dtl_required"></td> 
+        <td id="dtl_step"></td> 
+      </tr> 
+      <tr id="number-row"> 
+       	<th><input id="number" type="number" /></th> 
+        <th><label for="number">number</label></th> 
+        <td id="n_autocomplete"></td> 
+        <td id="n_autofocus"></td> 
+        <td id="n_list"></td> 
+        <td id="n_max"></td> 
+        <td id="n_min"></td> 
+        <td id="n_readonly"></td> 
+        <td id="n_required"></td> 
+        <td id="n_step"></td> 
+      </tr> 
+    </tbody> 
+  </table> 
+  <table id="range-table"> 
+    <thead> 
+      <tr> 
+        <th><code>&lt;input&gt;</code></th> 
+				<th>type</th> 
+        <th>autocomplete</th> 
+        <th>autofocus</th> 
+        <th>list</th> 
+        <th>max</th> 
+        <th>min</th> 
+        <th>step</th> 
+      </tr> 
+    </thead> 
+    <tbody> 
+      <tr id="range-row"> 
+       	<th><input id="range" type="range" /></th> 
+        <th><label for="range">range</label></th> 
+        <td id="r_autocomplete"></td> 
+        <td id="r_autofocus"></td> 
+        <td id="r_list"></td> 
+        <td id="r_max"></td> 
+        <td id="r_min"></td> 
+        <td id="r_step"></td> 
+      </tr> 
+    </tbody> 
+  </table> 
+  <table id="color-table"> 
+    <thead> 
+      <tr> 
+        <th><code>&lt;input&gt;</code></th> 
+        <th>type</th> 
+        <th>autocomplete</th> 
+        <th>autofocus</th> 
+        <th>list</th> 
+      </tr> 
+    </thead> 
+    <tbody> 
+      <tr id="color-row"> 
+       	<th><input id="color" type="color" /></th> 
+        <th><label for="color">color</label></th> 
+        <td id="c_autocomplete"></td> 
+        <td id="c_autofocus"></td> 
+        <td id="c_list"></td> 
+      </tr> 
+    </tbody> 
+  </table> 
+  <table id="checkbox-radio-table"> 
+    <thead> 
+      <tr> 
+        <th><code>&lt;input&gt;</code></th> 
+        <th>type</th> 
+        <th>autofocus</th> 
+        <th>checked</th> 
+        <th>required</th> 
+      </tr> 
+    </thead> 
+    <tbody> 
+      <tr id="checkbox-row"> 
+       	<th><input id="checkbox" type="checkbox" /></th> 
+        <th><label for="checkbox">checkbox</label></th> 
+        <td id="cb_autofocus"></td> 
+        <td id="cb_checked"></td> 
+        <td id="cb_required"></td> 
+      </tr> 
+      <tr id="radio-row"> 
+       	<th><input id="radio" type="radio" /></th> 
+        <th><label for="radio">radio button</label></th> 
+        <td id="rb_autofocus"></td> 
+        <td id="rb_checked"></td> 
+        <td id="rb_required"></td> 
+      </tr> 
+    </tbody> 
+  </table> 
+  <table id="file-upload-table"> 
+    <thead> 
+      <tr> 
+        <th><code>&lt;input&gt;</code></th> 
+				<th>type</th> 
+        <th>accept</th> 
+        <th>autofocus</th> 
+        <th>multiple</th> 
+        <th>required</th> 
+      </tr> 
+    </thead> 
+    <tbody> 
+      <tr id="file-row"> 
+       	<th><input id="file" type="file" /></th> 
+        <th><label for="file">file</label></th> 
+        <td id="f_accept"></td> 
+        <td id="f_autofocus"></td> 
+        <td id="f_multiple"></td> 
+        <td id="f_required"></td> 
+      </tr> 
+  	</tbody> 
+  </table> 
+  </body> 
+</html>

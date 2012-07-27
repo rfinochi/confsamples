@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <title>HTML5 IndexedDB Demo</title>
+  <script>
+    var dbApiDemo = {};
+    var indexedDB = window.indexedDB || window.webkitIndexedDB ||
+                    window.mozIndexedDB;
+
+    if ('webkitIndexedDB' in window) {
+      window.IDBTransaction = window.webkitIDBTransaction;
+      window.IDBKeyRange = window.webkitIDBKeyRange;
+    }
+
+    dbApiDemo.indexedDB = {};
+    dbApiDemo.indexedDB.db = null;
+
+    dbApiDemo.indexedDB.onerror = function(e) {
+      console.log(e);
+    };
+
+    dbApiDemo.indexedDB.open = function() {
+      var request = indexedDB.open("todos");
+
+      request.onsuccess = function(e) {
+        var v = "2.0";
+        dbApiDemo.indexedDB.db = e.target.result;
+        var db = dbApiDemo.indexedDB.db;
+
+		if(v!= db.version) {
+          var setVrequest = db.setVersion(v); //Solo en el metodo setVersion se pueden crear data stores
+
+          setVrequest.onfailure = dbApiDemo.indexedDB.onerror;
+          setVrequest.onsuccess = function(e) {
+            if(db.objectStoreNames.contains("todo")) {
+              db.deleteObjectStore("todo");
+            }
+
+            var store = db.createObjectStore("todo",
+              {keyPath: "timeStamp"}); //La propiedad time stamp tiene que estar siempre presente y ser unica
+
+            dbApiDemo.indexedDB.getAllTodoItems();
+          };
+        }
+        else {
+          dbApiDemo.indexedDB.getAllTodoItems();
+        }
+      };
+
+      request.onfailure = dbApiDemo.indexedDB.onerror;
+    }
+
+    dbApiDemo.indexedDB.addTodo = function(todoText) {
+      var db = dbApiDemo.indexedDB.db;
+      var trans = db.transaction(["todo"], IDBTransaction.READ_WRITE, 0);
+      var store = trans.objectStore("todo");
+
+      var data = {
+        "text": todoText,
+        "timeStamp": new Date().getTime()
+      };
+
+      var request = store.put(data);
+
+      request.onsuccess = function(e) {
+        dbApiDemo.indexedDB.getAllTodoItems();
+      };
+
+      request.onerror = function(e) {
+        console.log("Error Adding: ", e);
+      };
+    };
+
+    dbApiDemo.indexedDB.deleteTodo = function(id) {
+      var db = dbApiDemo.indexedDB.db;
+      var trans = db.transaction(["todo"], IDBTransaction.READ_WRITE, 0);
+      var store = trans.objectStore("todo");
+
+      var request = store.delete(id);
+
+      request.onsuccess = function(e) {
+        dbApiDemo.indexedDB.getAllTodoItems();
+      };
+
+      request.onerror = function(e) {
+        console.log("Error Adding: ", e);
+      };
+    };
+
+    dbApiDemo.indexedDB.getAllTodoItems = function() {
+      var todos = document.getElementById("todoItems");
+      todos.innerHTML = "";
+
+      var db = dbApiDemo.indexedDB.db;
+      var trans = db.transaction(["todo"], IDBTransaction.READ_WRITE, 0);
+      var store = trans.objectStore("todo");
+
+      var keyRange = IDBKeyRange.lowerBound(0); //Busco el todos los datos empezando por el numero mas bajo posible
+      var cursorRequest = store.openCursor(keyRange);
+
+      cursorRequest.onsuccess = function(e) {
+        var result = e.target.result;
+        if(!!result == false)
+          return;
+
+        renderTodo(result.value); //API ISAM
+        result.continue();
+      };
+
+      cursorRequest.onerror = dbApiDemo.indexedDB.onerror;
+    };
+
+    function renderTodo(row) {
+      var todos = document.getElementById("todoItems");
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      var t = document.createTextNode(row.text);
+
+      a.addEventListener("click", function() {
+        dbApiDemo.indexedDB.deleteTodo(row.timeStamp);
+      }, false);
+
+      a.textContent = " [Borrar]";
+      li.appendChild(t);
+      li.appendChild(a);
+      todos.appendChild(li)
+    }
+
+    function addTodo() {
+      var todo = document.getElementById("todo");
+      dbApiDemo.indexedDB.addTodo(todo.value);
+      todo.value = "";
+    }
+
+    function init() {
+      dbApiDemo.indexedDB.open();
+    }
+
+    window.addEventListener("DOMContentLoaded", init(), false);
+  </script>
+
+</head>
+<body onload="">
+  <div>
+	  <ul id="todoItems"></ul>
+	  <input type="text" id="todo" name="todo" placeholder="¿Cual es la nueva tarea?" style="width: 200px;" />
+		<input type="submit" value="Agregar Tarea"
+		  onclick="addTodo(); return false;"/>
+  </div>
+</body>
+</html>

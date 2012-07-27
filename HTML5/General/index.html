@@ -1,0 +1,1182 @@
+﻿<!DOCTYPE html>
+<html manifest="cache.manifest">
+  <head>
+
+	<!-- CANVAS SAMPLE http://ie.microsoft.com/testdrive/Graphics/CanvasPad/Default.html -->
+
+	<link href="css/css3examples.css" rel="stylesheet" type="text/css"/>
+	<link href="css/commons.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8" />
+    <title>HTML5 y CCS3</title>
+  </head>
+  <body>
+    <div class="presentation">
+      <div id="presentation-counter"></div>
+      <div class="slides">
+
+		<div class="slide first-slide center">
+          <section class="middle">
+          </section>
+        </div>
+
+		<div class="slide">
+          <section>
+			<br/><br/><br/>
+			<h2 class="big">HTML5 y CSS3</h2>
+			<br/><br/><br/>
+			<div style="font-size:20px;">
+			<li><b>Rodolfo Finochietti</b></li>
+			<li>Microsoft Most Valuable Professional</li>
+			</div>
+          </section>
+        </div>
+
+		<div class="slide">
+          <section>
+			<h1>Por que HTML5</h2>
+			<ul>
+				<li>!Las aplicaciones web como los chicos crecen muy rápido!</li>
+				<img alt="" src="uma1.jpg" />
+				<img alt="" src="uma2.jpg" />
+			</ul>
+          </section>
+        </div>
+
+		<div class="slide">
+          <section >
+			<h1>Novedades en HTML 5</h1>
+			<div>
+			<ul>
+				<li>Estructura</li>
+				<li>Etiquetas para contenido especifico</li>
+				<li>Canvas</li>
+				<li>Bases de datos locales</li>
+				<li>Web Workers</li>
+				<li>Web Sockets</li>
+				<li>Aplicaciones Web Offline</li>
+			</ul>
+			</div>
+          </section>
+        </div>
+
+		<div class="slide">
+          <section >
+			<h1>Estructura: Blog en HTML4</h1>
+			<img alt="" src="html4.png" />
+          </section>
+        </div>
+
+		<div class="slide">
+          <section >
+         	<h1>Estructura: Blog en HTML5</h1>
+			<img alt="" src="html5.png" />
+          </section>
+        </div>
+
+		<div class="slide">
+          <section >
+			<h1>Nuevo tag: AUDIO</h1>
+			<div id="CnSonido" style="display:none;">
+			HTML:
+			<div class="html4strict"><ol><li class="li1"><div class="de1">&lt;<span class="kw2">audio </span><span class="kw3">autoplay controls loop preload</span><span class="sy0">=</span><span class="st0">&quot;auto&quot;</span>&gt;</span></div></li>
+			<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="sc2">&lt;source <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;song.ogg&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;audio/ogg&quot;</span> <span class="sy0">/</span>&gt;</span></div></li>
+			<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="sc2">&lt;source <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;song.mp3&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;audio/mpeg&quot;</span> <span class="sy0">/</span>&gt;</span></div></li>
+			<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="sc2">&lt;<span class="kw2">object</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;application/x-shockwave-flash&quot;</span> <span class="kw3">data</span><span class="sy0">=</span><span class="st0">&quot;player.swf?file=song.mp3&quot;</span>&gt;</span></div></li>
+			<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">a</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;song.mp3&quot;</span>&gt;</span>Descargar Canción<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">a</span>&gt;</span></div></li>
+			<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">object</span>&gt;</span></div></li>
+			<li class="li1"><div class="de1"><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">audio</span>&gt;</span></div></li>
+			</ol></div>
+			<div style="text-align:left;">Javascript:</div>
+			<div class="javascript"><ol><li class="li1"><div class="de1">document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">'player'</span><span class="br0">&#41;</span>.<span class="me1">play</span><span class="br0">&#40;</span><span class="br0">&#41;</span></div></li>
+			<li class="li1"><div class="de1">document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">'player'</span><span class="br0">&#41;</span>.<span class="me1">pause</span><span class="br0">&#40;</span><span class="br0">&#41;</span></div></li>
+			<li class="li1"><div class="de1">document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">'player'</span><span class="br0">&#41;</span>.<span class="me1">volume</span><span class="sy0">+=</span><span class="nu0">0.1</span></div></li>
+			<li class="li1"><div class="de1">document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">'player'</span><span class="br0">&#41;</span>.<span class="me1">volume</span><span class="sy0">-=</span><span class="nu0">0.1</span></div></li>
+			</ol></div>
+			</div>
+			<div id="ExSonido">
+				<ul>
+					<li>Nos permite incluir audio a una página, con o sin reproductor.</li>
+					<li>Control por defecto: <br/><br/>
+						<center>
+						<audio id="player" controls loop preload="auto">
+						 <source src="song.ogg" type="audio/ogg" />
+						 <source src="song.mp3" type="audio/mpeg" />
+						 <object type="application/x-shockwave-flash" data="player.swf?file=song.mp3">
+							<a href="song.mp3">Descargar Canción</a>
+						 </object>
+						</audio>
+						</center>
+					</li>
+					<li>
+						Controles personalizados: <br/>
+						<center>
+							<button onclick="document.getElementById('player').play()">>> Play</button>
+							<button onclick="document.getElementById('player').pause()">|| Pause</button>
+							<button onclick="document.getElementById('player').volume-=0.1">Volume Down</button>
+							<button onclick="document.getElementById('player').volume+=0.1">Volume Up</button>
+						</center>
+					</li>
+				</ul>
+			</div>
+			<p><span id="BtnSonido" class="boton" onclick="showhide('Sonido');">Mostrar código</span></p>
+          </section>
+        </div>
+
+		<div class="slide">
+          <section >
+			<h1>Nuevo tag: VIDEO</h1>
+			<div id="CnVideo" style="display:none;">
+			<div style="text-align:left;">HTML:</div>
+			<div class="html4strict"><ol><li class="li1"><div class="de1"><span class="sc2">&lt;<span class="kw2">video</span> <span class="kw3"> controls width</span><span class="sy0">=</span><span class="st0">&quot;360&quot;</span> <span class="kw3">height</span><span class="sy0">=</span><span class="st0">&quot;240&quot;</span> <span class="kw3">poster</span><span class="sy0">=</span><span class="st0">&quot;poster.jpg&quot;</span>&gt;</span> </div></li>
+			<li class="li1"><div class="de1">&nbsp; &nbsp; <span class="sc2">&lt;source <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;video.mp4&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;video/mp4&quot;</span>&gt;</span></div></li>
+			<li class="li1"><div class="de1">&nbsp; &nbsp; <span class="sc2">&lt;source <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;video.ogv&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;video/ogg&quot;</span>&gt;</span></div></li>
+			<li class="li1"><div class="de1">&nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">object</span><span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;application/x-shockwave-flash&quot;</span> <span class="kw3">width</span><span class="sy0">=</span><span class="st0">&quot;360&quot;</span> <span class="kw3">height</span><span class="sy0">=</span><span class="st0">&quot;240&quot;</span> <span class="kw3">data</span><span class="sy0">=</span><span class="st0">&quot;player.swf?file=video.mp4&quot;</span>&gt;</span></div></li>
+			<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp;<span class="sc2">&lt;<span class="kw2">param</span></a> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;movie&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;player.swf?file=video.mp4&quot;</span>&gt;</span> </div></li>
+			<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp;<span class="sc2">&lt;<span class="kw2">a</span></a> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;video.mp4&quot;</span>&gt;</span>Descargar Video!<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">a</span>&gt;</span> </div></li>
+			<li class="li1"><div class="de1">&nbsp; &nbsp; <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">object</span>&gt;</span></div></li>
+			<li class="li1"><div class="de1"><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">video</span>&gt;</span></div></li>
+			</ol></div>
+			<div style="text-align:left;">Javascript:</div>
+			<div class="javascript"><ol><li class="li1"><div class="de1">document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">'videoPlayer'</span><span class="br0">&#41;</span>.<span class="me1">play</span><span class="br0">&#40;</span><span class="br0">&#41;</span></div></li>
+			<li class="li1"><div class="de1">document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">'videoPlayer'</span><span class="br0">&#41;</span>.<span class="me1">pause</span><span class="br0">&#40;</span><span class="br0">&#41;</span></div></li>
+			<li class="li1"><div class="de1">document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">'videoPlayer'</span><span class="br0">&#41;</span>.<span class="me1">volume</span><span class="sy0">+=</span><span class="nu0">0.1</span></div></li>
+			<li class="li1"><div class="de1">document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">'videoPlayer'</span><span class="br0">&#41;</span>.<span class="me1">volume</span><span class="sy0">-=</span><span class="nu0">0.1</span></div></li>
+			</ol></div>
+			</div>
+			<div id="ExVideo">
+				<ul>
+					<li>Nos permite incluir video a una página</li>
+					<li>
+						Control por defecto: <br/>
+						<center>
+							<video id="videoPlayer" controls width="500" height="270" poster="poster.jpg" style="z-index:999;">
+								<source src="video.mp4" type="video/mp4">
+								<source src="video.ogv" type="video/ogg">
+								<object type="application/x-shockwave-flash" width="500" height="270" data="player.swf?file=video.mp4">
+								<param name="movie" value="player.swf?file=video.mp4">
+								<a href="video.mp4">Descargar Video!</a>
+								</object>
+							</video>
+						</center>
+					</li>
+					<li>
+						Controles Personalizados: <br/>
+						<center>
+							<button onclick="document.getElementById('videoPlayer').play()">>> Play</button>
+							<button onclick="document.getElementById('videoPlayer').pause()">|| Pause</button>
+							<button onclick="document.getElementById('videoPlayer').volume-=0.1">Volume Down</button>
+							<button onclick="document.getElementById('videoPlayer').volume+=0.1">Volume Up</button>
+						</center>
+					</li>
+				</ul>
+			</div>
+			<p><span id="BtnVideo" class="boton" onclick="showhide('Video');">Mostrar código</span></p>
+          </section>
+        </div>
+
+		<div class="slide">
+          <section >
+			<h1>Nuevo tag: CANVAS</h1>
+			<div id="CnCanvas" style="display:none;">
+				<div class="javascript"><ol><li class="li1"><div class="de1">&lt;canvas id=&quot;canvas&quot;&gt;&lt;img src=&quot;imagen.jpg&quot;&gt;&lt;/canvas&gt;</div></li>
+				<li class="li1"><div class="de1">&nbsp;</div></li>
+				<li class="li1"><div class="de1"><span class="sy0">&lt;</span>script type<span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span><span class="sy0">&gt;</span></div></li>
+				<li class="li1"><div class="de1">&nbsp; &nbsp; <span class="kw2">var</span> canvas<span class="sy0">=</span>document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">'canvas'</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+				<li class="li2"><div class="de2">&nbsp; &nbsp; <span class="kw2">var</span> ctx<span class="sy0">=</span>canvas.<span class="me1">getContext</span><span class="br0">&#40;</span><span class="st0">'2d'</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+				<li class="li1"><div class="de1">&nbsp;</div></li>
+				<li class="li1"><div class="de1">&nbsp; &nbsp; ctx.<span class="me1">fillStyle</span><span class="sy0">=</span><span class="st0">'#CCCCCC'</span><span class="sy0">;</span></div></li>
+				<li class="li1"><div class="de1">&nbsp; &nbsp; ctx.<span class="me1">fillRect</span><span class="br0">&#40;</span><span class="nu0">20</span><span class="sy0">,</span><span class="nu0">30</span><span class="sy0">,</span><span class="nu0">200</span><span class="sy0">,</span><span class="nu0">100</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+				<li class="li1"><div class="de1">&nbsp;</div></li>
+				<li class="li1"><div class="de1">&nbsp; &nbsp; ctx.<span class="me1">fillStyle</span> <span class="sy0">=</span> <span class="st0">&quot;rgb(0, 162, 232)&quot;</span><span class="sy0">;</span></div></li>
+				<li class="li1"><div class="de1">&nbsp; &nbsp; ctx.<span class="me1">fillArc</span><span class="br0">&#40;</span><span class="nu0">198</span><span class="sy0">,</span> <span class="nu0">158</span><span class="sy0">,</span> <span class="nu0">70</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">2</span><span class="sy0">*</span>Math.<span class="me1">PI</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+				<li class="li1"><div class="de1"><span class="sy0">&lt;</span>script<span class="sy0">&gt;</span></div></li>
+				</ol></div>
+			</div>
+			<div id="ExCanvas">
+				Contenedor para mostrar gráficos<br/>
+				<canvas id="canvas" width="800" height="400"><img src="imagen.jpg"></canvas>
+				<br>
+				<input type="button" value="Ejemplo" onclick="ejemplo();">
+				<input type="button" value="Demo 1" onclick="test();">
+				<input type="button" value="Demo 2" onclick="test2();">
+				<input type="button" value="Reset" onclick="resetCanvas();">
+				<script>
+					function resetCanvas() {
+
+						var canvas1=document.getElementById('canvas');
+						var ctx=canvas.getContext('2d');
+
+						//reset Canvas
+						canvas1.width = "800";
+						canvas1.height = "400";
+
+						//clear rect
+						ctx.save();
+						ctx.fillStyle = '#2239ad';
+						ctx.fillRect(0, 0, 800, 400);
+						ctx.restore();
+
+						//clear paths
+						ctx.beginPath();
+
+						//stop the video
+						if (!isNaN(video.duration)) video.pause();
+
+						if (timer1 != null) clearInterval(timer1);
+						if (timer2 != null) clearInterval(timer2);
+					}
+
+					function ejemplo() {
+
+						var canvas=document.getElementById('canvas');
+						var ctx=canvas.getContext('2d');
+
+						ctx.fillStyle='#CCCCCC';
+						ctx.fillRect(20,30,800,300);
+
+						ctx.beginPath();
+						ctx.fillStyle = "rgba(255, 255, 0, 0.75)";
+						ctx.arc(198, 158, 70, 0, 2*Math.PI, true);
+						ctx.fill();
+					}
+
+					function test() {
+						var canvas = document.getElementById('canvas');
+
+						var ctx = canvas.getContext('2d');
+
+						 ctx.beginPath();
+						 ctx.moveTo(194, 104);
+						 ctx.quadraticCurveTo(54, 104, 54, 246);
+						 ctx.quadraticCurveTo(54, 371, 194, 371);
+						 ctx.quadraticCurveTo(324, 371, 338, 272);
+						 ctx.lineTo(240, 272);
+						 ctx.arc(197, 272, 47, 0, Math.PI, false);
+						 ctx.lineTo(150, 256);
+						 ctx.lineTo(338, 256);
+						 ctx.quadraticCurveTo(338, 104, 194, 104);
+						 ctx.moveTo(154, 207);
+						 ctx.fillStyle = "rgb(9, 126, 196)";
+						 ctx.fill();
+						 ctx.closePath();
+
+						 // Inner arc of e
+						 ctx.beginPath();
+						 ctx.fillStyle = "#2239ad";
+						 ctx.lineTo(240, 211);
+						 ctx.arc(197, 211, 47, 0, Math.PI, true);
+						 ctx.fill();
+						 ctx.closePath();
+					}
+
+					function test2(){
+						var canvas = document.getElementById('canvas');
+
+						var ctx = canvas.getContext('2d');
+
+						// Set shadow styles
+						ctx.shadowOffsetX = 10;
+						ctx.shadowOffsetY = 10;
+						ctx.shadowBlur = 10;
+						ctx.shadowColor = "rgba(0, 0, 0, 1)";
+
+						// Set text
+						ctx.fillStyle = "white";
+						ctx.font = "72px Segoe UI";
+						ctx.fillText("HTML 5!", 90, 60);
+
+						// Create gradient
+						var gradient = ctx.createLinearGradient(0, 0, 250, 0);
+						gradient.addColorStop(0, "#0080FF");
+						gradient.addColorStop(1, "#FFFFFF");
+
+						// Add gradient fill to a rectangle
+						ctx.fillStyle = gradient;
+						ctx.fillRect(25, 230, 340, 20);
+
+						// Draw transparent blue circles
+						ctx.beginPath();
+						ctx.fillStyle = "rgba(30, 144, 255, 0.25)";
+						ctx.arc(50, 320, 30, 0, 2 * Math.PI, true);
+						ctx.fill();
+
+						ctx.beginPath();
+						ctx.fillStyle = "rgba(30, 144, 255, 0.5)";
+						ctx.arc(150, 320, 30, 0, 2 * Math.PI, true);
+						ctx.fill();
+
+						ctx.beginPath();
+						ctx.fillStyle = "rgba(30, 144, 255, 0.75)";
+						ctx.arc(250, 320, 30, 0, 2 * Math.PI, true);
+						ctx.fill();
+
+						// Draw opaque blue circle
+						ctx.beginPath();
+						ctx.fillStyle = "rgba(30, 144, 255, 1)";
+						ctx.arc(350, 320, 30, 0, 2 * Math.PI, true);
+						ctx.fill();
+					}
+				</script>
+				<script type="text/javascript">
+					var canvas=document.getElementById('canvas');
+					var ctx=canvas.getContext('2d');
+					resetCanvas();
+				</script>
+			</div>
+			<span id="BtnCanvas" class="boton" onclick="showhide('Canvas');">Mostrar código</span>
+          </section>
+        </div>
+
+		<div class="slide">
+          <section >
+			<h1>Formularios</h1>
+			<div id="CnInputs">
+				<div style="float:left; width:30%; margin: 10px;">
+					<img alt="" src="range.png" /><br>
+				</div>
+				<div style="float:left; width:60%; font-size:20px; margin: 10px;">
+					type="<b>range</b>" min="0" max="100"
+				</div>
+				<div style="clear:both;"></div>
+				<div style="float:left; width:30%; margin: 10px;">
+					<img alt="" src="number.png" /><br>
+				</div>
+				<div style="float:left; width:60%; font-size:20px; margin: 10px;">
+					type="<b>number</b>" required
+				</div>
+				<div style="clear:both;"></div>
+				<div style="float:left; width:30%; margin: 10px;">
+					<img alt="" src="datetime.png" /><br>
+				</div>
+				<div style="float:left; width:60%; font-size:20px; margin: 10px;">
+					type="<b>date</b>" autocomplete="off"
+				</div>
+				<div style="float:left; width:60%; font-size:20px; margin: 10px;">
+					type="<b>url</b>"
+				</div>
+				<div style="float:left; width:60%; font-size:20px; margin: 10px;">
+					type="<b>color</b>"
+				</div>
+				<div style="float:left; width:60%; font-size:20px; margin: 10px;">
+					type="<b>tel</b>"
+				</div>
+				<div style="float:left; width:60%; font-size:20px; margin: 10px;">
+					type="<b>mail</b>" pattern="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}+\.[ar|br]$"
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+			<div id="ExInputs" style="display:none;">
+				<div class="html4strict"><ol><li class="li1"><div class="de1"><span class="sc2">&lt;<span class="kw2">input</span></a> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;precio&quot;</span> min<span class="sy0">=</span><span class="st0">&quot;0&quot;</span> max<span class="sy0">=</span><span class="st0">&quot;100&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;range&quot;</span> <span class="sy0">/</span>&gt;</span></div></li>
+				<li class="li1"><div class="de1">&nbsp;</div></li>
+				<li class="li1"><div class="de1"><span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;fecha&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;date&quot;</span> <span class="sy0">/</span>&gt;</span></div></li>
+				<li class="li1"><div class="de1">&nbsp;</div></li>
+				<li class="li1"><div class="de1"><span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;edad&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;number&quot;</span> <span class="sy0">/</span>&gt;</span></div></li>
+				<li class="li1"><div class="de1">&nbsp;</div></li>
+				<li class="li1"><div class="de1"><span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;mail&quot;</span> required autocomplete<span class="sy0">=</span><span class="st0">&quot;off&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;email&quot;</span> <span class="sy0">/</span>&gt;</span></div></li>
+				<li class="li2"><div class="de2">&nbsp;</div></li>
+				<li class="li1"><div class="de1"><span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;website&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;url&quot;</span> placeholder<span class="sy0">=</span><span class="st0">&quot;Ingrese su WebSite&quot;</span> <span class="sy0">/</span>&gt;</span></div></li>
+				<li class="li1"><div class="de1">&nbsp;</div></li>
+				<li class="li1"><div class="de1"><span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;telefono&quot;</span> pattern<span class="sy0">=</span><span class="st0">&quot;[0-9]&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;tel&quot;</span> <span class="sy0">/</span>&gt;</span></div></li>
+				<li class="li1"><div class="de1">&nbsp;</div></li>
+				<li class="li2"><div class="de2"><span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;color&quot;</span> <span class="kw3">readonly</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;color&quot;</span> <span class="sy0">/</span>&gt;</span></div></li>
+				<li class="li1"><div class="de1">&nbsp;</div></li>
+				<li class="li1"><div class="de1"><span class="sc2">&lt;<span class="kw2">style</span>&gt;</span> :invalid { background-color: red; } <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">style</span>&gt;</span></div></li>
+				</ol></div>
+			</div>
+			<br>
+			<span id="BtnInputs" class="boton" onclick="showhide('Inputs');">Mostrar código</span>
+          </section>
+        </div>
+
+		<div class="slide">
+          <section >
+			<h1>Web Storage</h1>
+			<div>
+			<ul>
+				<li>Diseñados para cubrir 3 escenarios
+					<ul style="font-size:25px;">
+						<li>Múltiples transacciones</li>
+						<li>Múltiples sesiones</li>
+						<li>Trabajo con mucha información</li>
+					</ul>
+				</li>
+				<li>Soporte para aplicaciones Offline</li>
+				<li>Dos API's
+					<ul style="font-size:25px;">
+						<li>Web Storage</li>
+						<li>Indexed Database API</li>
+					</ul>
+				</li>
+			</ul>
+			</div>
+          </section>
+        </div>
+
+		<div class="slide">
+          <section >
+			<h1>Otros Tags Nuevos</h1>
+			<div style="float:left; width: 40%;">
+				<ul>
+					<li>aside</li>
+					<li>nav</li>
+					<li>command</li>
+					<li>datalist</li>
+					<li>details</li>
+					<li>figcaption</li>
+					<li>figure</li>
+					<li>hgroup</li>
+				</ul>
+			</div>
+			<div style="float:left; width: 60%;">
+				<ul>
+					<li>keygen</li>
+					<li>mark</li>
+					<li>meter</li>
+					<li>output</li>
+					<li>progress</li>
+					<li>summary</li>
+					<li>time</li>
+				</ul>
+			</div>
+          </section>
+        </div>
+
+		<div class="slide">
+          <section >
+			<h1>Tags no soportados por HTML5</h1>
+			<div style="float:left; width: 40%;">
+				<ul>
+					<li>acronym</li>
+					<li>applet</li>
+					<li>basefont</li>
+					<li>big</li>
+					<li>center</li>
+					<li>dir</li>
+					<li>font</li>
+				</ul>
+			</div>
+			<div style="float:left; width: 60%;">
+				<ul>
+					<li>frame</li>
+					<li>frameset</li>
+					<li>noframes</li>
+					<li>s</li>
+					<li>strike</li>
+					<li>u</li>
+					<li>xmp</li>
+				</ul>
+			</div>
+          </section>
+        </div>
+
+        <div class="slide center">
+			<section class="middle">
+				<h1 class="big">CSS 3</h1>
+			</section>
+		</div>
+
+		<div class="slide">
+          <section >
+			<div id="CnBgimages">
+			  <h1>Multiple background images</h1>
+				<div class="backgrounds">
+				</div>
+				<ul>
+					<li>Múltiples fondos</li>
+					<li>Posicionamiento individual</li>
+					<li>Layouts más complejos utilizando la menor cantidad de elementos</li>
+				</ul>
+			</div>
+          </section>
+        </div>
+
+        <div class="slide">
+			<section >
+				<div id="CnBorder">
+					<h1>Border-radius y Box-shadow</h1>
+					<div class="border-radius"></div>
+					<div class="box-shadow"></div>
+					<div style="clear:both;"></div>
+					<ul>
+						<li>Ahorra código</li>
+						<li>No usar imagenes</li>
+						<li>Configuración desde la hoja de estilos</li>
+						<li>Manejo individual de las equinas</li>
+						<li>Cambiar dinámicamente el redondeado</li>
+					</ul>
+				</div>
+			</section>
+        </div>
+
+		<div class="slide">
+          <section >
+				<h1>Font-face</h1>
+					@font-face { font-family: 'NombrePropio';<br/> url('delicious-bold-webfont.woff') format('woff') }
+					<h3 class="fontface">Internet Explorer</h3>
+				<ul>
+					<li>No más tipografías en flash</li>
+					<li>No más imágenes con texto</li>
+					<li>Permite linkear tipografías directamente</li>
+					<li>Mismo método para utilizarla</li>
+				</ul>
+		  </section>
+        </div>
+
+        <div class="slide">
+          <section >
+			<h1>Nuevos selectores</h1>
+			<div style="width:auto;height:500px; overflow:auto;">
+			<table id="tabla-css3" cellpadding="0" cellspacing="0" style="font-size:18px;">
+			  <tr>
+				<th>Nombre</th>
+				<th>Descripcion:</th>
+			  </tr>
+
+			  <tr>
+				<td>Ele [atr^='val']</td>
+				<td>Selecciona todos los elementos que inicien con un valor especificado.
+				  </td>
+			  </tr>
+			  <tr>
+				<td>Ele[atr$='val']</td>
+				<td>Selecciona todos los elementos que terminen con un valor especificado.
+				  </td>
+			  </tr>
+			  <tr>
+				<td>Ele[atr*='val']</td>
+				<td>Selecciona todos los elemento que contenga, indiferente a su ubicación, un valor especificado.
+				  </td>
+			  </tr>
+			  <tr>
+				<td>Ele:nth-child(n)</td>
+				<td>Selecciona el enésimo hijo de su elemento padre.</td>
+			  </tr>
+			  <tr>
+				<td>Ele:nth-last-child(n)</td>
+				<td>Selecciona el enésimo hijo de su elemento padre empezando a constar del último al primero.
+				  </td>
+			  </tr>
+			  <tr>
+				<td>Ele:nth-of-type(n)</td>
+				<td>Selecciona el enésimo elemento de su tipo.
+				 </td>
+			  </tr>
+			  <tr>
+				<td>Ele:nth-last-of-type(n)</td>
+				<td>Selecciona el enésimo elemento de su tipo, empezando a constar del último al primero.
+				  </td>
+			  </tr>
+			  <tr>
+				<td>Ele:last-child</td>
+				<td>Selecciona el último hijo de un elemento.
+				  </td>
+			  </tr>
+			  <tr>
+				<td>Ele:first-of-type</td>
+				<td>Selecciona el primer elemento de su tipo en el elemento padre.
+				  </td>
+			  </tr>
+			  <tr>
+				<td>Ele:last-of-type</td>
+				<td>Selecciona el último elemento de su tipo en el elemento padre.
+				  </td>
+			  </tr>
+			  <tr>
+				<td>Ele:only-child</td>
+				<td>Selecciona el único elemento hijo de un elemento padre.
+				 </td>
+			  </tr>
+			  <tr>
+				<td>Ele:only-of-type</td>
+				<td>Selecciona el único elemento de cierto tipo.
+				 </td>
+			  </tr>
+			  <tr>
+				<td>Ele:empty</td>
+				<td>Selecciona los elementos web que no tienen elementos hijos.
+				  </td>
+			  </tr>
+			  <tr>
+				<td>Ele:target</td>
+				<td>Selecciona los elementos que tienen como destino una URL .</td>
+			  </tr>
+			  <tr>
+				<td>Ele:enabled</td>
+				<td>Selecciona elementos (de formularios) con valor enabled (habilitado).
+				 </td>
+			  </tr>
+			  <tr>
+				<td>Ele:disabled</td>
+				<td>Selecciona elementos (de formularios) con valor disabled (deshabilitado).
+				</td>
+			  </tr>
+			  <tr>
+				<td>Ele:checked</td>
+				<td>Selecciona elementos (de formularios) con valor checked (seleccionado).
+				  </td>
+			  </tr>
+			  <tr>
+				<td>Ele::selection</td>
+				<td>Selecciona   los elementos que han sido seleccionados/resaltados por el usuario. Las   propiedades aplicables son color, background, cursor y outline.
+				 </td>
+			  </tr>
+			  <tr>
+				<td>Ele:not(s)</td>
+				<td>Selecciona todo los elementos que no sean un selector indicado (s) dentro de un elemento web.</td>
+			  </tr>
+			  <tr>
+				<td>::first-line</td>
+				<td>Selecciona la primera línea de un elemento web.</td>
+			  </tr>
+			  <tr>
+				<td>::first-letter</td>
+				<td>Selecciona la primera letra de un elemento web.</td>
+			  </tr>
+			  <tr>
+				<td>::before</td>
+				<td>Se ubica en la parte anterior de un elemento web (típicamente para agregar contenido).</td>
+			  </tr>
+			  <tr>
+				<td>::after</td>
+				<td>Se ubica en la parte posterior de un elemento web (típicamente para agregar contenido).</td>
+			  </tr>
+			  <tr>
+				<th>Nombre</th>
+				<th>Descripcion</th>
+			  </tr>
+			</table>
+			</div>
+          </section>
+        </div>
+
+		 <div class="slide">
+          <section >
+			<h1>Media Queries</h1>
+			<ul>
+				<li>Definir las propiedades css especificas para cada medio de visualizacion</li>
+				<li>Desde un ancho especifico hasta un tipo de dispositivo</li>
+				<li>Se configura con la propiedad <b>@media</b> de css</li>
+			</ul>
+			<center>
+				<i style="font-size: 25px;">@media screen and &lt;propiedad&gt;</i>
+				<br/>
+			</center>
+			<ul>
+				<li>Propiedades para utilización:<br/>
+					<div style="float:left; width: 40%; font-size: 25px;">
+					<ul>
+						<li>min-width</li>
+						<li>max-width</li>
+						<li>min-height</li>
+						<li>max-height</li>
+					</ul>
+					</div>
+					<div style="float:left; width: 60%; font-size: 25px;">
+					<ul>
+						<li>aspect-ratio</li>
+						<li>orientation:portrait</li>
+						<li>min-color-index: 256</li>
+						<li>monochrome</li>
+					</ul>
+					</div>
+				</li>
+			</ul>
+          </section>
+        </div>
+
+		 <div class="slide">
+          <section >
+			<h1>SVG</h1>
+			<div style="overflow:hidden; margin:0 0 0 130px; width:700px;">
+				<div class="svga"></div>
+				<div class="svg"></div>
+			</div>
+		  </section>
+        </div>
+
+		 <div class="slide">
+          <section >
+			<div>
+				<h1>SVG (scalable vector graphics)</h1>
+				<ul>
+					<li>Imágenes livianas y fáciles de cargar</li>
+					<li>Modificar el tamaño sin perder la calidad</li>
+				</ul>
+				<h2>Utilización:</h2>
+				<ul>
+					<li>Mediante el tag <b>&lt;svg&gt;</b> con su respectiva ruta al file</li>
+					<li>Como se hace con una imagen en CSS</li>
+					<li>Usando el elemento "object" que acepta otros atributos como height, width, type, etc..</li>
+					<li>Escribiendo el codigo del SVG directo en nuestro html</li>
+				</ul>
+			</div>
+          </section>
+        </div>
+
+		<div class="slide">
+          <section >
+			<h1>RGBA y HSL</h1>
+			<p>
+			Las transparencias se pueden manejar mas alla del div, ahora se puede manejar, la transparencia del color. Ejemplo
+			</p>
+			<div class="alphabox">
+				<div> Lorem ipsum dolor stramater tracualursum dolem aremtem cansiant</div>
+			</div>
+
+          </section>
+        </div>
+
+		<div class="slide">
+          <section >
+			<h1>Nuevas propiedades CSS 3</h1>
+					<div style="float:left;">
+						<ul>
+							<li>border-color</li>
+							<li>border-image</li>
+							<li>background-origin</li>
+							<li>background-size</li>
+							<li>opacity</li>
+							<li>text-shadow</li>
+							<li>text-overflow</li>
+							<li>multi-column layout</li>
+						</ul>
+					</div>
+		  </section>
+        </div>
+
+		<div class="slide">
+          <section>
+			<h1>Recursos</h1>
+			<ul>
+			<li><a href="http://dev.w3.org/html5/spec/Overview.html">http://dev.w3.org/html5/spec/Overview.html</a><br/></li>
+			<li><a href="http://ie.microsoft.com/testdrive/">http://ie.microsoft.com/testdrive/</a><br/></li>
+			<li><a href="http://www.html5rocks.com/">http://www.html5rocks.com/</a><br/></li>
+			<li><a href="http://beta.html5test.com/">http://beta.html5test.com/<a><br/></li>
+			<li><a href="http://www.css3.info/">http://www.css3.info/</a><br/></li>
+			<li><a href="http://www.quirksmode.org/">http://www.quirksmode.org/</a><br/></li>
+			<li><a href="http://diveintohtml5.org/">http://diveintohtml5.org/</a></br></li>
+			</ul>
+          </section>
+        </div>
+
+        <div class="slide center">
+          <section class="middle">
+			<h2 class="big">¿Preguntas?</h2>
+          </section>
+        </div>
+
+		<div class="slide">
+          <section >
+			<h1>Contacto</h1>
+			<ul>
+				<li>Mail: rodolfof@lagash.com</li>
+				<li>Twitter: @rodolfof</li>
+				<li>Blog: <a href="http://shockbyte.net">http://shockbyte.net</a></li>
+			</ul>
+          </section>
+        </div>
+      </div>
+
+    </div>
+    <script>
+      (function() {
+        var doc = document;
+        var disableBuilds = true;
+
+        var ctr = 0;
+        var spaces = /\s+/, a1 = [''];
+
+        var toArray = function(list) {
+          return Array.prototype.slice.call(list || [], 0);
+        };
+
+        var byId = function(id) {
+          if (typeof id == 'string') { return doc.getElementById(id); }
+          return id;
+        };
+
+        var query = function(query, root) {
+          if (!query) { return []; }
+          if (typeof query != 'string') { return toArray(query); }
+          if (typeof root == 'string') {
+            root = byId(root);
+            if(!root){ return []; }
+          }
+
+          root = root || document;
+          var rootIsDoc = (root.nodeType == 9);
+          var doc = rootIsDoc ? root : (root.ownerDocument || document);
+
+          // rewrite the query to be ID rooted
+          if (!rootIsDoc || ('>~+'.indexOf(query.charAt(0)) >= 0)) {
+            root.id = root.id || ('qUnique' + (ctr++));
+            query = '#' + root.id + ' ' + query;
+          }
+          // don't choke on something like ".yada.yada >"
+          if ('>~+'.indexOf(query.slice(-1)) >= 0) { query += ' *'; }
+
+          return toArray(doc.querySelectorAll(query));
+        };
+
+        var strToArray = function(s) {
+          if (typeof s == 'string' || s instanceof String) {
+            if (s.indexOf(' ') < 0) {
+              a1[0] = s;
+              return a1;
+            } else {
+              return s.split(spaces);
+            }
+          }
+          return s;
+        };
+
+        var addClass = function(node, classStr) {
+          classStr = strToArray(classStr);
+          var cls = ' ' + node.className + ' ';
+          for (var i = 0, len = classStr.length, c; i < len; ++i) {
+            c = classStr[i];
+            if (c && cls.indexOf(' ' + c + ' ') < 0) {
+              cls += c + ' ';
+            }
+          }
+          node.className = cls.trim();
+        };
+
+        var removeClass = function(node, classStr) {
+          var cls;
+          if (classStr !== undefined) {
+            classStr = strToArray(classStr);
+            cls = ' ' + node.className + ' ';
+            for (var i = 0, len = classStr.length; i < len; ++i) {
+              cls = cls.replace(' ' + classStr[i] + ' ', ' ');
+            }
+            cls = cls.trim();
+          } else {
+            cls = '';
+          }
+          if (node.className != cls) {
+            node.className = cls;
+          }
+        };
+
+        var toggleClass = function(node, classStr) {
+          var cls = ' ' + node.className + ' ';
+          if (cls.indexOf(' ' + classStr.trim() + ' ') >= 0) {
+            removeClass(node, classStr);
+          } else {
+            addClass(node, classStr);
+          }
+        };
+
+        var ua = navigator.userAgent;
+        var isFF = parseFloat(ua.split('Firefox/')[1]) || undefined;
+        var isWK = parseFloat(ua.split('WebKit/')[1]) || undefined;
+        var isOpera = parseFloat(ua.split('Opera/')[1]) || undefined;
+
+        var canTransition = (function() {
+          var ver = parseFloat(ua.split('Version/')[1]) || undefined;
+          // test to determine if this browser can handle CSS transitions.
+          var cachedCanTransition =
+            (isWK || (isFF && isFF > 3.6 ) || (isOpera && ver >= 10.5));
+          return function() { return cachedCanTransition; }
+        })();
+
+        //
+        // Slide class
+        //
+        var Slide = function(node, idx) {
+          this._node = node;
+          if (idx >= 0) {
+            this._count = idx + 1;
+          }
+          if (this._node) {
+            addClass(this._node, 'slide distant-slide');
+          }
+          this._makeCounter();
+          this._makeBuildList();
+        };
+
+        Slide.prototype = {
+          _node: null,
+          _count: 0,
+          _buildList: [],
+          _visited: false,
+          _currentState: '',
+          _states: [ 'distant-slide', 'far-past',
+                     'past', 'current', 'future',
+                     'far-future', 'distant-slide' ],
+          setState: function(state) {
+            if (typeof state != 'string') {
+              state = this._states[state];
+            }
+            if (state == 'current' && !this._visited) {
+              this._visited = true;
+              this._makeBuildList();
+            }
+            removeClass(this._node, this._states);
+            addClass(this._node, state);
+            this._currentState = state;
+
+            // delay first auto run. Really wish this were in CSS.
+            /*
+            this._runAutos();
+            */
+            var _t = this;
+            setTimeout(function(){ _t._runAutos(); } , 400);
+          },
+          _makeCounter: function() {
+            if(!this._count || !this._node) { return; }
+            var c = doc.createElement('span');
+            c.innerHTML = this._count;
+            c.className = 'counter';
+            this._node.appendChild(c);
+          },
+          _makeBuildList: function() {
+            this._buildList = [];
+            if (disableBuilds) { return; }
+            if (this._node) {
+              this._buildList = query('[data-build] > *', this._node);
+            }
+            this._buildList.forEach(function(el) {
+              addClass(el, 'to-build');
+            });
+          },
+          _runAutos: function() {
+            if (this._currentState != 'current') {
+              return;
+            }
+            // find the next auto, slice it out of the list, and run it
+            var idx = -1;
+            this._buildList.some(function(n, i) {
+              if (n.hasAttribute('data-auto')) {
+                idx = i;
+                return true;
+              }
+              return false;
+            });
+            if (idx >= 0) {
+              var elem = this._buildList.splice(idx, 1)[0];
+              var transitionEnd = isWK ? 'webkitTransitionEnd' : (isFF ? 'mozTransitionEnd' : 'oTransitionEnd');
+              var _t = this;
+              if (canTransition()) {
+                var l = function(evt) {
+                  elem.parentNode.removeEventListener(transitionEnd, l, false);
+                  _t._runAutos();
+                };
+                elem.parentNode.addEventListener(transitionEnd, l, false);
+                removeClass(elem, 'to-build');
+              } else {
+                setTimeout(function() {
+                  removeClass(elem, 'to-build');
+                  _t._runAutos();
+                }, 400);
+              }
+            }
+          },
+          buildNext: function() {
+            if (!this._buildList.length) {
+              return false;
+            }
+            removeClass(this._buildList.shift(), 'to-build');
+            return true;
+          },
+        };
+
+        //
+        // SlideShow class
+        //
+        var SlideShow = function(slides) {
+          this._slides = (slides || []).map(function(el, idx) {
+            return new Slide(el, idx);
+          });
+
+          var h = window.location.hash;
+          try {
+            this.current = parseInt(h.split('#slide')[1], 10);
+          }catch (e) { /* squeltch */ }
+          this.current = isNaN(this.current) ? 1 : this.current;
+          var _t = this;
+          doc.addEventListener('keydown',
+              function(e) { _t.handleKeys(e); }, false);
+          /*doc.addEventListener('mousewheel',
+              function(e) { _t.handleWheel(e); }, false);*/
+          /*doc.addEventListener('DOMMouseScroll',
+              function(e) { _t.handleWheel(e); }, false);]*/
+          doc.addEventListener('touchstart',
+              function(e) { _t.handleTouchStart(e); }, false);
+          doc.addEventListener('touchend',
+              function(e) { _t.handleTouchEnd(e); }, false);
+          window.addEventListener('popstate',
+              function(e) { _t.go(e.state); }, false);
+          this._update();
+        };
+
+        SlideShow.prototype = {
+          _slides: [],
+          _update: function(dontPush) {
+            document.querySelector('#presentation-counter').innerText = this.current;
+            if (history.pushState) {
+              if (!dontPush) {
+                history.pushState(this.current, 'Slide ' + this.current, '#slide' + this.current);
+              }
+            } else {
+              window.location.hash = 'slide' + this.current;
+            }
+            for (var x = this.current-1; x < this.current + 7; x++) {
+              if (this._slides[x-4]) {
+                this._slides[x-4].setState(Math.max(0, x-this.current));
+              }
+            }
+          },
+
+          current: 0,
+          next: function() {
+            if (!this._slides[this.current-1].buildNext()) {
+              this.current = Math.min(this.current + 1, this._slides.length);
+              this._update();
+            }
+          },
+          prev: function() {
+            this.current = Math.max(this.current-1, 1);
+            this._update();
+          },
+          go: function(num) {
+            if (history.pushState && this.current != num) {
+              history.replaceState(this.current, 'Slide ' + this.current, '#slide' + this.current);
+            }
+            this.current = num;
+            this._update(true);
+          },
+
+          _notesOn: false,
+          showNotes: function() {
+            var isOn = this._notesOn = !this._notesOn;
+            query('.notes').forEach(function(el) {
+              el.style.display = (notesOn) ? 'block' : 'none';
+            });
+          },
+          switch3D: function() {
+            toggleClass(document.body, 'three-d');
+          },
+          handleWheel: function(e) {
+            var delta = 0;
+            if (e.wheelDelta) {
+              delta = e.wheelDelta/120;
+              if (isOpera) {
+                delta = -delta;
+              }
+            } else if (e.detail) {
+              delta = -e.detail/3;
+            }
+
+            if (delta > 0 ) {
+              this.prev();
+              return;
+            }
+            if (delta < 0 ) {
+              this.next();
+              return;
+            }
+          },
+          handleKeys: function(e) {
+
+            if (/^(input|textarea)$/i.test(e.target.nodeName)) return;
+
+            switch (e.keyCode) {
+              case 37: // left arrow
+                this.prev(); break;
+              case 39: // right arrow
+              case 32: // space
+                this.next(); break;
+              case 50: // 2
+                this.showNotes(); break;
+              case 51: // 3
+                this.switch3D(); break;
+            }
+          },
+          _touchStartX: 0,
+          handleTouchStart: function(e) {
+            this._touchStartX = e.touches[0].pageX;
+          },
+          handleTouchEnd: function(e) {
+            var delta = this._touchStartX - e.changedTouches[0].pageX;
+            var SWIPE_SIZE = 150;
+            if (delta > SWIPE_SIZE) {
+              this.next();
+            } else if (delta< -SWIPE_SIZE) {
+              this.prev();
+            }
+          },
+        };
+
+        // Initialize
+        var slideshow = new SlideShow(query('.slide'));
+
+        document.querySelector('#toggle-counter').addEventListener('click', toggleCounter, false);
+        document.querySelector('#toggle-size').addEventListener('click', toggleSize, false);
+        document.querySelector('#toggle-transitions').addEventListener('click', toggleTransitions, false);
+        document.querySelector('#toggle-gradients').addEventListener('click', toggleGradients, false);
+
+        var counters = document.querySelectorAll('.counter');
+        var slides = document.querySelectorAll('.slide');
+
+        function toggleCounter() {
+          toArray(counters).forEach(function(el) {
+            el.style.display = (el.offsetHeight) ? 'none' : 'block';
+          });
+        }
+
+        function toggleSize() {
+          toArray(slides).forEach(function(el) {
+            if (!/reduced/.test(el.className)) {
+              addClass(el, 'reduced');
+            }
+            else {
+              removeClass(el, 'reduced');
+            }
+          });
+        }
+
+        function toggleTransitions() {
+          toArray(slides).forEach(function(el) {
+            if (!/no-transitions/.test(el.className)) {
+              addClass(el, 'no-transitions');
+            }
+            else {
+              removeClass(el, 'no-transitions');
+            }
+          });
+        }
+
+        function toggleGradients() {
+          toArray(slides).forEach(function(el) {
+            if (!/no-gradients/.test(el.className)) {
+              addClass(el, 'no-gradients');
+            }
+            else {
+              removeClass(el, 'no-gradients');
+            }
+          });
+        }
+      })();
+    </script>
+
+    <script>
+			function showhide(id){
+			if (document.getElementById){
+			obj = document.getElementById("Ex"+id);
+			obj1 = document.getElementById("Cn"+id);
+			if (obj.style.display == "none"){
+			document.getElementById('Btn'+id).innerHTML = "Mostrar Código";
+			obj.style.display = "";
+			obj1.style.display = "none";
+			} else {
+			obj.style.display = "none";
+			obj1.style.display = "";
+			document.getElementById('Btn'+id).innerHTML = "Ver ejemplo";
+			}
+			}
+			}
+	</script>
+  </body>
+</html>

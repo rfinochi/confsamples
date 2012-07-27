@@ -1,0 +1,95 @@
+/* v1.0 | 20080212 */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+body {
+	line-height: 1.5;
+}
+ul, ol  {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/************end-reset-css***********/
+
+
+
+
+body {
+	background:#000; 
+	font-family: tahoma,arial;
+	font-size:12px;
+}
+
+#wrap {
+	width:1030px;
+	background:#e5e5e5;
+	margin:0 auto;
+}
+
+#contenido {
+	padding:20px;
+	overflow:hidden;
+}
+
+.bloque {
+	padding:15px;
+	border:1px solid;
+	margin:10px;
+	background:#fff;
+	width:274px;
+	float:left;
+}
+
+.clearboth {clear:both;}
+
+
+@media (max-width:400px) {
+  
+  #wrap {
+	width:100%;
+	background:#ff0000;
+	margin:0 auto;
+	font-size:50px;
+}

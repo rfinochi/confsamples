@@ -1,0 +1,527 @@
+﻿body
+{
+    padding: 0;
+    margin: 0 8px;
+    background-color: white;
+    font-family: Segoe UI, Verdana, Arial, Sans-Serif;
+    font-size: 10pt;
+    color: #666;
+    text-align: center;
+}
+body.demohome
+{
+    background-image: url(../image/HeaderBackground.png);
+    background-repeat: repeat-x;
+    background-position: left top;
+}
+html#demohtml
+{
+    background-image: url(../image/DemoTopStripe.png);
+    background-repeat: repeat-x;
+    background-position: left top;
+}
+body#demobody
+{
+    background-image: url(../image/DemoTopStripe.png);
+    background-repeat: repeat-x;
+    background-position: left top;
+}
+#returnbutton
+{
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    width: 210px;
+    height: 29px;
+    background-image: url(../image/ReturnButton.png);
+    background-position: left top;
+    text-indent: -9999px;
+}
+#headertable
+{
+    height: 63px;
+}
+#headertable td
+{
+vertical-align: bottom;
+}
+#headertable td.heading
+{
+  white-space: nowrap; padding-right: 0.25in;
+}
+
+/* during page load, a min-height property is added to keep the minimum height of the full fullbodywrap */
+/* to the client height. code in includes/script/testdrive.js. */
+#fullbodywrap
+{
+    position: relative;
+    margin: 0 auto;
+    width: 80%;
+    min-width: 900px;
+    max-width: 1200px;
+    text-align: left;
+}
+#header
+{
+    height: 152px;
+    background-image: url(../image/HeaderLeft.png);
+    background-repeat: no-repeat;
+    background-position: left top;
+    margin-bottom: 0.25in;
+    position: relative;
+}
+#header #headerright
+{
+    height: 136px;
+    background-image: url(../image/HeaderRight.png);
+    background-repeat: no-repeat;
+    background-position: right top;
+}
+#demobodyh1
+{
+    margin: 0;
+    padding: 0;
+    line-height: 1em;
+}
+#demodescription
+{
+    font-size: 9pt;
+}
+
+.welcome
+{
+    text-align: left;
+}
+p
+{
+    margin: 2px 0;
+}
+.welcome p
+{
+    margin-top: 0;
+    margin-bottom: 0.8em;
+	margin-left:6px;
+}
+div.bottomnotes
+{
+    text-align: left;
+    margin-top: 0.5in;
+}
+div.bottomnotes p {
+    margin-bottom: 1em;
+}
+#thisPageLink
+{
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    text-align: right;
+    font-size: 9pt;
+}
+input#thisUrl
+{
+    width: 400px;
+    border: none;
+    padding-top: 2px;
+    padding-left: 2px;
+    font-size: 9pt;
+    padding-bottom: 2px;
+    background-color: transparent;
+    color: #666;
+    text-align: left;
+}
+#demoactions
+{
+    margin: 0.25in 0 0.25in 0;
+}
+#demointro, #demodetails
+{
+	clear: both;
+    margin: 0.4in 0 0.4in 0;
+    border: solid 1px #e0e0e0;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+    padding: 0.5em 1em 0.7em 1em;
+}
+#demointro::before
+{
+    content: "Try it out!";
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    display: block;
+}
+
+#demoactions a
+{
+    margin-right: 1em;
+    text-decoration: underline;
+}
+#demointro p, #demodetails p
+{
+    margin-bottom: 0.8em;
+}
+#demointro p:last-child, #demodetails p:last-child
+{
+    margin-bottom: 0;
+}
+#demointro ul, #demodetails ul
+{
+    list-style-type: disc;
+    list-style-position: inside;
+}
+#demointro li, #demodetails li
+{
+    margin-left: 1em;
+}
+
+#demoContentCenterer
+{
+    text-align: center;
+}
+#demoContentWrapper
+{
+    max-width: 1200px;
+    margin: auto;
+}
+#demoContent
+{
+    text-align: left;
+    font-size: 12pt;
+}
+
+a:link, a:visited
+{
+    color: #459fdb;
+    text-decoration: none;
+}
+a:link:hover, a:visited:hover
+{
+    color: #459fdb;
+    text-decoration: underline;
+}
+a img
+{
+    border: none;
+}
+body.demohome h1, h2, h3
+{
+    font-weight: normal;
+}
+
+h1
+{
+    font-size: 22pt;
+    margin: 0.5em 0 0.25em 0;
+}
+body#demobody h1
+{
+    margin-top: 0.25in;
+    font-weight: normal;
+}
+h2
+{
+    font-size: 18pt;
+    margin: 0.5em 0 0.5em 0;
+    color: #497f86;
+}
+td
+{
+    vertical-align: top;
+    padding-right: 12px;
+}
+ul
+{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#contentwrap
+{
+    text-align: center;
+    margin-top: -24px;
+}
+#contenttable
+{
+    margin: auto;
+    text-align: left;
+    width: 100%;
+}
+#contenttable td
+{
+    width: 33.33%;
+    padding-right: 0;
+}
+#contenttable tr.welcome td
+{
+}
+#contenttable tr.headings th
+{
+    text-align: left;
+    font-weight: normal;
+    padding-top: 0.3in;
+}
+#contenttable tr.demos td
+{
+    padding-top: 14px;
+    padding-right: 0;
+    font-size: 12pt;
+}
+#contenttable tr.demos td ul li a
+{
+    margin-left: 75px;
+}
+#contenttable tr.demos td ul li a.isNew
+{
+    margin-left: 45px;
+}
+
+
+/* these svg element values are the defaults things like visio's svg export assumes
+ */
+svg
+{
+    font-family: Sans-Serif;
+    font-size: 12px;
+    overflow: visible;
+}
+
+/* these are a set of styles used by the svg zoom and pan scheme
+ */
+#svgwrapwrap
+{
+    width: 100%;
+    height: 585px;
+    overflow: hidden;
+    position: relative;
+    background-color: #bfe9fd;
+    border: solid 1px rgb(23, 40, 38);
+    text-align: left;
+    margin: auto;
+}
+#svgwrap
+{
+    visibility: hidden;
+    position: relative;
+    cursor: url(http://ecn.dev.virtualearth.net/mapcontrol/v6.2/cursors/grab.cur);
+    background-color: White;
+    overflow: hidden;
+}
+
+code, .code
+{
+    font-family: "Courier New";
+    font-size: 10pt;
+}
+
+#legallinks
+{
+    font-size: 9pt;
+    color: #a0a0a0;
+    text-align: left;
+    margin-top: 2em;
+}
+#legallinks a, #legallinks span, #legallinks input
+{
+    white-space: nowrap;
+    margin-left: 0.4em;
+    margin-right: 0.4em;
+}
+#legallinks span
+{
+    margin-left: 0;
+}
+#copyright
+{
+    color: #666;
+}
+#headerlinks
+{
+    padding-top: 73px;
+    font-size: 10pt;
+    text-align: right;
+    color: #666;
+}
+#headerlinks a
+{
+    white-space: nowrap;
+    margin-left: 0.4em;
+    margin-right: 0.4em;
+    color: #666;
+}
+#headerlinks a img
+{
+    position: relative;
+    top: 5px;
+}
+
+#downloadbox
+{
+    width: 480px;
+    margin: 20px auto 0;
+    border-spacing: 8px;
+    border: 1px solid #6ccd3c;
+    border-radius: 8px;
+    color: black;
+    font-size: 12pt;
+    text-align: center;
+}
+#downloadtext
+{
+    display: table-cell;
+    padding-right: 12px;
+    font-size: 12pt;
+}
+#downloadbutton
+{
+    display: table-cell;
+    vertical-align: middle;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: #6ccd3c;
+    font-size: 14pt;
+    color: white;
+    white-space: nowrap;
+}
+
+#PerformanceHeading, #HTML5Heading, #GraphicsHeading
+{
+    display: block;
+    min-width: 280px;
+    max-width: 330px;
+    padding-bottom: 12px;
+    position: relative;
+    border-bottom: solid 1px #e9e9e9;
+    background-position: left top;
+    background-repeat: no-repeat;
+}
+#PerformanceHeading
+{
+    background-image: url(../image/SectionHeadingPerformance.png);
+}
+#HTML5Heading
+{
+    background-image: url(../image/SectionHeadingHTML5.png);
+}
+#GraphicsHeading
+{
+    background-image: url(../image/SectionHeadingGraphics.png);
+}
+#PerformanceHeading h2, #PerformanceHeading h3,
+#HTML5Heading h2, #HTML5Heading h3,
+#GraphicsHeading h2, #GraphicsHeading h3
+{
+    font-size: 18pt;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    margin-left: 75px;
+    color: Black;
+    line-height: 0.9em;
+    background-color: White;
+    padding-bottom: 2px;
+}
+#PerformanceHeading h3, #HTML5Heading h3, #GraphicsHeading h3
+{
+    padding-top: 4px;
+    font-size: 9pt;
+    line-height: 1em;
+}
+#PerformanceHeading h3
+{
+    padding-right: 6px;
+}
+/*  the #infocontent rules are used to format the
+ *  privacy statement, user guide, and faq.
+ *
+ *  here to make it easy to keep consistent with major formatting.
+ */
+#infocontent p
+{
+    margin: 1em 0;
+}
+#infocontent h1, #infocontent h2, #infocontent h3, #infocontent h4
+{
+    font-weight: bold;
+}
+#infocontent ol, #infocontent ul
+{
+    margin-left: 0.25in;
+}
+#infocontent
+{
+    max-width: 6in;
+    margin: auto;
+}
+
+#benchmarks
+{
+    white-space: nowrap;
+    clear: both;
+}
+#benchmarks li
+{
+    display: inline-block;
+    width: 25%;
+    margin: 25px auto;
+    font-size: 0;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+#benchmarks a
+{
+    margin: auto;
+    display: block;
+    width: 206px;
+    height: 127px;
+    background-repeat: no-repeat;
+}
+#benchmarks a:hover
+{
+    background-position: 0 -127px;
+}
+#sunspider { background-image: url(../image/SSButton.png); }
+#acid3 { background-image: url(../image/Acid3Button.png); }
+#selectors { background-image: url(../image/SelectorsButton.png); }
+#testingcenter { background-image: url(../image/TestingCenterButton.png); }
+
+.iscanvas:after
+{
+    content: "<canvas>";
+    font-size: 9px;
+    position: relative;
+    top: -3px;
+    margin-left: 5px;
+    color: #666;
+}
+.isNew:before
+{
+    content: "New!";
+    font-size: 10px;
+    position: relative;
+    top: -3px;
+    margin-right: 7px;
+    color: #6ccd3c;
+    padding: 0;
+}
+li.moreDemos, li.fewerDemos
+{
+    font-size: 8.25pt;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    padding-left: 0.25in;
+}
+li.fewerDemos, li.isOld
+{
+    display: none;
+}
+
+/*	clean up demo page printing
+ */
+@media print 
+{
+body { margin: 0; }
+#footerspacer, #returnbutton, #legallinks, .noprint { display: none; }
+#fullbodywrap { min-width: 100%; max-width: 100%; width: 100%; margin-left: 0; margin-right: 0; }
+body#demobody { background-image: none; }
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Big for loop</title>
+  <script>
+      var worker = new Worker('bigLoop.js');
+
+	  worker.onmessage = function (event) {
+        alert("Completed " + event.data + " iterations" );
+      };
+
+      worker.onerror = function (event) {
+         console.log(event.message, event);
+      };
+
+      function sayHello(){
+         alert("Hello sir...." );
+      }
+  </script>
+</head>
+<body>
+   <input type="button" onclick="sayHello();" value="Say Hello"/>
+</body>
+</html>

@@ -1,0 +1,145 @@
+
+/*EJEMPLO DE TABLA*/
+
+
+#tabla-css3{
+	border:1px solid;
+	text-align:left;
+	vertical-align:top;
+	margin:20px;
+	font-size:100%;
+	width:800px;
+	color:#000;
+}
+
+#tabla-css3 td {
+	border-bottom:1px solid;
+	padding:10px;
+}
+
+#tabla-css3 th {
+	background-color:#000;
+	color:#fff;
+	font-weight:bold;
+	padding:5px;
+}
+
+#tabla-css3 tr:nth-child(odd) {
+  background-color: #eaeaea;
+}
+
+#tabla-css3 td:first-child {
+  font-weight:bold;
+}
+
+#tabla-css3 tr:nth-last-child(2) {
+  color: #ff0000;
+}
+
+#tabla-css3 tr:nth-child(4) {
+  color: #0000FF;
+}
+
+#tabla-css3 tr {
+  background-color: #fff;
+}
+
+
+/*EJEMPLO DE MULTIPLES BACKROUNDS*/
+
+div.backgrounds {
+	margin:0 auto;
+	background-image: url(multiple-bg-a.png),url(multiple-bg-b.png),url(multiple-bg-base.png);
+	background-repeat:no-repeat;
+	width: 808px;
+	height: 251px;
+	background-position:3% 3%, 96% 90%;
+}
+
+/* BORDER RADIUS - BOX SHADOW - FONT FACE */
+
+.border-radius {
+		background:#ff9c00;
+		width:200px;
+		height:200px;
+		border-radius:200px;
+		float:left;
+	}
+	
+.box-shadow {
+	background:#ff9c00;
+	width:200px;
+	height:200px;
+	border-radius:5px;
+	box-shadow: inset 10px 10px 20px rgba(0,0,0,0.5);
+	float:left;
+	margin:0 0 0 50px;
+}
+
+	
+@font-face {
+	font-family: 'NombrePropio';
+	src: url('delicious-bold-webfont.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}	
+/*	
+@font-face {
+	font-family: 'NombrePropio';
+	src: url('andralisndosf-bold-webfont.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}*/
+
+h3{
+	margin: 10px;
+}
+		
+h3.fontface  {
+		font-family: 'NombrePropio', Arial;
+		font-size:100px;
+		box-shadow: inset 0px 0px 15px rgba(0,0,0,0.7);
+		background-color:#063259;
+		border-radius:20px;
+		padding:20px;
+	}
+		
+
+		
+/*SVG*/
+.svga {
+		background-image:url("svg-a.png");
+		background-position:100% 50%;
+		background-repeat:no-repeat;
+		width:300px;
+		height:550px;
+		float:left;
+}
+.svg {
+		background-image:url("image.svg");
+		background-position:102%  55%  ;
+		background-repeat:no-repeat;
+		width:300px;
+		height:550px;
+		float:left;
+	}
+	
+/*ALPHA*/
+
+.alphabox {
+	background-color:#999;
+	background-image:url("image.svg");
+	border-radius:10px;
+	width:400px;
+	height:200px;
+	padding:20px;
+	text-align:center;
+	margin:0 auto;	
+}
+
+.alphabox div {
+	margin:50px;
+	background-color:rgba(0,0,0,0.2);
+	color:#FFF;
+}
+

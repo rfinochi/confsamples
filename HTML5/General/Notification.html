@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> New Document </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+ </head>
+ <body>
+ <script>
+    if (!window.webkitNotifications) {
+        alert('Sorry , your browser does not support desktop notification. Try Google Chrome.');
+    }
+	
+	function RequestPermission (callback)
+    {
+        window.webkitNotifications.requestPermission(callback);
+    }
+
+	function notification ()
+    { 
+        if (window.webkitNotifications.checkPermission() > 0) {
+            RequestPermission(notification);
+        }
+
+        var icon  = 'http://www.beakkon.com/sites/default/files/images/logo.png';
+        var title = 'Shockbyte';
+        var body   = 'Test Notification';
+        var popup = window.webkitNotifications.createNotification(icon, title, body);
+        popup.show();
+       	setTimeout(function(){
+		popup.cancel();
+		}, '15000');
+	    }
+	
+    function HTMLnotification ()
+        {
+        if (window.webkitNotifications.checkPermission() > 0) {
+            RequestPermission(HTMLnotification);
+        }
+        
+        var popup = window.webkitNotifications.createHTMLNotification('http://shockbyte.net/');
+        popup.show();
+		setTimeout(function(){
+		popup.cancel();
+		}, '15000');
+    } 
+</script><p><button onclick="notification()">NOTIFY</button><br />
+<button onclick="HTMLnotification()">NOTIFY ME(HTML)</button></p>
+ </body>
+</html>

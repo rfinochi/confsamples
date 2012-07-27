@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HTML5 Session Storage Demo</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9;FF=3;OtherUA=4" />
+</head>
+<body>
+    <label id="lbCurrentCounter"></label>
+    <input type="button" value="Contador++" onclick="sessionStorage.Counter++;" />
+	<input type="button" value="Reset" onclick="sessionStorage.Counter = 0;" />
+    <br />
+    <em><a href="SessionStorageDemo.htm" target="_blank">Nueva instancia</a>
+    <p><span id="spCurCounter"></span></p>
+    <p>&nbsp;</p>
+    <input type="button" value="Mostrar Carrito" onclick="displaySessionStorage();" />
+    <input type="button" value="Borrar Carrito" onclick="clearSessionStorage();" /><br />
+	<div id="divSessionStorage"></div>
+
+<script type="text/javascript">
+
+	function supportsLocalStorage() {
+        return ('localStorage' in window) && window['localStorage'] !== null;
+    }
+
+    function $(id) {return document.getElementById(id); }
+    function S4() {
+        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    }
+    function Guid() {
+        return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+    }
+
+    function ShoppingCartItem() {
+        this.ProductID = Guid();
+        this.ProductName = '';
+        this.CategoryID = -1;
+        this.Price = -1.0;
+    }
+
+    //El store solo soporta strings
+	Storage.prototype.setObject = function (key, value) {
+        this.setItem(key, JSON.stringify(value));
+    }
+    Storage.prototype.getObject = function (key) {
+        return this.getItem(key) && JSON.parse(this.getItem(key));
+    }
+
+    function displaySessionStorage() {
+        var userShoppingCart = sessionStorage.getObject('UserShoppingCart');
+
+        if (!userShoppingCart) {
+            $('divSessionStorage').innerHTML = '<br />No hay carrito.';
+            return;
+        }
+
+        var htmlStr = '<br /><table border="1"><caption>Items en el carrito</cation><tr><td>Product ID</td><td>Product Name</td><td>Category ID</td><td>Price</td></tr>';
+
+        for (var i = 0; i < userShoppingCart.length; i++) {
+            htmlStr += '<tr><td>' + userShoppingCart[i].ProductID + '</td><td>' + userShoppingCart[i].ProductName + '</td><td>' + userShoppingCart[i].CategoryID + '</td><td>' + userShoppingCart[i].Price + '</td></tr>';
+        }
+
+        htmlStr += '</table>';
+        $('divSessionStorage').innerHTML = htmlStr;
+    }
+
+    function clearSessionStorage() {
+        sessionStorage.clear();
+    }
+
+    window.onload = function () {
+        if (!supportsLocalStorage()) {
+            alert('Su navegador no soporta Web Storage');
+            return;
+        }
+
+        if (!sessionStorage.Counter) {
+            sessionStorage.Counter = 0; $('spCurCounter').innerHTML = 'Valor del contador: <b>0</b>';
+        }
+        else {
+            $('spCurCounter').innerHTML = 'Valor del contador: <b>' + sessionStorage.Counter + '</b>';
+        }
+
+        if (!sessionStorage.getObject('UserShoppingCart')) {
+			var item1 = new ShoppingCartItem();
+			item1.ProductName = 'Asus Windows 7 Slate';
+			item1.CategoryID = 8;
+			item1.Price = 849.99;
+
+			var item2 = new ShoppingCartItem();
+			item2.ProductName = 'Apple iPad II';
+			item2.CategoryID = 10;
+			item2.Price = 799.99;
+
+			var currentUserShoppingCart = new Array();
+			currentUserShoppingCart[0] = item1;
+			currentUserShoppingCart[1] = item2;
+			sessionStorage.setObject('UserShoppingCart', currentUserShoppingCart);
+        }
+    }
+</script>
+</body>
+</html>
