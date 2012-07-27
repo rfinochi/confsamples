@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rules>
+	<rule name="ValueCSharp" code="Value.csharp" errorMessage="Value must be greater than 5." type="Persistence">
+		<propery value="Value"/>
+	</rule>
+	<rule name="Value2CSharp" code="Value2.csharp" errorMessage="Value2 must be greater than 5." type="Business">
+		<propery value="Value2"/>
+	</rule>
+	<rule name="Value3CSharp" code="Value3.csharp" errorMessage="Value3 must be greater than -1." type="All">
+		<propery value="Value3"/>
+	</rule>
+	<rule name="ComplexCSharp" code="Complex.csharp" errorMessage="Value4 must be greater than 7 and Value5 must be greater than 7." type="Persistence">
+		<propery value="Value4"/>
+		<propery value="Value5"/>
+	</rule>
+</rules>

@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 10
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{28BDF904-5838-430F-AE43-2E4A5E9E1B12}"
+	ProjectSection(SolutionItems) = preProject
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+		ValidationFramework.vsmdi = ValidationFramework.vsmdi
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationFramework.Core", "Core\ValidationFramework.Core.csproj", "{EFB80E76-0422-452E-A6D0-D9862EA43936}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationFramework.UnitTests", "UnitTests\ValidationFramework.UnitTests.csproj", "{BDC968AE-C4F7-4569-AAD8-561363647CA2}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = ValidationFramework.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFB80E76-0422-452E-A6D0-D9862EA43936}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB80E76-0422-452E-A6D0-D9862EA43936}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB80E76-0422-452E-A6D0-D9862EA43936}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFB80E76-0422-452E-A6D0-D9862EA43936}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDC968AE-C4F7-4569-AAD8-561363647CA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDC968AE-C4F7-4569-AAD8-561363647CA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDC968AE-C4F7-4569-AAD8-561363647CA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDC968AE-C4F7-4569-AAD8-561363647CA2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

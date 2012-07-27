@@ -1,0 +1,28 @@
+﻿<Customers>
+  <Customer>
+    <Id>CUSTOMER$00010</Id>
+    <Version>3</Version>
+    <LastName>Ren</LastName>
+    <FirstName>Alex</FirstName>
+    <JobTitle>Purchasing Manager</JobTitle>
+    <BusinessPhone>(123)555-0100</BusinessPhone>
+    <FaxNumber>(123)555-0101</FaxNumber>
+    <Address>789 20th Street</Address>
+    <City>New York</City>
+    <StateOrProvince>NY</StateOrProvince>
+    <CountryOrRegion>USA</CountryOrRegion>
+  </Customer>
+  <Customer>
+    <Id>CUSTOMER$00010</Id>
+    <Version>3</Version>
+    <LastName>Li</LastName>
+    <FirstName>George</FirstName>
+    <JobTitle>Purchasing Manager</JobTitle>
+    <BusinessPhone>(123)555-0100</BusinessPhone>
+    <FaxNumber>(123)555-0101</FaxNumber>
+    <Address>789 20th Street</Address>
+    <City>New York</City>
+    <StateOrProvince>NY</StateOrProvince>
+    <CountryOrRegion>USA</CountryOrRegion>
+  </Customer>
+</Customers>

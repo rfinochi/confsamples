@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rules>
+	<rule name="ValuePython" code="Value.py" errorMessage="Value must be greater than 5." type="Persistence">
+		<propery value="Value"/>
+	</rule>
+	<rule name="Value2Python" code="Value2.py" errorMessage="Value2 must be greater than 5." type="Business">
+		<propery value="Value2"/>
+	</rule>
+	<rule name="Value3Python" code="Value3.py" errorMessage="Value3 must be greater than -1." type="All">
+		<propery value="Value3"/>
+	</rule>
+</rules>

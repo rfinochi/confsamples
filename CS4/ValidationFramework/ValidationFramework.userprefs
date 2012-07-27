@@ -1,0 +1,26 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="UnitTests/CoreFixture.cs" ctype="Workbench">
+    <Files>
+      <File FileName="Core/Dynamic/CSharpRulesFactory.cs" Line="23" Column="1" />
+      <File FileName="Core/Dynamic/RubyRulesFactory.cs" Line="24" Column="29" />
+      <File FileName="Core/Dynamic/BaseRulesFactory.cs" Line="1" Column="1" />
+      <File FileName="UnitTests/CoreFixture.cs" Line="10" Column="10" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="ValidationFramework.Core" expanded="True">
+            <Node name="Dynamic" expanded="True" />
+          </Node>
+          <Node name="ValidationFramework.UnitTests" expanded="True">
+            <Node name="CoreFixture.cs" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ctype="Workspace" />
+</Properties>

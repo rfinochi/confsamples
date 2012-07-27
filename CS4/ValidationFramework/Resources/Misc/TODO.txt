@@ -1,0 +1,14 @@
+- InnerContainers
+
+- Factory
+- Contexts
+- Restrictions
+- Auditory
+- Lazy Load By Repository
+
+- Mapeo de entidades sin tablas con stores
+- Delete By PK
+- Query by ESQL
+- Test Inheritance
+
+- Linq-To-SQL Repository

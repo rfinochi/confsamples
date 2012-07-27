@@ -1,0 +1,6 @@
+﻿if (e.Value4 < 7)
+	return false;
+else if (e.Value5 < 7)
+	return false;
+else
+	return true;	
