@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "CloudServiceDemo", "CloudServiceDemo\CloudServiceDemo\CloudServiceDemo.ccproj", "{DA14DD99-033A-4CE6-8AA1-9965B93FB66A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudServiceDemo_WebRole", "CloudServiceDemo\CloudServiceDemo_WebRole\CloudServiceDemo_WebRole.csproj", "{116A9F48-8921-4BE7-B78B-2B2EDC186B20}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA14DD99-033A-4CE6-8AA1-9965B93FB66A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA14DD99-033A-4CE6-8AA1-9965B93FB66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA14DD99-033A-4CE6-8AA1-9965B93FB66A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA14DD99-033A-4CE6-8AA1-9965B93FB66A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{116A9F48-8921-4BE7-B78B-2B2EDC186B20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{116A9F48-8921-4BE7-B78B-2B2EDC186B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{116A9F48-8921-4BE7-B78B-2B2EDC186B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{116A9F48-8921-4BE7-B78B-2B2EDC186B20}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

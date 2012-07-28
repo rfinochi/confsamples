@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DependencyCheckerConfiguration>
+  <title>Windows Azure Guestbook</title>
+  <previews>
+    <preview name="Check demo dependencies"
+             description="Check required components">
+    </preview>
+  </previews>
+  <dependencies>
+    <os type="Vista;Server" buildNumber="6001;6002;7000;7001;7056;7057;7100;7600;">
+
+      <dependency
+                    value=".\Scripts\Dependencies\Check\CheckVS2008-2010.ps1"
+                    enabled="true"
+                    optional="false"
+                    title="Microsoft Visual Studio 2008 (or higher)"
+                    explanation="Install Microsoft Visual Studio 2008 (or higher)"
+                    scriptName=""
+                    downloadUrl="http://msdn.microsoft.com/vstudio/products/" />
+      <dependency
+                    value=".\Scripts\Dependencies\Check\CheckNET35SP1.ps1"
+                    enabled="true"
+                    optional="false"
+                    title="Microsoft .NET Framework 3.5 SP1"
+                    explanation="Download and install the Microsoft .NET Framework 3.5 SP1."
+                    scriptName=""
+                    downloadUrl="http://www.microsoft.com/downloads/details.aspx?FamilyId=AB99342F-5D1A-413D-8319-81DA479AB0D7"/>
+      <dependency
+                    value=".\Scripts\Dependencies\Check\CheckWmiIis7.ps1"
+                    enabled="true"
+                    optional="false"
+                    title="Microsoft IIS7"
+                    explanation="Enable the Internet Information Services 7 feature."
+                    scriptName="Scripts\Dependencies\Setup\install-iis.bat" />
+      <dependency
+                    value=".\Scripts\Dependencies\Check\CheckIis7AspNet.ps1"
+                    enabled="true"
+                    optional="false"
+                    title="Web ASP.NET"
+                    explanation="Enable the ASP.NET role."
+                    scriptName="Scripts\Dependencies\Setup\install-iis7aspnet.bat" />
+      <dependency
+                    value=".\Scripts\Dependencies\Check\CheckWCFHTTPAct.ps1"
+                    enabled="true"
+                    optional="false"
+                    title="WCF HTTP Activation"
+                    explanation="Enable the WCF HTTP Activation feature."
+                    scriptName="Scripts\Dependencies\Setup\install-WCFHTTPAct.bat" />
+      <dependency
+                    value=".\Scripts\Dependencies\Check\CheckCCT.ps1"
+                    enabled="true"
+                    optional="false"
+                    title="Windows Azure Tools for Microsoft Visual Studio"
+                    explanation="Download and install the Windows Azure Tools for Microsoft Visual Studio"
+                    scriptName=""
+                    downloadUrl="http://go.microsoft.com/fwlink/?LinkId=128752" />
+
+    </os>
+  </dependencies>
+</DependencyCheckerConfiguration>

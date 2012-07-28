@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "FotoGol", "FotoGol\FotoGol.ccproj", "{C08CA45E-6D44-44F0-ADE0-80195536CD98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FotoGol_WebRole", "FotoGol_WebRole\FotoGol_WebRole.csproj", "{07A55B15-79DB-4DC4-9E8D-AB76EEBEA5E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FotoGol_Data", "FotoGol_Data\FotoGol_Data.csproj", "{FB4FE743-54A2-415C-BE55-E2FD84E46E0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FotoGol_Email", "FotoGol_Email\FotoGol_Email.csproj", "{1D4E2B8E-5A22-4846-A30C-50EB888E4352}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FotoGol_WorkerRole", "FotoGol_WorkerRole\FotoGol_WorkerRole.csproj", "{6BBC2631-C827-4147-8F9A-CC25B1FA6089}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C08CA45E-6D44-44F0-ADE0-80195536CD98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C08CA45E-6D44-44F0-ADE0-80195536CD98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C08CA45E-6D44-44F0-ADE0-80195536CD98}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C08CA45E-6D44-44F0-ADE0-80195536CD98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C08CA45E-6D44-44F0-ADE0-80195536CD98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C08CA45E-6D44-44F0-ADE0-80195536CD98}.Release|x64.ActiveCfg = Release|Any CPU
+		{07A55B15-79DB-4DC4-9E8D-AB76EEBEA5E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07A55B15-79DB-4DC4-9E8D-AB76EEBEA5E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07A55B15-79DB-4DC4-9E8D-AB76EEBEA5E2}.Debug|x64.ActiveCfg = Debug|x64
+		{07A55B15-79DB-4DC4-9E8D-AB76EEBEA5E2}.Debug|x64.Build.0 = Debug|x64
+		{07A55B15-79DB-4DC4-9E8D-AB76EEBEA5E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07A55B15-79DB-4DC4-9E8D-AB76EEBEA5E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07A55B15-79DB-4DC4-9E8D-AB76EEBEA5E2}.Release|x64.ActiveCfg = Release|x64
+		{07A55B15-79DB-4DC4-9E8D-AB76EEBEA5E2}.Release|x64.Build.0 = Release|x64
+		{FB4FE743-54A2-415C-BE55-E2FD84E46E0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB4FE743-54A2-415C-BE55-E2FD84E46E0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB4FE743-54A2-415C-BE55-E2FD84E46E0A}.Debug|x64.ActiveCfg = Debug|x64
+		{FB4FE743-54A2-415C-BE55-E2FD84E46E0A}.Debug|x64.Build.0 = Debug|x64
+		{FB4FE743-54A2-415C-BE55-E2FD84E46E0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB4FE743-54A2-415C-BE55-E2FD84E46E0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB4FE743-54A2-415C-BE55-E2FD84E46E0A}.Release|x64.ActiveCfg = Release|x64
+		{FB4FE743-54A2-415C-BE55-E2FD84E46E0A}.Release|x64.Build.0 = Release|x64
+		{1D4E2B8E-5A22-4846-A30C-50EB888E4352}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D4E2B8E-5A22-4846-A30C-50EB888E4352}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D4E2B8E-5A22-4846-A30C-50EB888E4352}.Debug|x64.ActiveCfg = Debug|x64
+		{1D4E2B8E-5A22-4846-A30C-50EB888E4352}.Debug|x64.Build.0 = Debug|x64
+		{1D4E2B8E-5A22-4846-A30C-50EB888E4352}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D4E2B8E-5A22-4846-A30C-50EB888E4352}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D4E2B8E-5A22-4846-A30C-50EB888E4352}.Release|x64.ActiveCfg = Release|x64
+		{1D4E2B8E-5A22-4846-A30C-50EB888E4352}.Release|x64.Build.0 = Release|x64
+		{6BBC2631-C827-4147-8F9A-CC25B1FA6089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BBC2631-C827-4147-8F9A-CC25B1FA6089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BBC2631-C827-4147-8F9A-CC25B1FA6089}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6BBC2631-C827-4147-8F9A-CC25B1FA6089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BBC2631-C827-4147-8F9A-CC25B1FA6089}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BBC2631-C827-4147-8F9A-CC25B1FA6089}.Release|x64.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

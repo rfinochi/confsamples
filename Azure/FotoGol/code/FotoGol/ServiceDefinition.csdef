@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="FotoGol" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
+  <WebRole name="FotoGol_WebRole">
+    <InputEndpoints>
+      <InputEndpoint name="HttpIn" protocol="http" port="8080" />
+    </InputEndpoints>
+    <ConfigurationSettings>
+      <Setting name="DiagnosticsConnectionString" />
+      <Setting name="DataConnectionString" />
+    </ConfigurationSettings>
+  </WebRole>
+  <WorkerRole name="FotoGol_Email">
+    <ConfigurationSettings>
+      <Setting name="DiagnosticsConnectionString" />
+      <Setting name="DataConnectionString" />
+    </ConfigurationSettings>
+  </WorkerRole>
+  <WorkerRole name="FotoGol_WorkerRole">
+    <ConfigurationSettings>
+      <Setting name="DiagnosticsConnectionString" />
+      <Setting name="DataConnectionString" />
+    </ConfigurationSettings>
+  </WorkerRole>
+</ServiceDefinition>

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{2F480AB4-8FF7-4E87-89C2-8CECBE71F3FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{F5750EB3-E18B-453E-AB62-42D10DA656C4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F480AB4-8FF7-4E87-89C2-8CECBE71F3FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F480AB4-8FF7-4E87-89C2-8CECBE71F3FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F480AB4-8FF7-4E87-89C2-8CECBE71F3FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F480AB4-8FF7-4E87-89C2-8CECBE71F3FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5750EB3-E18B-453E-AB62-42D10DA656C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5750EB3-E18B-453E-AB62-42D10DA656C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5750EB3-E18B-453E-AB62-42D10DA656C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5750EB3-E18B-453E-AB62-42D10DA656C4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

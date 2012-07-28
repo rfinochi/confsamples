@@ -1,0 +1,125 @@
+﻿body
+{
+    /*font-family: Times New Roman, Helvetica, sans-serif; */
+    font-family: Helvetica, Segoe UI, Verdana, Arial, Sans-Serif;
+}
+
+h1
+{
+    font-weight: bold; 
+    color: #4981BD;
+    font-size: 50px;
+    line-height: 65px;
+    vertical-align: bottom;
+}
+
+dl 
+{
+    padding: :0px;
+    margin: 0px;
+    text-align: left;
+    line-height:24px;
+    float: left;
+}
+
+dt 
+{
+    float: left;
+    width: 100px;
+}
+
+dd 
+{
+    font-size: 11px;
+    margin: 0px 0px 5px 5px;
+    width: 340px;
+}
+
+.general
+{
+    width: 800px;
+    align: center;
+    margin: 0 auto;
+}
+
+.title
+{
+    width: 100%;
+    text-align: center;
+}
+
+.inputSection
+{
+    margin: 0 auto 0 auto;
+    width: 500px;
+    height: 150px;
+}
+
+.inputSignSection
+{
+    display: inline;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.field
+{
+    width: 200px;
+}
+
+.signature
+{
+    margin:	0 auto 0 auto;
+    width: 800px;
+    border: solid 1px #AAAAAA;
+}
+
+.signatureImage
+{
+    margin: 10px 10px 5px 10px;
+    float: left;
+}
+
+.signatureDescription
+{
+    margin: 10px;
+}
+
+
+.signatureName
+{
+    display:inline;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.signatureSays
+{
+    display:inline;
+    font-size: 10px;
+    color: #888888;
+}
+
+.signatureDate
+{
+    display:inline;
+    float: right;
+    font-size: 15px;
+    color: #888888;
+    margin: 0px 10px auto 0;
+}
+
+.signatureMessage
+{
+    font-style: italic;
+}
+
+
+
+
+
+
+
+
+
+

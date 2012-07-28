@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<ServiceConfiguration serviceName="FotoGol" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration">
+  <Role name="FotoGol_WebRole">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="DataConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="DiagnosticsConnectionString" value="UseDevelopmentStorage=true" />
+      <!--<Setting name="DataConnectionString" value="DefaultEndpointsProtocol=https;AccountName=fotolog;AccountKey=Fdo2Tzg1IjhMB3MZCKr9evSQFLmzhsYmw8XBOmOeqIqcdXqK6Ue69RsvBUbXxtCT6rQ2XBJGQNpnt8K3MQtt9Q==" />
+      <Setting name="DiagnosticsConnectionString" value="DefaultEndpointsProtocol=https;AccountName=fotolog;AccountKey=Fdo2Tzg1IjhMB3MZCKr9evSQFLmzhsYmw8XBOmOeqIqcdXqK6Ue69RsvBUbXxtCT6rQ2XBJGQNpnt8K3MQtt9Q==" />-->
+    </ConfigurationSettings>
+  </Role>
+  <Role name="FotoGol_Email">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="DataConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="DiagnosticsConnectionString" value="UseDevelopmentStorage=true" />
+      <!--<Setting name="DataConnectionString" value="DefaultEndpointsProtocol=https;AccountName=fotolog;AccountKey=Fdo2Tzg1IjhMB3MZCKr9evSQFLmzhsYmw8XBOmOeqIqcdXqK6Ue69RsvBUbXxtCT6rQ2XBJGQNpnt8K3MQtt9Q==" />
+      <Setting name="DiagnosticsConnectionString" value="DefaultEndpointsProtocol=https;AccountName=fotolog;AccountKey=Fdo2Tzg1IjhMB3MZCKr9evSQFLmzhsYmw8XBOmOeqIqcdXqK6Ue69RsvBUbXxtCT6rQ2XBJGQNpnt8K3MQtt9Q==" />-->
+    </ConfigurationSettings>
+  </Role>
+  <Role name="FotoGol_WorkerRole">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="DataConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="DiagnosticsConnectionString" value="UseDevelopmentStorage=true" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>

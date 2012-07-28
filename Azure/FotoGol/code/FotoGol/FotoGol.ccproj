@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>1.0.0</ProductVersion>
+    <ProjectGuid>{c08ca45e-6d44-44f0-ade0-80195536cd98}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>End</RootNamespace>
+    <AssemblyName>End</AssemblyName>
+    <StartDevelopmentStorage>True</StartDevelopmentStorage>
+    <Name>FotoGol</Name>
+    <DevTableStorageDatabaseName>GuestBookDatabase</DevTableStorageDatabaseName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- Items for the project -->
+  <ItemGroup>
+    <ServiceDefinition Include="ServiceDefinition.csdef" />
+    <ServiceConfiguration Include="ServiceConfiguration.cscfg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FotoGol_Email\FotoGol_Email.csproj">
+      <Name>FotoGol_Email</Name>
+      <Project>{1d4e2b8e-5a22-4846-a30c-50eb888e4352}</Project>
+      <Private>True</Private>
+      <RoleType>Worker</RoleType>
+      <RoleName>FotoGol_Email</RoleName>
+    </ProjectReference>
+    <ProjectReference Include="..\FotoGol_WebRole\FotoGol_WebRole.csproj">
+      <Name>FotoGol_WebRole</Name>
+      <Project>{07a55b15-79db-4dc4-9e8d-ab76eebea5e2}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>FotoGol_WebRole</RoleName>
+    </ProjectReference>
+    <ProjectReference Include="..\FotoGol_WorkerRole\FotoGol_WorkerRole.csproj">
+      <Name>FotoGol_WorkerRole</Name>
+      <Project>{6bbc2631-c827-4147-8f9a-cc25b1fa6089}</Project>
+      <Private>True</Private>
+      <RoleType>Worker</RoleType>
+      <RoleName>FotoGol_WorkerRole</RoleName>
+    </ProjectReference>
+  </ItemGroup>
+  <!-- Import the target files for this project template -->
+  <PropertyGroup>
+    <CloudExtensionsDir Condition=" '$(CloudExtensionsDir)' == '' ">$(MSBuildExtensionsPath)\Microsoft\Cloud Service\1.0\Visual Studio 10.0\</CloudExtensionsDir>
+  </PropertyGroup>
+  <Import Project="$(CloudExtensionsDir)Microsoft.CloudService.targets" />
+</Project>
