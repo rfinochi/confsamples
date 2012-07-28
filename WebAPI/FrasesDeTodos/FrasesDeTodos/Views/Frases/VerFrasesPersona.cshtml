@@ -1,0 +1,135 @@
+﻿@model IEnumerable<FrasesDeTodos.Models.Frase>
+
+@{
+    ViewBag.Title = "Frases de " + ViewData["autor"].ToString();
+}
+
+<script type="text/javascript">
+    var dialogoCrear;
+
+    $(document).ready(function () {
+        dialogoCrear = $("#popupNuevaFrase").dialog({ autoOpen: false });
+
+        $("#linkTraerFrases").click(ObtenerNuevasFrases);
+
+        $("#linkNuevaFrase").click(function () {
+            $("#textoFrase").val("");
+            dialogoCrear.dialog("open");
+        });
+
+        $("#cargarFrase").click(CrearNuevaFrase);
+
+        $(".meGusta").click(MeGusta);
+
+        $(".botonComentar").click(Comentar);
+    });
+
+    function ObtenerNuevasFrases() {
+        $.post(
+		'@Url.Action("ObtenerTodas")',
+		{ deQuien: '@ViewData["autor"]' },
+		function (results) {
+		    for (i = 0; i < results.length; i++) {
+		        AgregarNuevaFrase(results[i]);
+		    }
+		},
+		"json");
+    }
+
+    function CrearNuevaFrase() {
+        var frase = $("#textoFrase").val();
+        var autor = $("#autorFrase").val();
+
+        $.post(
+            '@Url.Action("CargarUnaFrase")',
+            { frase: frase, deQuien: autor },
+            AgregarNuevaFrase,
+            'json');
+
+        dialogoCrear.dialog("close");
+    }
+
+    function AgregarNuevaFrase(frase) {
+        var template = $("#templateFrase").clone();
+
+        template.attr("id", "");
+
+        template.find(".text").text(frase.Texto);
+        template.find(".votos").text(frase.Votos);
+        template.find(".idFrase").val(frase.Id);
+
+        template.find(".meGusta").click(MeGusta);
+        template.find(".botonComentar").click(Comentar);
+
+        $("#frases").prepend(template);
+        template.show("slow");
+    }
+
+    function Comentar() {
+        var frase = $(this).parents(".frase");
+
+        var comentario = frase.find(".textoComentario").val();
+        frase.find(".textoComentario").val("");
+        var id = frase.find(".idFrase").val();
+
+        $.post(
+		    '@Url.Action("Comentar")',
+		    { idFrase: id, comentario: comentario },
+		    function () {
+		        frase.find(".comments").find("ul").append($("<li>" + comentario + "</li>"));
+		    },
+		    'json');
+	}
+
+	function MeGusta() {
+		var frase = $(this).parents(".frase");
+		var id = frase.find(".idFrase").val();
+
+		$.post(
+	        '@Url.Action("MeGusta")',
+	        { idFrase: id },
+	        function () {
+	            var votos = frase.find(".votos");
+		        votos.text(parseInt(votos.text()) + 1);
+	        },
+	        'json');
+	}
+
+</script>
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    <a style="color: White; text-decoration: none;" href="javascript:;" id="linkTraerFrases">Traer todas las frases!</a>
+</p>
+
+<a id="linkNuevaFrase" class="nuevaFrase" href="javascript:;">Nueva frase!</a>
+<div id="popupNuevaFrase" class="popup" style="display:none;">
+	 @Html.Hidden("autorFrase", ViewData["autor"])
+	<textarea id="textoFrase" name="textoFrase" class="textoFrase"></textarea> 
+    <a id="cargarFrase" class="agregar" href="javascript:;">Nueva frase!</a>
+</div>
+
+
+<ul id="frases">
+</ul>
+
+<ul style="display: none;">
+	<li class="frase" id="templateFrase" style="display: none">
+		<input type="hidden" class="idFrase"/>
+		<div class="contenedorFrase">
+			<span class="text"></span>
+		</div>
+		<div class="comments">
+			<ul></ul>
+			<textarea class="textoComentario"></textarea>
+			<a href="javascript:;" class="botonComentar">Comentar!</a>
+		</div>
+		<div class="votes">
+			<span class="votos"></span>
+			<a class="meGusta" href="javascript:;" title="Me gusta!"></a>
+		</div>
+	</li>
+</ul>
+
+
