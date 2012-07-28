@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="TypeConverter_CS.Page"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:TypeConverter_CS"
+    Width="400" Height="300">
+    <UserControl.Resources>
+        <converter:Formatter x:Key="FormatConverter" />
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <ListBox x:Name="FeedList">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock FontFamily="Arial" FontWeight="Bold" Foreground="Red" Text="{Binding Title.Text}" />
+                        <!--<TextBlock FontFamily="Arial" Text="{Binding PublishDate}" />-->
+                        <TextBlock FontFamily="Arial" Text="{Binding PublishDate, Converter={StaticResource FormatConverter}, ConverterParameter=\{0:M\}}" /> 
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</UserControl>
