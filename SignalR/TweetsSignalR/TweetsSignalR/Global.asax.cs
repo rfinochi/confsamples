@@ -24,7 +24,7 @@ namespace TweetsSignalR
                                                     {
                                                         var tweets = context.Search
                                                                             .Where( t => t.Type == SearchType.Search && t.Query == "#fnord" )
-                                                                            .SingleOrDefault( )
+                                                                            .SingleOrDefault()
                                                                             .Results;
 
                                                         connectionContext.Connection.Broadcast( tweets );

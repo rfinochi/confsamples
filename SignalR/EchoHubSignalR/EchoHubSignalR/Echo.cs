@@ -2,8 +2,8 @@
 
 public class Echo : Hub
 {
-    public void Send(string message)
+    public void Send( string message )
     {
-        Clients.addMessage(message);
+        Clients.addMessage( message );
     }
 }

@@ -1,12 +1,14 @@
+----------------- Quick Demo --------------------------------------------
 Open VS2010
 Create a new ASP.NET Empty Website
 Install-Package SignalR
 Note server library, client script, jQuery dependency
 Install-Package SignalR.Sample and show stock ticker in two browsers
-
-Now let’s take things easy… How does all of this work?
+----------------- Quick Demo ---------------------------------------------
 
 ----------------- without Internet connection ----------------------------
+Install-Package jQuery
+
 Add a class:
 public class TimeConnection : PersistentConnection { }
 
@@ -30,8 +32,8 @@ Add some HTML:
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    <script src="Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
-    <script src="Scripts/jquery.signalR-0.5.2.min.js" type="text/javascript"></script>
+    <script src="Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <script src="Scripts/jquery.signalR-0.5.3.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function () {
             var connection = $.connection('time');
@@ -50,8 +52,8 @@ Add some HTML:
 </html>
 ----------------- without Internet connection ----------------------------
 
-
 ----------------- with Internet connection ----------------------------
+Install-Package jQuery
 Install-Package LinqToTwitter
 
 Add a class:
@@ -82,8 +84,8 @@ Add some HTML:
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    <script src="Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
-    <script src="Scripts/jquery.signalR-0.5.2.min.js" type="text/javascript"></script>
+    <script src="Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <script src="Scripts/jquery.signalR-0.5.3.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function () {
             var connection = $.connection('tweets');
@@ -104,11 +106,10 @@ Add some HTML:
     <ul id="tweetsList"></ul>
 </body>
 </html>
-
 ----------------- with Internet connection ----------------------------
 
 ----------------- KnockedTweets.htm with Internet connection ----------------------------
-
+Install-Package jQuery
 Install-Package knockoutjs
 
 Add some HTML:
@@ -116,8 +117,8 @@ Add some HTML:
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    <script src="Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
-    <script src="Scripts/jquery.signalR-0.5.2.min.js" type="text/javascript"></script>
+    <script src="Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <script src="Scripts/jquery.signalR-0.5.3.min.js" type="text/javascript"></script>
     <script src="Scripts/knockout-2.1.0.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function () {
@@ -151,5 +152,4 @@ Add some HTML:
     <span data-bind="text: tweets().length"></span> tweet<span data-bind="visible: tweets.length == 0 || tweets.length > 1">s</span>
 </body>
 </html>
-
 ----------------- KnockedTweets.htm with Internet connection ----------------------------
