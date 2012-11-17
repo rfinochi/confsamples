@@ -16,25 +16,25 @@ namespace HelloWorld
         {
             routes.IgnoreRoute( "{resource}.axd/{*pathInfo}" );
 
-            routes.MapRoute(
-                "Hola",
-                "Hola/{nombre}",
-                new
-                {
-                    controller = "Foo",
-                    action = "Hello",
-                    nombre = "Rodolfo"
-                }
-            );
-
             //routes.MapRoute(
-            //    "Default",
-            //    "{controller}/{action}/{nombre}",
+            //    "Hola",
+            //    "Hola/{name}",
             //    new
             //    {
             //        controller = "Foo",
             //        action = "Hello",
-            //        nombre = "Amigos"
+            //        name = "Rodolfo"
+            //    }
+            //);
+
+            //routes.MapRoute(
+            //    "Default",
+            //    "{controller}/{action}/{name}",
+            //    new
+            //    {
+            //        controller = "Foo",
+            //        action = "Hello",
+            //        name = "Amigos"
             //    });
 
             routes.MapRoute(

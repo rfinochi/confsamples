@@ -1,0 +1,271 @@
+﻿@model IEnumerable<FrasesDeTodos.Models.Frase>
+
+@{
+	ViewBag.Title = "Frases de " + ViewData["autor"].ToString();
+}
+
+<script type="text/javascript">
+	var dialogoCrear;
+
+	function doPost(action, data, successCallback) {
+	    $.ajax({
+	        type: "POST",
+	        url: action,
+	        data: data,
+	        success: successCallback,
+	        dataType: "json",
+	        error: function (jqXHR, t, e) {
+	            alert(jqXHR.responseText);
+	        }
+	    });
+	}
+
+	function doGet(action, data, successCallback) {
+	    $.ajax({
+	        type: "GET",
+	        url: action,
+	        data: data,
+	        success: successCallback,
+	        dataType: "json",
+	        error: function (jqXHR, t, e) {
+	            alert(jqXHR.responseText);
+	        }
+	    });
+	}
+
+	function ObtenerFrasesCargadas() {
+
+	    doGet(
+		'@Url.Action("ObtenerTodas")',
+		{ deQuien: '@ViewData["autor"]' },
+		function (frases) {
+			for (var i = 0; i < frases.length; i++) {
+				MostrarFrasesCargadas(frases[i]);
+			}
+		});
+	}
+
+	$(document).ready(function () {
+
+		dialogoCrear = $("#popupNuevaFrase").dialog({ autoOpen: false });
+
+		$("#linkNuevaFrase").click(function () {
+			$("#textoFrase").val("");
+			dialogoCrear.dialog("open");
+		});
+
+		$("#cargarFrase").click(function () {
+			var texto = $("#textoFrase").val();
+			var autor = $("#autorFrase").val();
+
+			doPost(
+				'@Url.Action("CargarUnaFrase")',
+				{ texto: texto, autor: autor },
+				AgregarNuevaFrase);
+
+			dialogoCrear.dialog("close");
+		});
+		
+		ObtenerFrasesCargadas();
+	});
+
+	function MostrarFrasesCargadas(frase) {
+
+		var fraseTemplate = AgregarNuevaFrase(frase);
+
+		for (var j = 0; j < frase.Comentarios.length; j++) {
+			AgregarComentario(frase.Comentarios[j], fraseTemplate);
+		}
+	}
+
+	function AgregarNuevaFrase(frase) {
+		var template = $("#templateFrase").clone();
+
+		template.attr("id", "");
+
+		template.find(".text").text(frase.Texto);
+
+		if (frase.CantidadVotos < 0)
+			template.find(".votes").css("background-color", "Red");
+
+		template.find(".votos").text(frase.CantidadVotos);
+		template.find(".fraseId").val(frase.Id);
+
+		template.find(".meGusta").click(MeGusta);
+		template.find(".noMeGusta").click(NoMeGusta);
+
+		template.find(".botonComentar").click(Comentar).show();
+		template.find(".botonEditarComentario").hide();
+
+		$("#frases").prepend(template);
+		template.show("slow");
+		
+		return template;
+	}
+
+	function AgregarComentario(comentario, frase) {
+		var template = $("#templateComentario").clone();
+
+		template.attr("id", "");
+
+		template.find(".text").text(comentario.Texto);
+		template.find(".comentarioId").val(comentario.Id);
+
+		template.find(".botonEliminarComentario").click(EliminarComentario);
+		template.find(".botonComenzarEdicionComentario").click(ComenzarEdicionComentario);
+		
+		frase.find(".comentarios").prepend(template);
+
+		template.show("slow");
+	}
+
+	function Comentar() {
+		var frase = $(this).parents(".frase");
+
+		var texto = frase.find(".textoComentario").val();
+		frase.find(".textoComentario").val("");
+		var fraseId = frase.find(".fraseId").val();
+
+		doPost(
+			'@Url.Action("Comentar")',
+			{ fraseId: fraseId, texto: texto },
+			function(comentario) { 
+				AgregarComentario(comentario, frase);
+				});
+	}
+
+	function ComenzarEdicionComentario() {
+
+		var frase = $(this).parents(".frase");
+		var comentario = $(this).parents(".comentario");
+		
+		var text = comentario.find(".text").text();
+
+		var textoComentario = frase.find(".textoComentario");
+
+		textoComentario.text(text);
+
+		var comentarioId = comentario.find(".comentarioId").val();
+
+		frase.find(".botonComentar").hide();
+		frase.find(".botonEditarComentario").show()
+			.click(
+				function () {
+					EditarComentario(frase, comentario); 
+				});
+	}
+
+	function EliminarComentario() {
+
+		var comentario = $(this).parents(".comentario");
+		var comentarioId = comentario.find(".comentarioId").val();
+
+		var frase = $(comentario).parents(".frase");
+		var fraseId = frase.find(".fraseId").val();
+
+		doPost(
+			'@Url.Action("EliminarComentario")',
+			{ comentarioId: comentarioId, fraseId: fraseId },
+			function () {
+
+				comentario.fadeTo('slow', 0).slideUp();
+			});
+	}
+
+	function EditarComentario(frase, comentario) {
+
+		var fraseId = frase.find(".fraseId").val();
+		var comentarioId = comentario.find(".comentarioId").val();
+		
+		var texto = frase.find(".textoComentario").val();
+
+		doPost(
+			'@Url.Action("EditarComentario")',
+			{ comentarioId: comentarioId, fraseId: fraseId, texto: texto },
+			function () {
+
+				comentario.find(".text").text(texto);
+				frase.find(".botonComentar").show();
+				frase.find(".botonEditarComentario").unbind("click").hide();
+				frase.find(".textoComentario").val('');
+			});
+}
+
+	function MeGusta() {
+		var frase = $(this).parents(".frase");
+		var fraseId = frase.find(".fraseId").val();
+
+		doPost(
+			'@Url.Action("MeGusta")',
+			{ fraseId: fraseId },
+			function (result) {
+				var votos = frase.find(".votos");
+				votos.text(result);
+				
+				if (result >= 0)
+					frase.find(".votes").css("background-color", "#49DB0F");
+			});
+	}
+
+	function NoMeGusta() {
+		var frase = $(this).parents(".frase");
+		var fraseId = frase.find(".fraseId").val();
+
+		doPost(
+			'@Url.Action("NoMeGusta")',
+			{ fraseId: fraseId },
+			function (result) {
+				var votos = frase.find(".votos");
+								
+				votos.text(result);
+
+				if (result < 0)
+					frase.find(".votes").css("background-color", "Red");
+			});
+	}
+
+</script>
+
+<h2>@ViewBag.Title</h2>
+
+<a id="linkNuevaFrase" class="nuevaFrase" href="javascript:;">Nueva frase!</a>
+<div id="popupNuevaFrase" class="popup" style="display:none;">
+	 @Html.Hidden("autorFrase", ViewData["autor"])
+	<textarea id="textoFrase" name="textoFrase" class="textoFrase"></textarea> 
+	<a id="cargarFrase" class="agregar" href="javascript:;">Nueva frase!</a>
+</div>
+
+
+<ul id="frases">
+
+</ul>
+
+<ul style="display: none;">
+	<li class="frase" id="templateFrase" style="display: none">
+		<input type="hidden" class="fraseId"/>
+		<div class="contenedorFrase">
+			<span class="text"></span>
+		</div>
+		<div class="comentarios">
+			<ul></ul>
+			<textarea class="textoComentario" cols="4" rows="2"></textarea>
+			<a href="javascript:;" class="botonComentar">Comentar!</a>
+			<a href="javascript:;" class="botonEditarComentario">Editar!</a>
+		</div>
+		<div class="votes">
+			<span class="votos"></span>
+			<a class="meGusta" href="javascript:;" title="Me gusta!"></a>
+			<a class="noMeGusta" href="javascript:;" title="No me gusta!"></a>
+		</div>
+	</li>
+</ul>
+
+<ul style="display: none;">
+	<li class='comentario' id="templateComentario" style="display: none">
+		<input type="hidden" class="comentarioId"/>
+		<span class="text"></span> 
+		<img class="botonComenzarEdicionComentario" style="cursor:pointer;" src="/Content/static/editComment.png" title="Editar"/>
+		<img class="botonEliminarComentario" style="cursor:pointer;" src="/Content/static/removeComment.png" title="Borrar"/>
+	</li>
+</ul>
+

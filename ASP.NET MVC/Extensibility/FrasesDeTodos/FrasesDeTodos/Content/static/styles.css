@@ -1,0 +1,341 @@
+@font-face{
+	font-family:'Essays 1743';
+	src:url('essays1743-webfont.eot');
+	src:local('Essays 1743'),url('essays1743-webfont.woff') format('woff'),url('essays1743-webfont.ttf') format('truetype');
+	font-weight:normal;
+	font-style:normal
+}
+@font-face{
+	font-family:'Essays 1743';
+	src:url('essays1743-italic-webfont.eot');
+	src:local('Essays 1743'),url('essays1743-italic-webfont.woff') format('woff'),url('essays1743-italic-webfont.ttf') format('truetype');
+	font-weight:normal;
+	font-style:italic
+}
+@font-face{
+	font-family:'Linux Libertine';
+	src:url('linlibertine_re-4.7.5-webfont.eot');
+	src:local('Linux Libertine'),url('linlibertine_re-4.7.5-webfont.woff') format('woff'),url('linlibertine_re-4.7.5-webfont.ttf') format('truetype');
+	font-weight:normal;
+	font-style:normal
+}
+@font-face{
+	font-family:'Linux Libertine';
+	src:url('linlibertine_bd-4.1.5-webfont.eot');
+	src:local('Linux Libertine'),url('linlibertine_bd-4.1.5-webfont.woff') format('woff'),url('linlibertine_bd-4.1.5-webfont.ttf') format('truetype');
+	font-weight:bold;
+	font-style:normal
+}
+@font-face{
+	font-family:'Linux Libertine';
+	src:url('linlibertine_it-4.2.6-webfont.eot');
+	src:local('Linux Libertine'),url('linlibertine_it-4.2.6-webfont.woff') format('woff'),url('linlibertine_it-4.2.6-webfont.ttf') format('truetype');
+	font-weight:normal;
+	font-style:italic
+}
+html{
+	background:#532A0E url('bg.jpg') no-repeat center top fixed;
+	color:#000;
+	margin:0;
+	padding:0;
+}
+body{
+	margin:0;
+	padding:0;
+	font:large/1.556 'Linux Libertine',Palatino,'Palatino Linotype','Book Antiqua',Georgia,'Times New Roman',serif;
+	word-spacing:.1em;
+	max-width:960px;
+	margin:0 auto;
+	padding-bottom:2em;
+}
+h1,h2{
+	font-family:'Essays 1743',Palatino,'Palatino Linotype','Book Antiqua',Georgia,'Times New Roman',serif;
+	font-weight:normal;
+	text-transform:uppercase;
+	font-size:400%;
+	line-height:1.1;
+	text-align:center;
+	width:100%;
+	margin:10px 0;
+	color:#fff;
+	opacity:0.75;
+}
+hgroup{
+	text-align:center;
+}
+h1{
+}
+h2{
+	font-size:30pt;
+	text-transform:none;
+}
+ul{
+	list-style:none;
+}
+li{
+	float:left;
+	clear:both;
+	margin-bottom:16px;
+}
+li .contenedorFrase{
+	font-family:'Essays 1743',Palatino,'Palatino Linotype','Book Antiqua',Georgia,'Times New Roman',serif;
+	font-weight:normal;
+	font-size:90%;
+	color:#333;
+	border-radius:20px;
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	padding:8px 20px;
+	background:#fff;
+	margin:20px 0px 0px 0px;
+	float:left;
+	position:relative;
+	border:3px solid #222;
+	-moz-box-shadow:3px 3px 3px #222;
+	-webkit-box-shadow:3px 3px 3px #222;
+	max-width:580px;
+	z-index:5;
+}
+
+label.left
+{
+    float:left;
+	position:relative;
+	display:block;
+	width:auto;
+	height:20px;
+	margin-left:-34px;
+	margin-top:5px;
+	z-index:10;
+    font-family:'Essays 1743',Palatino,'Palatino Linotype','Book Antiqua',Georgia,'Times New Roman',serif;
+	font-weight:normal;
+	font-size:90%;
+	color:#333;
+	border-radius:20px;
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	padding:8px 20px;
+	background:#fff;
+	margin:20px 0px 0px 0px;
+	float:left;
+	border:3px solid #222;
+	-moz-box-shadow:3px 3px 3px #222;
+	-webkit-box-shadow:3px 3px 3px #222;
+	z-index:5;
+}
+
+li ..contenedorFrase .arrow{
+	position:absolute;
+	display:block;
+	width:20px;
+	height:20px;
+	margin-left:-34px;
+	margin-top:5px;
+	z-index:10;
+	background:url('pin.png') no-repeat;
+}
+
+li ..contenedorFrase .text{
+	font-size:14pt;
+}
+
+li .comentarios {
+	clear:both;
+	margin:-15px 0px 0px 50px;
+	z-index:1;
+	padding:20px;
+	float:left;
+	width:600px;
+	opacity:0.8;
+	background:#000;
+	border-radius:20px;
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+}
+
+li .comentarios ul {
+	margin:0;
+	padding:0;
+}
+
+li .comentarios li {
+	color:#fff;
+	font-size:11pt;
+	margin:0px 0px 5px 20px;
+	list-style-image: url('bulletComment.png');
+}
+
+li .comentarios .textoComentario{
+	background:#fff;
+	font:11pt 'Linux Libertine',Palatino,'Palatino Linotype','Book Antiqua',Georgia,'Times New Roman',serif;
+	border:1px solid #000;
+	color:#000;
+	padding:5px;
+	outline:0;
+	height:44px;
+	width:484px;
+	float:left;
+	clear:both;
+	margin-top:5px;
+}
+
+li .comentarios a.botonComentar{
+	float:left;
+	margin:6px 0px 0px 10px;
+	padding:3px 10px;
+	color:#fff;
+	font:11pt 'Linux Libertine',Palatino,'Palatino Linotype','Book Antiqua',Georgia,'Times New Roman',serif;
+	font-weight:bold;
+	text-decoration:none;
+	border:1px solid #ddd;
+	border-radius:4px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+}
+
+li .comentarios a.botonComentar:hover{
+	color:#FFAA00;
+	border:1px solid #FFAA00;
+}
+
+li .comentarios a.botonEditarComentario{
+	float:left;
+	margin:6px 0px 0px 10px;
+	padding:3px 10px;
+	color:#fff;
+	font:11pt 'Linux Libertine',Palatino,'Palatino Linotype','Book Antiqua',Georgia,'Times New Roman',serif;
+	font-weight:bold;
+	text-decoration:none;
+	border:1px solid #ddd;
+	border-radius:4px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+}
+
+li .comentarios a.botonEditarComentario:hover{
+	color:#FFAA00;
+	border:1px solid #FFAA00;
+}
+
+li .votes{
+	float:right;
+	position:relative;
+	margin:-70px 0 0 -50px;
+	padding:10px;
+	z-index:200;
+	background:#49DB0F;
+	border-radius:14px;
+	-moz-border-radius:14px;
+	-webkit-border-radius:14px;
+	border:5px solid #328909;
+}
+
+li .votes span{
+	float:left;
+	font:30pt Verdana;
+	font-size:30pt;
+	font-weight:bold;
+	color:#205B06;
+}
+
+li .votes .meGusta{
+	float:left;
+	width:30px;
+	height:25px;
+	margin:10px 0px 0px 5px;
+	background:url('like.png') no-repeat;
+}
+
+li .votes .noMeGusta{
+	float:left;
+	width:30px;
+	height:25px;
+	margin:10px 0px 0px 5px;
+	background:url('dontlike.png') no-repeat;
+}
+
+.nuevaFrase{
+	float:left;
+	background:#000;
+	opacity:0.8;
+	margin:6px 0px 0px 10px;
+	padding:6px 20px;
+	color:#fff;
+	font:14pt 'Linux Libertine',Palatino,'Palatino Linotype','Book Antiqua',Georgia,'Times New Roman',serif;
+	font-weight:bold;
+	text-decoration:none;
+	border:3px solid #ddd;
+	border-radius:8px;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	box-shadow:3px 3px 3px #222;
+	-moz-box-shadow:3px 3px 3px #222;
+	-webkit-box-shadow:3px 3px 3px #222;
+}
+
+.nuevaFrase:hover{
+	color:#FFAA00;
+	border:3px solid #FFAA00;
+}
+
+.popup{
+	position:fixed;
+	display:block;
+	top:0px;
+	width:626px;
+	margin:50px 0px 0px -260px;
+	background:#000;
+	opacity:0.95;
+	border:3px solid #ddd;
+	border-radius:14px;
+	-moz-border-radius:14px;
+	-webkit-border-radius:14px;
+	box-shadow:3px 3px 3px #222;
+	-moz-box-shadow:3px 3px 3px #222;
+	-webkit-box-shadow:3px 3px 3px #222;
+	color:#fff;
+	padding:14px;
+}
+
+
+.popup .textoFrase{
+	float:left;
+	width:650px;
+	height:100px;
+	background:#fff;
+	font:14pt 'Linux Libertine',Palatino,'Palatino Linotype','Book Antiqua',Georgia,'Times New Roman',serif;
+	font-weight:bold;
+	border:1px solid #000;
+	color:#000;
+	padding:5px;
+	outline:0;
+}
+
+.popup .agregar{
+	float:right;
+	clear: both;
+	background:#000;
+	opacity:0.8;
+	margin:10px 0 0 0;
+	padding:6px 20px;
+	color:#fff;
+	font:11pt 'Linux Libertine',Palatino,'Palatino Linotype','Book Antiqua',Georgia,'Times New Roman',serif;
+	font-weight:bold;
+	text-decoration:none;
+	border:3px solid #ddd;
+	border-radius:8px;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	box-shadow:0px 0px 3px #222;
+	-moz-box-shadow:0px 0px 3px #222;
+	-webkit-box-shadow:0px 0px 3px #222;
+}
+
+.popup .agregar:hover{
+	color:#FFAA00;
+	border:3px solid #FFAA00;
+}
+
+.ui-icon-closethick{
+	display:none;
+}

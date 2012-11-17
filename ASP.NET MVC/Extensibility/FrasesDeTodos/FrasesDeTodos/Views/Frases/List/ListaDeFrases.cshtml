@@ -1,0 +1,25 @@
+﻿@using FrasesDeTodos.MVCExtension.HtmlExtensions;
+
+@{
+    ViewBag.Title = "Lista De Frases";
+}
+
+@model IEnumerable<FrasesDeTodos.Models.Frase>
+<h2>
+    Lista De Frases</h2>
+<ul>
+    @foreach (var frase in Model)
+    { 
+        @RenderFrase(frase)
+    }
+</ul>
+@helper RenderFrase(FrasesDeTodos.Models.Frase frase)
+    {
+    <li class="frase" id="templateFrase">
+            @Html.LabelLeft(string.Format("{0} dice:", frase.Autor.Nombre))
+        <div class="contenedorFrase">
+            <span class="text">@frase.Texto</span>
+        </div>
+    </li>
+}
+

@@ -6,17 +6,17 @@ namespace HelloWorld.Controllers
 {
     public class FooController : Controller
     {
-        public ActionResult Hello(string name)
-        {
-            ViewData["Text"] = "Hello " + name;
-
-            return View();
-        }
-
-        //public void Hello(string name)
+        //public ActionResult Hello(string name)
         //{
-        //    Response.Write("Hello " + name);
+        //    ViewData["Text"] = "Hello " + name;
+
+        //    return View();
         //}
+
+        public void Hello( string name )
+        {
+            Response.Write( "Hello " + name );
+        }
 
         //public ActionResult HelloForViewModel( string name, string surname )
         //{
