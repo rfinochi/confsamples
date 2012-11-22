@@ -1,10 +1,66 @@
-        <StackPanel Grid.Row="1" Margin="120,30,0,0">
-            <TextBlock Text="What's your name?"/>
-            <StackPanel Orientation="Horizontal" Margin="0,20,0,20">
-                <TextBox x:Name="nameInput" Width="300" HorizontalAlignment="Left"/>
-                <Button Content="Say &quot;Hello&quot;"/>
-            </StackPanel>
-            <TextBlock x:Name="greetingOutput"/>
-        </StackPanel>
+1 - File > New project > Windows Store > Blank App > Hello World
+
+- Although the Blank App is a minimal template, it still contains a lot of files:
+- A manifest file (package.appxmanifest) that describes your app (its name, description, tile, start page, and so on) and lists the files that your app contains.
+- A set of large and small logo images (logo.png and smalllogo.png)to display in the start screen.
+- An image (storelogo.png) to represent your app in the Windows Store.
+- A splash screen (splashscreen.png) to show when your app starts.
+- XAML and code files for the app (App.xaml and App.xaml.cs/.vb) .
+- A start page (MainPage.xaml) and an accompanying code file (MainPage.xaml.cs/.vb) that run when your app starts.
+
+These files are essential to all Windows Store apps using Visual Basic or C#. Any project that you create in Visual Studio contains them.
+
+2 - Project > Add new Item > Windows Store > Basic Page > MainPage.xaml
+
+3 - App.xaml is where resources are declared, and the code-behind are entry-app point and home for the the app events.
+
+4 - In the MainPage.xaml you define the UI for the app. The LayoutAwarePage class extends the base Page class and provides methods for navigation, state management, and view management. 
+
+5 - Select pageTitle, change Text property to "Hello World" editing resource using property maker.
+
+6 - In the root Grid, immediately before the <VisualStateManager.VisualStateGroups> tag, add this XAML:
+
+<StackPanel Grid.Row="1" Margin="120,30,0,0">
+    <TextBlock Text="What's your name?"/>
+    <StackPanel Orientation="Horizontal" Margin="0,20,0,20">
+	<TextBox x:Name="nameInput" Width="300" HorizontalAlignment="Left"/>
+	<Button Content="Say &quot;Hello&quot;"/>
+    </StackPanel>
+    <TextBlock x:Name="greetingOutput"/>
+</StackPanel>
+
+7 - Add event handler to button, and add this code in the Button_Click Event (button click event is touch enabled):
 
 greetingOutput.Text = "Hello, " + nameInput.Text + "!";
+
+8 - To switch to the light theme, add this tag in the App.xaml
+
+<Application
+    x:Class="HelloWorld.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HelloWorld" 
+    RequestedTheme="Light">
+
+9 - Style an element
+- Double-click MainPage.xaml in Solution Explorer to open it.
+- In XAML or design view, select the "What's your name?" TextBlock that you added previously.
+- In the Properties Window, click the Properties button ().
+- Expand the Miscellaneous group and find the Style property.
+- Click the property marker next to the Style property to open the menu.
+- In the menu, select Local Resource > BasicTextStyle.
+- BasicTextStyle is a resource defined in the StandardStyles.xaml ResourceDictionary.
+- Repeat the process to assign the BasicTextStyle to the greetingOutput TextBlock element.
+
+10 - Use your own style
+- In XAML or design view, select the greetingOutput TextBlock that you added to MainPage.xaml.
+- Expand the Miscellaneous group and find the Style property.
+- Click the property marker next to the Style property to open the menu.
+- In the menu, select Convert to New Resource.... The Create Style Resource dialog opens.
+- In the Create Style Resource dialog, enter "BigGreenTextStyle" as the resource key, and select the option to define the resource in the application.
+- Click the property marker next to the Style property to open the menu again.
+- In the menu, select Edit Resource. App.xaml opens in the editor.
+- Note  Nothing is shown in the XAML designer for App.xaml.
+- In the "BigGreenTextStyle" resource, change the Foreground value to "Green" and the FontSize value to "36".
+
+11 - Test in simulator
