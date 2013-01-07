@@ -33,20 +33,6 @@
 		popup.cancel();
 		}, '15000');
 	    }
-	
-    function HTMLnotification ()
-        {
-        if (window.webkitNotifications.checkPermission() > 0) {
-            RequestPermission(HTMLnotification);
-        }
-        
-        var popup = window.webkitNotifications.createHTMLNotification('http://shockbyte.net/');
-        popup.show();
-		setTimeout(function(){
-		popup.cancel();
-		}, '15000');
-    } 
 </script><p><button onclick="notification()">NOTIFY</button><br />
-<button onclick="HTMLnotification()">NOTIFY ME(HTML)</button></p>
  </body>
 </html>
