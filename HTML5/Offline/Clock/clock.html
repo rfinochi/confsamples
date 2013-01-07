@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html manifest="clock.manifest">
+ <head>
+  <title>Clock</title>
+  <script src="clock.js"></script>
+  <link rel="stylesheet" href="clock.css">
+ </head>
+ <body onload="foo()">
+	<article>
+		<p>Current network status: <span id="status">checking...</span></p>
+		<ol id="state"></ol>
+		<p>The time is: <output id="clock"></output></p>
+	</article>
+
+	<script>
+		var statusElem = document.getElementById('status'),
+		state = document.getElementById('state');
+
+		function online(event) {
+			statusElem.innerHTML = navigator.onLine ? 'online' : 'offline';
+			state.innerHTML += '<li>New event: ' + event.type + '</li>';
+		}
+
+		addEvent(window, 'online', online);
+		addEvent(window, 'offline', online);
+		
+		online({ type: 'ready' });
+	</script>
+ </body>
+</html>

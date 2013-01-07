@@ -1,0 +1,112 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+a { margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent; }
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	font-family: Georgia,verdana,sans-serif;
+    color:#333333;
+    font-size:16px;
+    margin: 0 auto;
+    background: #f5f5f5;
+	line-height:24px;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+header {
+	margin: 0 auto;
+    width: 930px;
+    }
+	
+footer{
+	margin: 0 auto;
+    width: 930px;
+	padding:20px;
+	text-align: center;
+}
+	
+h1{
+	font-family: arial, verdana, sans-serif;
+	font-size:38px;
+	margin: 10px 0;	
+	font-weight:bold;
+}
+
+h2{
+	font-family: arial, verdana, sans-serif;
+	font-size:28px;
+	margin: 10px 0;	
+	
+}
+#main {
+	margin: 0 auto;
+    position: relative;
+    background:#FFFFFF;
+    width: 900px;
+    border:5px solid #eaeaea;
+	padding:15px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+#thumbs{
+	width:100%;
+	overflow:auto;
+	margin-left:10px;
+	}
+	
+#thumbs li{
+	margin: 10px 10px 10px 0px;
+	float: left;
+	}
+
+#thumbs img{
+	width: 200px;
+	height:150px;
+	padding: 5px;
+	border: 1px solid #eaeaea;
+}
