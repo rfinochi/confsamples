@@ -21,39 +21,41 @@
     };
 
     dbApiDemo.indexedDB.open = function() {
-      var request = indexedDB.open("todos");
+	  var request = indexedDB.open("todos");
 
-      request.onsuccess = function(e) {
-        var v = "2.0";
-        dbApiDemo.indexedDB.db = e.target.result;
-        var db = dbApiDemo.indexedDB.db;
+	  request.onsuccess = function(e) {
+		var v = 1;
+		dbApiDemo.indexedDB.db = e.target.result;
+		var db = dbApiDemo.indexedDB.db;
+		// We can only create Object stores in a setVersion transaction;
+		if (v != db.version) {
+		  var setVrequest = db.setVersion(v);
 
-		if(v!= db.version) {
-          var setVrequest = db.setVersion(v); //Solo en el metodo setVersion se pueden crear data stores
+		  // onsuccess is the only place we can create Object Stores
+		  setVrequest.onerror = dbApiDemo.indexedDB.onerror;
+		  setVrequest.onsuccess = function(e) {
+			if(db.objectStoreNames.contains("todo")) {
+			  db.deleteObjectStore("todo");
+			}
 
-          setVrequest.onfailure = dbApiDemo.indexedDB.onerror;
-          setVrequest.onsuccess = function(e) {
-            if(db.objectStoreNames.contains("todo")) {
-              db.deleteObjectStore("todo");
-            }
-
-            var store = db.createObjectStore("todo",
-              {keyPath: "timeStamp"}); //La propiedad time stamp tiene que estar siempre presente y ser unica
-
-            dbApiDemo.indexedDB.getAllTodoItems();
-          };
-        }
-        else {
-          dbApiDemo.indexedDB.getAllTodoItems();
-        }
-      };
-
-      request.onfailure = dbApiDemo.indexedDB.onerror;
+			var store = db.createObjectStore("todo",
+			  {keyPath: "timeStamp"});
+			e.target.transaction.oncomplete = function() {
+			  dbApiDemo.indexedDB.getAllTodoItems();
+			};
+		  };
+		} else {
+		  request.transaction.oncomplete = function() {
+			dbApiDemo.indexedDB.getAllTodoItems();
+		  };
+		}
+	  };
+	  request.onerror = dbApiDemo.indexedDB.onerror;
     }
 
     dbApiDemo.indexedDB.addTodo = function(todoText) {
       var db = dbApiDemo.indexedDB.db;
-      var trans = db.transaction(["todo"], IDBTransaction.READ_WRITE, 0);
+      var trans = db.transaction(["todo"], "readwrite");
       var store = trans.objectStore("todo");
 
       var data = {
@@ -73,19 +75,19 @@
     };
 
     dbApiDemo.indexedDB.deleteTodo = function(id) {
-      var db = dbApiDemo.indexedDB.db;
-      var trans = db.transaction(["todo"], IDBTransaction.READ_WRITE, 0);
-      var store = trans.objectStore("todo");
+	  var db = dbApiDemo.indexedDB.db;
+	  var trans = db.transaction(["todo"], "readwrite");
+	  var store = trans.objectStore("todo");
 
-      var request = store.delete(id);
+	  var request = store.delete(id);
 
-      request.onsuccess = function(e) {
-        dbApiDemo.indexedDB.getAllTodoItems();
-      };
+	  request.onsuccess = function(e) {
+		dbApiDemo.indexedDB.getAllTodoItems();
+	  };
 
-      request.onerror = function(e) {
-        console.log("Error Adding: ", e);
-      };
+	  request.onerror = function(e) {
+		console.log("Error Adding: ", e);
+	  };
     };
 
     dbApiDemo.indexedDB.getAllTodoItems = function() {
@@ -93,11 +95,10 @@
       todos.innerHTML = "";
 
       var db = dbApiDemo.indexedDB.db;
-      var trans = db.transaction(["todo"], IDBTransaction.READ_WRITE, 0);
+      var trans = db.transaction(["todo"], "readwrite");
       var store = trans.objectStore("todo");
 
-      var keyRange = IDBKeyRange.lowerBound(0); //Busco el todos los datos empezando por el numero mas bajo posible
-      var cursorRequest = store.openCursor(keyRange);
+      var cursorRequest = store.openCursor(); //Busco el todos los datos empezando por el numero mas bajo posible
 
       cursorRequest.onsuccess = function(e) {
         var result = e.target.result;
@@ -141,7 +142,7 @@
   </script>
 
 </head>
-<body onload="">
+<body>
   <div>
 	  <ul id="todoItems"></ul>
 	  <input type="text" id="todo" name="todo" placeholder="¿Cual es la nueva tarea?" style="width: 200px;" />
