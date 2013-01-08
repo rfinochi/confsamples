@@ -48,7 +48,7 @@ Add some HTML:
 <head>
     <title></title>
     <link rel="stylesheet" href="Content/themes/base/jquery.ui.all.css" />
-    <script src="Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <script src="Scripts/jquery-1.8.3.min.js" type="text/javascript"></script>
     <script src="Scripts/jquery-ui-1.9.0.min.js" type="text/javascript"></script>
     <script src="Scripts/jquery.signalR-0.5.3.min.js" type="text/javascript"></script>
     <script src="../signalr/hubs"></script>
