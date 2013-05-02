@@ -6,25 +6,27 @@ namespace HelloWorld.Controllers
 {
     public class FooController : Controller
     {
-        //public ActionResult Hello(string name)
+        //public ActionResult Hello( string name )
         //{
-        //    ViewData["Text"] = "Hello " + name;
+        //    //ViewData[ "Name" ] = name;
 
-        //    return View();
+        //    ViewBag.Name = name;
+
+        //    return View( );
         //}
 
-        public void Hello( string name )
+        //public void Hello( string name )
+        //{
+        //    Response.Write( "Hello " + name );
+        //}
+
+        public ActionResult HelloForViewModel( string name, string surname )
         {
-            Response.Write( "Hello " + name );
+            HelloViewModel result = new HelloViewModel( ) { Name = name, Surname = surname };
+
+            ViewData.Model = result;
+
+            return View( result );
         }
-
-        //public ActionResult HelloForViewModel( string name, string surname )
-        //{
-        //    HelloViewModel result = new HelloViewModel( ) { Name = name, Surname = surname };
-
-        //    ViewData.Model = result;
-
-        //    return View( result );
-        //}
     }
 }

@@ -1,0 +1,19 @@
+﻿@model HelloWorld.Models.HelloViewModel
+
+@{
+    ViewBag.Title = "Hello World";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<fieldset>
+    <legend>HelloViewModel</legend>
+
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Surname)
+    </div>
+</fieldset>

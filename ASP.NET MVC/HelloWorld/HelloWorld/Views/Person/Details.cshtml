@@ -1,0 +1,43 @@
+﻿@model HelloWorld.Models.PersonViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>PersonViewModel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Surname)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Surname)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Day)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Day)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Month)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Month)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

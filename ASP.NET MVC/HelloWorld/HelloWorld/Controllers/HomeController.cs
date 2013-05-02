@@ -6,19 +6,27 @@ using System.Web.Mvc;
 
 namespace HelloWorld.Controllers
 {
-    [HandleError]
     public class HomeController : Controller
     {
         public ActionResult Index( )
         {
-            ViewData[ "Message" ] = "Welcome to ASP.NET MVC!";
+            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
 
             return View( );
         }
 
-        public ActionResult About()
+        public ActionResult About( )
         {
-            return View();
+            ViewBag.Message = "Your app description page.";
+
+            return View( );
+        }
+
+        public ActionResult Contact( )
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View( );
         }
     }
 }

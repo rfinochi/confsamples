@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle( "HelloWorld.Tests" )]
 [assembly: AssemblyDescription( "" )]
 [assembly: AssemblyConfiguration( "" )]
-[assembly: AssemblyCompany( "Lagash Systems" )]
+[assembly: AssemblyCompany( "" )]
 [assembly: AssemblyProduct( "HelloWorld.Tests" )]
-[assembly: AssemblyCopyright( "Copyright © Lagash Systems 2009" )]
+[assembly: AssemblyCopyright( "Copyright ©  2013" )]
 [assembly: AssemblyTrademark( "" )]
 [assembly: AssemblyCulture( "" )]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible( false )]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid( "b7f3bd80-3e08-4a4b-9a70-bb95af8a1a9a" )]
+[assembly: Guid( "885096b9-a7c6-46c3-b794-7982755a00ad" )]
 
 // Version information for an assembly consists of the following four values:
 //

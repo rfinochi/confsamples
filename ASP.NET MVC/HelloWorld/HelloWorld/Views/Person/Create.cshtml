@@ -1,0 +1,60 @@
+﻿@model HelloWorld.Models.PersonViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>PersonViewModel</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Surname)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Surname)
+            @Html.ValidationMessageFor(model => model.Surname)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Day)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Day)
+            @Html.ValidationMessageFor(model => model.Day)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Month)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Month)
+            @Html.ValidationMessageFor(model => model.Month)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
