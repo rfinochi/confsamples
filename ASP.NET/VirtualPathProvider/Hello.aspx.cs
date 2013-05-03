@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Lagash.ServiceModel
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class Hello : System.Web.UI.Page
     {
         protected void Page_Load( object sender, EventArgs e )
         {

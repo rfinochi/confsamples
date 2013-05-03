@@ -10,7 +10,7 @@
 namespace Lagash.ServiceModel {
     
     
-    public partial class Default {
+    public partial class Hello {
         
         /// <summary>
         /// form1 control.

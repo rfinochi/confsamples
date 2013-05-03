@@ -23,7 +23,7 @@ namespace Lagash.ServiceModel
                                 <div>
     
                                 </div>
-                                    <asp:TextBox ID='TextBox1' runat='server'>Hello World</asp:TextBox>
+                                    <asp:TextBox ID='TextBox1' runat='server'>Hello World Ghost</asp:TextBox>
                                 </form>
                             </body>
                             </html>

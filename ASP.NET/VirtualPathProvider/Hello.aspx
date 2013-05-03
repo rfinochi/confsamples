@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Lagash.ServiceModel.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Hello.aspx.cs" Inherits="Lagash.ServiceModel.Hello" %>
 
 <!DOCTYPE html>
 

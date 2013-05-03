@@ -9,7 +9,7 @@ namespace Lagash.ServiceModel
 
         public override bool FileExists( string virtualPath )
         {
-            if ( virtualPath.Contains( "Default.aspx" ) )
+            if ( virtualPath.Contains( "Ghost.aspx" ) )
                 return true;
             else
                 return this.Previous.FileExists( virtualPath );
@@ -17,7 +17,7 @@ namespace Lagash.ServiceModel
 
         public override VirtualFile GetFile( string virtualPath )
         {
-            if ( virtualPath.Contains( "Default.aspx" ) )
+            if ( virtualPath.Contains( "Ghost.aspx" ) )
                 return new MemoryVirtualFile( virtualPath );
             else
                 return Previous.GetFile( virtualPath );
