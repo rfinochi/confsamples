@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
 
-using MoneySample.Services;
+using MoneySample.Models;
 
 namespace MoneySample
 {
@@ -17,7 +17,7 @@ namespace MoneySample
             var builder = new ContainerBuilder( );
             builder.RegisterControllers( Assembly.GetExecutingAssembly( ) );
 
-            builder.RegisterType<DollarService>( ).As<IDollarService>( );
+            builder.RegisterType<DollarRepository>( ).As<IDollarRepository>( );
 
             IContainer container = builder.Build( );
             DependencyResolver.SetResolver( new AutofacDependencyResolver( container ) );

@@ -157,14 +157,13 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Dollar.cs" />
     <Compile Include="Models\MoneyContext.cs" />
-    <Compile Include="Services\DollarService.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\DollarRepository.cs" />
     <Compile Include="Controllers\MoneyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\IDollarService.cs" />
+    <Compile Include="Models\IDollarRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -261,9 +260,6 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />

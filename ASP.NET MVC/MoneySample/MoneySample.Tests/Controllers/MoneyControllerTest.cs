@@ -6,7 +6,6 @@ using Moq;
 
 using MoneySample.Controllers;
 using MoneySample.Models;
-using MoneySample.Services;
 
 namespace MoneySample.Tests.Controllers
 {
@@ -16,7 +15,7 @@ namespace MoneySample.Tests.Controllers
         [TestMethod]
         public void Times( )
         {
-            Mock<IDollarService> mockDollarService = new Mock<IDollarService>( );
+            Mock<IDollarRepository> mockDollarService = new Mock<IDollarRepository>( );
 
             mockDollarService.Setup( mds => mds.GetSavings( "rodolfof" ) ).Returns( new Dollar( ) { Id = "rodolfof", Amount = 5 } );
 

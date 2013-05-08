@@ -1,15 +1,14 @@
 ﻿using System.Web.Mvc;
 
 using MoneySample.Models;
-using MoneySample.Services;
 
 namespace MoneySample.Controllers
 {
     public class MoneyController : Controller
     {
-        public IDollarService _dollarService;
+        public IDollarRepository _dollarService;
 
-        public MoneyController( IDollarService dollarService )
+        public MoneyController( IDollarRepository dollarService )
         {
             _dollarService = dollarService;
         }
