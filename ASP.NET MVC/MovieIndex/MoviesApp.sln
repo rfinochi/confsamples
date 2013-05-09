@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesApp", "MoviesApp\MoviesApp.csproj", "{90A191E0-3B8A-438C-8434-5820CF68F617}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesApp.Tests", "MoviesApp.Tests\MoviesApp.Tests.csproj", "{56473C50-819F-40E4-A6DF-9E56FA8D8E34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90A191E0-3B8A-438C-8434-5820CF68F617}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90A191E0-3B8A-438C-8434-5820CF68F617}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90A191E0-3B8A-438C-8434-5820CF68F617}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90A191E0-3B8A-438C-8434-5820CF68F617}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56473C50-819F-40E4-A6DF-9E56FA8D8E34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56473C50-819F-40E4-A6DF-9E56FA8D8E34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56473C50-819F-40E4-A6DF-9E56FA8D8E34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56473C50-819F-40E4-A6DF-9E56FA8D8E34}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
