@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Microsoft.jQuery.Unobtrusive.Ajax</id>
     <version>2.0.30116.0</version>
@@ -12,6 +12,5 @@
     <dependencies>
       <dependency id="jQuery" version="[1.4.4, 2.0)" />
     </dependencies>
-    <references />
   </metadata>
 </package>

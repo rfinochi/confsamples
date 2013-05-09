@@ -1,0 +1,28 @@
+﻿@model MovieIndex.Models.Movie
+
+@{
+    ViewBag.Title = "Edit Movie";
+}
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.Partial("Fields", Model)
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
+ 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#@Html.IdFor(model => model.ReleaseDate)").datepicker();
+        })
+    </script>
+}

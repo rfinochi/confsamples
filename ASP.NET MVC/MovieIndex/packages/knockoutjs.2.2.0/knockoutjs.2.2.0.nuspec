@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>knockoutjs</id>
     <version>2.2.0</version>
@@ -12,6 +12,5 @@
     <description>A JavaScript MVVM library to help you create rich, dynamic user interfaces with clean maintainable code</description>
     <language>en-US</language>
     <tags>knockout mvvm</tags>
-    <references />
   </metadata>
 </package>

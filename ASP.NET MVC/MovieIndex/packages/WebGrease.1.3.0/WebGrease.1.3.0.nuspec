@@ -9,6 +9,9 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Web Grease is a suite of tools for optimizing javascript, css files and images.</description>
     <language>en-US</language>
-    <references />
+    <references>
+      <reference file="Antlr3.Runtime.dll" />
+      <reference file="WebGrease.dll" />
+    </references>
   </metadata>
 </package>

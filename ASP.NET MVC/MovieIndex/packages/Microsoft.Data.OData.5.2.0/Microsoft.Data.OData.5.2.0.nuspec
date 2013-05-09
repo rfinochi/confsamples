@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Microsoft.Data.OData</id>
     <version>5.2.0</version>
@@ -19,6 +19,5 @@ Localized for CHS, CHT, DEU, ESN, FRA, ITA, JPN, KOR and RUS.</description>
       <dependency id="System.Spatial" version="[5.2.0]" />
       <dependency id="Microsoft.Data.Edm" version="[5.2.0]" />
     </dependencies>
-    <references />
   </metadata>
 </package>

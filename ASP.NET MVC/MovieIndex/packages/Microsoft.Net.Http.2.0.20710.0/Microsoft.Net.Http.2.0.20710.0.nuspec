@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Microsoft.Net.Http</id>
     <version>2.0.20710.0</version>
@@ -11,6 +11,5 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>This package provides a programming interface for modern HTTP applications. This package includes HttpClient for sending requests over HTTP, as well as HttpRequestMessage and HttpResponseMessage for processing HTTP messages.</description>
     <language>en-US</language>
-    <references />
   </metadata>
 </package>
