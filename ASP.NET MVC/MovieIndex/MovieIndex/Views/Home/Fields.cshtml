@@ -1,9 +1,9 @@
 ﻿@model MovieIndex.Models.Movie
 
+@using MovieIndex.Helpers;
+
 <fieldset>
     <legend>Movie</legend>
-
-    @Html.HiddenFor(model => model.Id)
 
     <div class="editor-label">
         @Html.LabelFor(model => model.Name)
@@ -33,7 +33,7 @@
         @Html.LabelFor(model => model.Rating)
     </div>
     <div class="editor-field">
-        @Html.EditorFor(model => model.Rating)
+        @Html.RatingFor(model => model.Rating, 5 )
         @Html.ValidationMessageFor(model => model.Rating)
     </div>
 

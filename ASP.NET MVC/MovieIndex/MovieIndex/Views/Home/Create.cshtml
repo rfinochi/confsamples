@@ -17,12 +17,15 @@
 
 @section Scripts {
     @Styles.Render("~/Content/themes/base/css")
+    @Styles.Render("~/Content/rating")
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/rating")
  
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#@Html.IdFor(model => model.ReleaseDate)").datepicker();
+            $("#@Html.IdFor(model => model.ReleaseDate)").datepicker({ dateFormat: 'dd/mm/yy' });
+            $("#@Html.IdFor(model => model.Rating)").rating();
         })
     </script>
 }

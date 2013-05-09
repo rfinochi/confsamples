@@ -34,7 +34,7 @@ namespace MovieIndex.Models
 
         [Required]
         [DisplayName( "Release Date" )]
-        [DisplayFormat( DataFormatString = "{0:mm/dd/yyyy}", ApplyFormatInEditMode = true )]
+        [DisplayFormat( DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true )]
         public DateTime ReleaseDate
         {
             get;
