@@ -15,5 +15,11 @@ namespace MovieIndex.Models
             get;
             set;
         }
+
+        public DbSet<Director> Directors
+        {
+            get;
+            set;
+        }
     }
 }

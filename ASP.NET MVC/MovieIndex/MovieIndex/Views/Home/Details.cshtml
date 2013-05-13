@@ -4,6 +4,8 @@
     ViewBag.Title = "Movie Details";
 }
 
+<h2>@ViewBag.Title</h2>
+
 <fieldset>
     <legend>Movie</legend>
 
@@ -13,7 +15,12 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.Name)
     </div>
-
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DirectorName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DirectorName)
+    </div>
     <div class="display-label">
          @Html.DisplayNameFor(model => model.Genre.Description)
     </div>

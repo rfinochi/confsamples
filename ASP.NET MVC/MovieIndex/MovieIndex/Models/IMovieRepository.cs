@@ -6,6 +6,8 @@ namespace MovieIndex.Models
     {
         List<Movie> GetAll( );
 
+        List<Movie> GetByName( string name );
+
         Movie GetById( int id );
 
         void Create( Movie movie );

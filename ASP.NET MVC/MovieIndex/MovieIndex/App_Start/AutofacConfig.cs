@@ -1,8 +1,10 @@
 ﻿using System.Reflection;
+using System.Web.Http;
 using System.Web.Mvc;
 
 using Autofac;
 using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
 
 using MovieIndex.Models;
 
@@ -13,13 +15,22 @@ namespace MovieIndex
         public static void RegisterDependencies( )
         {
             var builder = new ContainerBuilder( );
+
             builder.RegisterControllers( Assembly.GetExecutingAssembly( ) );
 
             builder.RegisterType<MovieRepository>( ).As<IMovieRepository>( );
             builder.RegisterType<GenreRepository>( ).As<IGenreRepository>( );
+            builder.RegisterType<DirectorRepository>( ).As<IDirectorRepository>( );
 
-            IContainer container = builder.Build( );
-            DependencyResolver.SetResolver( new AutofacDependencyResolver( container ) );
+            DependencyResolver.SetResolver( new AutofacDependencyResolver( builder.Build( ) ) );
+
+            var builderApi = new ContainerBuilder( );
+
+            builderApi.RegisterApiControllers( Assembly.GetExecutingAssembly( ) );
+
+            builderApi.RegisterType<DirectorRepository>( ).As<IDirectorRepository>( );
+
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver( builderApi.Build( ) );
         }
     }
 }

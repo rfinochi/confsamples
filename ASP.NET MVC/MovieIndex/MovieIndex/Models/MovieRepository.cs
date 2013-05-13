@@ -17,11 +17,21 @@ namespace MovieIndex.Models
             }
         }
 
-        public Movie GetById( int id )
+        public List<Movie> GetByName( string name )
         {
             using ( MovieIndexContext context = new MovieIndexContext( ) )
             {
                 return ( from m in context.Movies.Include( m => m.Genre )
+                         where m.Name.StartsWith( name )
+                         select m ).ToList( );
+            }
+        }
+        
+        public Movie GetById( int id )
+        {
+            using ( MovieIndexContext context = new MovieIndexContext( ) )
+            {
+                return ( from m in context.Movies
                          where m.Id == id
                          select m ).SingleOrDefault( );
             }

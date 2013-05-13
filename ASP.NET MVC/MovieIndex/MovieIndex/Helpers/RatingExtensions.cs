@@ -11,7 +11,6 @@ namespace MovieIndex.Helpers
         public static MvcHtmlString RatingFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, int numerOfStart )
         {
             return InputExtensions.TextBoxFor( htmlHelper, expression, new { @class = String.Format( CultureInfo.InvariantCulture, "rating rating{0}", numerOfStart ) } );
-
         }
     }
 }

@@ -4,6 +4,8 @@
     ViewBag.Title = "Edit Movie";
 }
 
+<h2>@ViewBag.Title</h2>
+
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -28,6 +30,13 @@
         $(document).ready(function () {
             $("#@Html.IdFor(model => model.ReleaseDate)").datepicker({ dateFormat: 'dd/mm/yy' });
             $("#@Html.IdFor(model => model.Rating)").rating();
+
+
+            $.getJSON("@Url.RouteUrl("DefaultApi", new { httproute = "", controller = "directors"})", function (data) {
+                $("#@Html.IdFor(model => model.DirectorName)").autocomplete({
+                    source: data
+                });
+            });
         })
     </script>
 }

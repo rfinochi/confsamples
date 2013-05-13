@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
+using MovieIndex.Validators;
+
 namespace MovieIndex.Models
 {
     public class Movie
@@ -13,7 +15,17 @@ namespace MovieIndex.Models
         }
 
         [Required]
+        [StringLength(200)]
         public string Name
+        {
+            get;
+            set;
+        }
+
+        [Required]
+        [DisplayName( "Director" )]
+        [StringLength( 100 )]
+        public string DirectorName
         {
             get;
             set;
@@ -42,6 +54,7 @@ namespace MovieIndex.Models
         }
 
         [Range( 0, 5 )]
+        [RatingByGenre( "GenreId", 1, 2, ErrorMessage = "An Thiller movie can't be a rating minor of 2" )]
         public byte Rating
         {
             get;

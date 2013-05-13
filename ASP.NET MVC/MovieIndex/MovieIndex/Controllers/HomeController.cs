@@ -1,5 +1,6 @@
-﻿using System.Web.Mvc;
-
+﻿using System;
+using System.Web.Mvc;
+using MovieIndex.ActionFilters;
 using MovieIndex.Models;
 
 namespace MovieIndex.Controllers
@@ -20,6 +21,15 @@ namespace MovieIndex.Controllers
             return View( _movieRepository.GetAll( ) );
         }
 
+        [OutputCache( NoStore = true, Duration = 0, VaryByParam = "*" )]
+        public ActionResult List( string name )
+        {
+            if ( String.IsNullOrEmpty( name ) )
+                return PartialView( _movieRepository.GetAll( ) );
+            else
+                return PartialView( _movieRepository.GetByName( name ) );
+        }
+
         public ActionResult Details( int id = 0 )
         {
             Movie movie = _movieRepository.GetById( id );
@@ -38,12 +48,12 @@ namespace MovieIndex.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [RefreshMovieListActionFilter]
         public ActionResult Create( Movie movie )
         {
             if ( ModelState.IsValid )
             {
                 _movieRepository.Create( movie );
-
                 return RedirectToAction( "Index" );
             }
 
@@ -57,12 +67,13 @@ namespace MovieIndex.Controllers
             if ( movie == null )
                 return HttpNotFound( );
 
-            ViewBag.GenreId = new SelectList( _genreRepository.GetAll( ), "Id", "Description" );
+            ViewBag.GenreId = new SelectList( _genreRepository.GetAll( ), "Id", "Description", movie.GenreId );
             return View( movie );
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [RefreshMovieListActionFilter]
         public ActionResult Edit( Movie movie )
         {
             if ( ModelState.IsValid )
@@ -86,6 +97,7 @@ namespace MovieIndex.Controllers
 
         [HttpPost, ActionName( "Delete" )]
         [ValidateAntiForgeryToken]
+        [RefreshMovieListActionFilter]
         public ActionResult DeleteConfirmed( int id )
         {
             _movieRepository.Delete( id );
