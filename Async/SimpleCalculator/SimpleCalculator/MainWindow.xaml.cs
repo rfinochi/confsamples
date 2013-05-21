@@ -10,10 +10,10 @@ namespace SimpleCalculator
 {
     public partial class MainWindow : Window
     {
-        public MainWindow( )
-        {
-            InitializeComponent( );
-        }
+        //public MainWindow( )
+        //{
+        //    InitializeComponent( );
+        //}
 
         //private void btnCalculate_Click( object sender, RoutedEventArgs e )
         //{

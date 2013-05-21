@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+
 using MovieIndex.ActionFilters;
 using MovieIndex.Models;
 
@@ -33,7 +34,7 @@ namespace MovieIndex.Controllers
         public ActionResult Details( int id = 0 )
         {
             Movie movie = _movieRepository.GetById( id );
-            
+
             if ( movie == null )
                 return HttpNotFound( );
 

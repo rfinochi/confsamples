@@ -29,6 +29,7 @@ namespace MovieIndex
             builderApi.RegisterApiControllers( Assembly.GetExecutingAssembly( ) );
 
             builderApi.RegisterType<DirectorRepository>( ).As<IDirectorRepository>( );
+            builderApi.RegisterType<MovieRepository>( ).As<IMovieRepository>( );
 
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver( builderApi.Build( ) );
         }

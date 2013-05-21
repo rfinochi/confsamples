@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieIndex", "MovieIndex\MovieIndex.csproj", "{0470AC3E-D8FB-4976-93B0-E242140C329E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieIndex.WebApiTestClient", "MovieIndex.WebApiTestClient\MovieIndex.WebApiTestClient.csproj", "{9B40234C-46EC-446B-8140-5FCC119B89DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{0470AC3E-D8FB-4976-93B0-E242140C329E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0470AC3E-D8FB-4976-93B0-E242140C329E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0470AC3E-D8FB-4976-93B0-E242140C329E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B40234C-46EC-446B-8140-5FCC119B89DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B40234C-46EC-446B-8140-5FCC119B89DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B40234C-46EC-446B-8140-5FCC119B89DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B40234C-46EC-446B-8140-5FCC119B89DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
