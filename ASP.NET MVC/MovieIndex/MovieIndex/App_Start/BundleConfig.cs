@@ -36,6 +36,8 @@ namespace MovieIndex
                         "~/Content/themes/base/jquery.ui.theme.css" ) );
 
             bundles.Add( new StyleBundle( "~/Content/rating" ).Include( "~/Content/rating.css" ) );
+
+            //BundleTable.EnableOptimizations = true;
         }
     }
 }

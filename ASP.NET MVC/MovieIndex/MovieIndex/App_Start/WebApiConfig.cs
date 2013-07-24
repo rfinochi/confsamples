@@ -28,6 +28,8 @@ namespace MovieIndex
             //};
 
             //config.EnableQuerySupport( queryAttribute );
+
+            config.EnableQuerySupport( );
         }
     }
 }
