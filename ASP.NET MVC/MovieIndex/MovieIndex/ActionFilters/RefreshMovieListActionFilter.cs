@@ -4,7 +4,7 @@ using Microsoft.AspNet.SignalR;
 
 namespace MovieIndex.ActionFilters
 {
-    public class RefreshMovieListActionFilter   : ActionFilterAttribute
+    public class RefreshMovieListActionFilter : ActionFilterAttribute
     {
         public override void OnResultExecuted( ResultExecutedContext filterContext )
         {
