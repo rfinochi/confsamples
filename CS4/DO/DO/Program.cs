@@ -9,6 +9,7 @@ class Program
         var custs = from c in XElement.Load( @"..\..\Customers.xml" ).Elements( )
                     select new DynamicElement( c );
 
+
         foreach ( dynamic d in custs )
         {
             Console.WriteLine( String.Format( "Name: {0} {1}", d.Id, d.LastName ) );
