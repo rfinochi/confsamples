@@ -21,22 +21,22 @@ namespace DemoRazor.Controllers
 
         public ActionResult ListPeople()
         {
-                List<Persona> personas = new List<Persona>()
-                            {
-                                new Persona {
-                                    Nombre = "Rodolfo",
-                                    Apellido = "Finochietti",
-                                    Pais = "Argentina"
-                                },
-                                new Persona {
-                                    Nombre = "Paolo",
-                                    Apellido = "Rocca",
-                                    Pais = "Italia"
-                                },
-                            };
+            List<Persona> personas = new List<Persona>()
+                        {
+                            new Persona {
+                                Nombre = "Rodolfo",
+                                Apellido = "Finochietti",
+                                Pais = "Argentina"
+                            },
+                            new Persona {
+                                Nombre = "Paolo",
+                                Apellido = "Rocca",
+                                Pais = "Italia"
+                            },
+                        };
 
-                        //Le mando la lista de personas a la vista
-                        ViewBag.Personas = personas;
+            //Le mando la lista de personas a la vista
+            ViewBag.Personas = personas;
 
             return View();
         }
