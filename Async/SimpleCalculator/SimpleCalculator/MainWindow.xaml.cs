@@ -10,15 +10,16 @@ namespace SimpleCalculator
 {
     public partial class MainWindow : Window
     {
-        //public MainWindow( )
-        //{
-        //    InitializeComponent( );
-        //}
+        public MainWindow( )
+        {
+            InitializeComponent( );
+        }
 
         //private void btnCalculate_Click( object sender, RoutedEventArgs e )
         //{
         //    int number1 = int.Parse( txtNumber1.Text );
         //    int number2 = int.Parse( txtNumber1.Text );
+
         //    int result = Calculate( number1, number2 );
 
         //    txtAnswer.Text = result.ToString( );

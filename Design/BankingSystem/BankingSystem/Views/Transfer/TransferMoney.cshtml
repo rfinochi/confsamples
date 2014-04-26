@@ -1,0 +1,51 @@
+﻿@model BankingSystem.Models.TransferMoneyViewModel
+
+@{
+    ViewBag.Title = "Transferencias";
+}
+
+<h2>Transferencias</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @ViewBag.Result
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OriginAccountId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OriginAccountId)
+                @Html.ValidationMessageFor(model => model.OriginAccountId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DestinationAccountId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DestinationAccountId)
+                @Html.ValidationMessageFor(model => model.DestinationAccountId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AmmountToTransfer, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AmmountToTransfer)
+                @Html.ValidationMessageFor(model => model.AmmountToTransfer)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Transferir" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
