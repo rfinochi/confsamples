@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.CodeAnalysis.CSharp</id>
+    <version>0.7.4051916-beta</version>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>.NET Compiler Platform ("Roslyn") support for C#, Microsoft.CodeAnalysis.CSharp.dll.</description>
+    <dependencies>
+      <dependency id="Microsoft.CodeAnalysis.Common" version="0.7.4051916-beta" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.AspNet.RequestContainer</id>
+    <version>0.1-alpha-build-0572</version>
+    <title>Microsoft.AspNet.RequestContainer</title>
+    <authors>K</authors>
+    <owners>K</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Microsoft.AspNet.RequestContainer</description>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Microsoft.AspNet.Http" version="0.1-alpha-build-0444" />
+        <dependency id="Microsoft.Framework.DependencyInjection" version="0.1-alpha-build-0389" />
+      </group>
+      <group targetFramework="K1.0">
+        <dependency id="Microsoft.AspNet.Http" version="0.1-alpha-build-0444" />
+        <dependency id="Microsoft.Framework.DependencyInjection" version="0.1-alpha-build-0389" />
+        <dependency id="System.Collections" version="4.0.0.0" />
+        <dependency id="System.ComponentModel" version="4.0.0.0" />
+        <dependency id="System.Diagnostics.Debug" version="4.0.10.0" />
+        <dependency id="System.Linq" version="4.0.0.0" />
+        <dependency id="System.Reflection" version="4.0.10.0" />
+        <dependency id="System.Reflection.Extensions" version="4.0.0.0" />
+        <dependency id="System.Reflection.TypeExtensions" version="4.0.0.0" />
+        <dependency id="System.Runtime" version="4.0.20.0" />
+        <dependency id="System.Runtime.Extensions" version="4.0.10.0" />
+        <dependency id="System.Threading" version="4.0.0.0" />
+        <dependency id="System.Threading.Tasks" version="4.0.10.0" />
+      </group>
+    </dependencies>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm</licenseUrl>
+  </metadata>
+</package>

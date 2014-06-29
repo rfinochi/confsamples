@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Common</id>
+    <version>1.0.0</version>
+    <title>Common</title>
+    <authors>K</authors>
+    <owners>K</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Common</description>
+    <dependencies>
+      <group targetFramework="K1.0">
+        <dependency id="System.Linq" version="4.0.0.0" />
+        <dependency id="System.Reflection" version="4.0.10.0" />
+        <dependency id="System.Runtime" version="4.0.20.0" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Linq" targetFramework=".NETFramework4.5" />
+      <frameworkAssembly assemblyName="System.Reflection" targetFramework=".NETFramework4.5" />
+      <frameworkAssembly assemblyName="System.Runtime" targetFramework=".NETFramework4.5" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

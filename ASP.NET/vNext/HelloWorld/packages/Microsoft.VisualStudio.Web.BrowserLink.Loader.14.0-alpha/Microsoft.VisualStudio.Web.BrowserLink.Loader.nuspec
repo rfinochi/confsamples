@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.VisualStudio.Web.BrowserLink.Loader</id>
+    <version>14.0-alpha</version>
+    <title>Microsoft Visual Studio Browser Link</title>
+    <authors>Microsoft Corporation</authors>
+    <owners>Microsoft Corporation</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Support for Browser Link connections in ASP.NET vNext.</description>
+    <summary>Support for Browser Link connections in ASP.NET vNext.</summary>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+  </metadata>
+</package>

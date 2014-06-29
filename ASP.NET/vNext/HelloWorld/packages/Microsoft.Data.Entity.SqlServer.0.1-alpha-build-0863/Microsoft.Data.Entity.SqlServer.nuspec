@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Data.Entity.SqlServer</id>
+    <version>0.1-alpha-build-0863</version>
+    <title>Microsoft.Data.Entity.SqlServer</title>
+    <authors>K</authors>
+    <owners>K</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Microsoft.Data.Entity.SqlServer</description>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Microsoft.Data.Common" version="0.1-alpha-build-0139" />
+        <dependency id="Microsoft.Data.Entity" version="0.1-alpha-build-0863" />
+        <dependency id="Microsoft.Data.Entity.Migrations" version="0.1-alpha-build-0863" />
+        <dependency id="Microsoft.Data.Entity.Relational" version="0.1-alpha-build-0863" />
+        <dependency id="Microsoft.Data.SqlServer" version="0.1-alpha-build-0692" />
+        <dependency id="Microsoft.Framework.DependencyInjection" version="0.1-alpha-build-0389" />
+      </group>
+      <group targetFramework="K1.0">
+        <dependency id="Microsoft.Data.Common" version="0.1-alpha-build-0139" />
+        <dependency id="Microsoft.Data.Entity" version="0.1-alpha-build-0863" />
+        <dependency id="Microsoft.Data.Entity.Migrations" version="0.1-alpha-build-0863" />
+        <dependency id="Microsoft.Data.Entity.Relational" version="0.1-alpha-build-0863" />
+        <dependency id="Microsoft.Data.SqlServer" version="0.1-alpha-build-0692" />
+        <dependency id="Microsoft.Framework.DependencyInjection" version="0.1-alpha-build-0389" />
+        <dependency id="System.Diagnostics.Contracts" version="4.0.0.0" />
+        <dependency id="System.Diagnostics.Debug" version="4.0.10.0" />
+        <dependency id="System.Globalization" version="4.0.10.0" />
+        <dependency id="System.Linq" version="4.0.0.0" />
+        <dependency id="System.Reflection" version="4.0.10.0" />
+        <dependency id="System.Resources.ResourceManager" version="4.0.0.0" />
+        <dependency id="System.Runtime" version="4.0.20.0" />
+        <dependency id="System.Runtime.Extensions" version="4.0.10.0" />
+        <dependency id="System.Threading" version="4.0.0.0" />
+        <dependency id="System.Threading.Tasks" version="4.0.10.0" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Data" targetFramework=".NETFramework4.5" />
+    </frameworkAssemblies>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm</licenseUrl>
+  </metadata>
+</package>

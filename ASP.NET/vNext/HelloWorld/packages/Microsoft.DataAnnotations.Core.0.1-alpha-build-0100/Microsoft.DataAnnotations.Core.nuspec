@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.DataAnnotations.Core</id>
+    <version>0.1-alpha-build-0100</version>
+    <title>Microsoft.DataAnnotations.Core</title>
+    <authors>K</authors>
+    <owners>K</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Microsoft.DataAnnotations.Core</description>
+    <dependencies>
+      <group targetFramework="K1.0">
+        <dependency id="System.Collections" version="4.0.0.0" />
+        <dependency id="System.Collections.Concurrent" version="4.0.0.0" />
+        <dependency id="System.ComponentModel" version="4.0.0.0" />
+        <dependency id="System.Diagnostics.Debug" version="4.0.10.0" />
+        <dependency id="System.Globalization" version="4.0.10.0" />
+        <dependency id="System.Linq" version="4.0.0.0" />
+        <dependency id="System.Reflection" version="4.0.10.0" />
+        <dependency id="System.Reflection.Extensions" version="4.0.0.0" />
+        <dependency id="System.Reflection.Primitives" version="4.0.0.0" />
+        <dependency id="System.Resources.ResourceManager" version="4.0.0.0" />
+        <dependency id="System.Runtime" version="4.0.20.0" />
+        <dependency id="System.Runtime.Extensions" version="4.0.10.0" />
+        <dependency id="System.Text.RegularExpressions" version="4.0.0.0" />
+        <dependency id="System.Threading" version="4.0.0.0" />
+      </group>
+      <group targetFramework=".NETPortable4.5-Profile49">
+        <dependency id="System.Collections.Concurrent" version="4.0.0.0" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" targetFramework=".NETFramework4.5" />
+      <frameworkAssembly assemblyName="System.Collections" targetFramework=".NETPortable4.5-Profile49" />
+      <frameworkAssembly assemblyName="System.ComponentModel" targetFramework=".NETPortable4.5-Profile49" />
+      <frameworkAssembly assemblyName="System.Diagnostics.Debug" targetFramework=".NETPortable4.5-Profile49" />
+      <frameworkAssembly assemblyName="System.Globalization" targetFramework=".NETPortable4.5-Profile49" />
+      <frameworkAssembly assemblyName="System.Linq" targetFramework=".NETPortable4.5-Profile49" />
+      <frameworkAssembly assemblyName="System.Reflection" targetFramework=".NETPortable4.5-Profile49" />
+      <frameworkAssembly assemblyName="System.Reflection.Extensions" targetFramework=".NETPortable4.5-Profile49" />
+      <frameworkAssembly assemblyName="System.Reflection.Primitives" targetFramework=".NETPortable4.5-Profile49" />
+      <frameworkAssembly assemblyName="System.Resources.ResourceManager" targetFramework=".NETPortable4.5-Profile49" />
+      <frameworkAssembly assemblyName="System.Runtime" targetFramework=".NETPortable4.5-Profile49" />
+      <frameworkAssembly assemblyName="System.Runtime.Extensions" targetFramework=".NETPortable4.5-Profile49" />
+      <frameworkAssembly assemblyName="System.Text.RegularExpressions" targetFramework=".NETPortable4.5-Profile49" />
+      <frameworkAssembly assemblyName="System.Threading" targetFramework=".NETPortable4.5-Profile49" />
+    </frameworkAssemblies>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm</licenseUrl>
+  </metadata>
+</package>
