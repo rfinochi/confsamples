@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.AspNet.Identity</id>
+    <version>0.1-alpha-build-1059</version>
+    <title>Microsoft.AspNet.Identity</title>
+    <authors>K</authors>
+    <owners>K</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Microsoft.AspNet.Identity</description>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Microsoft.AspNet.HttpFeature" version="0.1-alpha-build-0444" />
+        <dependency id="Microsoft.AspNet.Security.DataProtection" version="0.1-alpha-build-0153" />
+        <dependency id="Microsoft.Framework.ConfigurationModel" version="0.1-alpha-build-0233" />
+        <dependency id="Microsoft.Framework.DependencyInjection" version="0.1-alpha-build-0389" />
+        <dependency id="System.Security.Claims" version="0.1-alpha-build-0286" />
+      </group>
+      <group targetFramework="K1.0">
+        <dependency id="Microsoft.AspNet.HttpFeature" version="0.1-alpha-build-0444" />
+        <dependency id="Microsoft.AspNet.Security.DataProtection" version="0.1-alpha-build-0153" />
+        <dependency id="Microsoft.Framework.ConfigurationModel" version="0.1-alpha-build-0233" />
+        <dependency id="Microsoft.Framework.DependencyInjection" version="0.1-alpha-build-0389" />
+        <dependency id="System.Collections" version="4.0.0.0" />
+        <dependency id="System.ComponentModel" version="4.0.0.0" />
+        <dependency id="System.Diagnostics.Debug" version="4.0.10.0" />
+        <dependency id="System.Diagnostics.Tools" version="4.0.0.0" />
+        <dependency id="System.Globalization" version="4.0.10.0" />
+        <dependency id="System.Linq" version="4.0.0.0" />
+        <dependency id="System.Linq.Expressions" version="4.0.0.0" />
+        <dependency id="System.Linq.Queryable" version="4.0.0.0" />
+        <dependency id="System.Reflection" version="4.0.10.0" />
+        <dependency id="System.Reflection.Extensions" version="4.0.0.0" />
+        <dependency id="System.Resources.ResourceManager" version="4.0.0.0" />
+        <dependency id="System.Runtime" version="4.0.20.0" />
+        <dependency id="System.Runtime.Extensions" version="4.0.10.0" />
+        <dependency id="System.Security.Claims" version="0.1-alpha-build-0286" />
+        <dependency id="System.Security.Principal" version="4.0.0.0" />
+        <dependency id="System.Text.Encoding" version="4.0.20.0" />
+        <dependency id="System.Threading.Tasks" version="4.0.10.0" />
+      </group>
+    </dependencies>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm</licenseUrl>
+  </metadata>
+</package>

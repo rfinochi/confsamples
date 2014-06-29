@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>K.Roslyn</id>
+    <version>0.1-alpha-build-0137</version>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Roslyn compiler for ProjectK</description>
+    <dependencies>
+      <dependency id="Microsoft.CodeAnalysis.Common" version="0.7.4051916-beta" />
+      <dependency id="Microsoft.CodeAnalysis.CSharp" version="0.7.4051916-beta" />
+    </dependencies>
+    <licenseUrl xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">http://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm</licenseUrl>
+  </metadata>
+</package>

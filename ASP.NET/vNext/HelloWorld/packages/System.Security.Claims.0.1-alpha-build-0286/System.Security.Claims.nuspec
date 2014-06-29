@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>System.Security.Claims</id>
+    <version>0.1-alpha-build-0286</version>
+    <title>System.Security.Claims</title>
+    <authors>K</authors>
+    <owners>K</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>System.Security.Claims</description>
+    <dependencies>
+      <group targetFramework="K1.0">
+        <dependency id="System.Collections" version="4.0.0.0" />
+        <dependency id="System.Diagnostics.Contracts" version="4.0.0.0" />
+        <dependency id="System.Globalization" version="4.0.10.0" />
+        <dependency id="System.Runtime" version="4.0.20.0" />
+        <dependency id="System.Runtime.Extensions" version="4.0.10.0" />
+        <dependency id="System.Security.Principal" version="4.0.0.0" />
+        <dependency id="System.Threading" version="4.0.0.0" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

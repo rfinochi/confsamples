@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Framework.Logging</id>
+    <version>0.1-alpha-build-0172</version>
+    <title>Microsoft.Framework.Logging</title>
+    <authors>K</authors>
+    <owners>K</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Microsoft.Framework.Logging</description>
+    <dependencies>
+      <group targetFramework="K1.0">
+        <dependency id="System.Globalization" version="4.0.10.0" />
+        <dependency id="System.Runtime" version="4.0.20.0" />
+        <dependency id="System.Runtime.InteropServices" version="4.0.20.0" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Globalization" targetFramework=".NETPortable4.6-Profile151" />
+      <frameworkAssembly assemblyName="System.Runtime" targetFramework=".NETPortable4.6-Profile151" />
+      <frameworkAssembly assemblyName="System.Runtime.InteropServices" targetFramework=".NETPortable4.6-Profile151" />
+    </frameworkAssemblies>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm</licenseUrl>
+  </metadata>
+</package>

@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.21730.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compilation.Demo", "Compilation.Demo\Compilation.Demo.csproj", "{95F5F975-53D0-415D-B9E4-E1B99F4163B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyntaxTree.Demo", "SyntaxTree.Demo\SyntaxTree.Demo.csproj", "{68392DC2-65FF-4A40-830B-B769BA729839}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticTree.Demo", "SemanticTree.Demo\SemanticTree.Demo.csproj", "{39F1BCB5-FCD5-41C8-98B2-5E12BD2F4463}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyntaxVisitors.Demo", "SyntaxVisitors.Demo\SyntaxVisitors.Demo.csproj", "{829FA833-1157-49DB-88BD-556619D118D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95F5F975-53D0-415D-B9E4-E1B99F4163B2}.Debug|x86.ActiveCfg = Debug|x86
+		{95F5F975-53D0-415D-B9E4-E1B99F4163B2}.Debug|x86.Build.0 = Debug|x86
+		{95F5F975-53D0-415D-B9E4-E1B99F4163B2}.Release|x86.ActiveCfg = Release|x86
+		{95F5F975-53D0-415D-B9E4-E1B99F4163B2}.Release|x86.Build.0 = Release|x86
+		{68392DC2-65FF-4A40-830B-B769BA729839}.Debug|x86.ActiveCfg = Debug|x86
+		{68392DC2-65FF-4A40-830B-B769BA729839}.Debug|x86.Build.0 = Debug|x86
+		{68392DC2-65FF-4A40-830B-B769BA729839}.Release|x86.ActiveCfg = Release|x86
+		{68392DC2-65FF-4A40-830B-B769BA729839}.Release|x86.Build.0 = Release|x86
+		{39F1BCB5-FCD5-41C8-98B2-5E12BD2F4463}.Debug|x86.ActiveCfg = Debug|x86
+		{39F1BCB5-FCD5-41C8-98B2-5E12BD2F4463}.Debug|x86.Build.0 = Debug|x86
+		{39F1BCB5-FCD5-41C8-98B2-5E12BD2F4463}.Release|x86.ActiveCfg = Release|x86
+		{39F1BCB5-FCD5-41C8-98B2-5E12BD2F4463}.Release|x86.Build.0 = Release|x86
+		{829FA833-1157-49DB-88BD-556619D118D4}.Debug|x86.ActiveCfg = Debug|x86
+		{829FA833-1157-49DB-88BD-556619D118D4}.Debug|x86.Build.0 = Debug|x86
+		{829FA833-1157-49DB-88BD-556619D118D4}.Release|x86.ActiveCfg = Release|x86
+		{829FA833-1157-49DB-88BD-556619D118D4}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

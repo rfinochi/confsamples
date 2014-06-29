@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.AspNet.Loader.IIS.Interop</id>
+    <version>0.1-alpha-build-0585</version>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Microsoft.AspNet.Loader.IIS.Interop</description>
+    <licenseUrl xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">http://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm</licenseUrl>
+  </metadata>
+</package>

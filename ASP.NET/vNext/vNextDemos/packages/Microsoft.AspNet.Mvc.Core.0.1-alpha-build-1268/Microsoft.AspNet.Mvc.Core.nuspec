@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.AspNet.Mvc.Core</id>
+    <version>0.1-alpha-build-1268</version>
+    <title>Microsoft.AspNet.Mvc.Core</title>
+    <authors>K</authors>
+    <owners>K</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Microsoft.AspNet.Mvc.Core</description>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Common" version="1.0.0" />
+        <dependency id="Microsoft.AspNet.Http" version="0.1-alpha-build-0444" />
+        <dependency id="Microsoft.AspNet.Mvc.ModelBinding" version="0.1-alpha-build-1268" />
+        <dependency id="Microsoft.AspNet.Routing" version="0.1-alpha-build-0577" />
+        <dependency id="Microsoft.AspNet.Security" version="0.1-alpha-build-0506" />
+        <dependency id="Microsoft.AspNet.Security.DataProtection" version="0.1-alpha-build-0153" />
+        <dependency id="Microsoft.Framework.DependencyInjection" version="0.1-alpha-build-0389" />
+        <dependency id="Microsoft.Framework.Runtime.Interfaces" version="0.1-alpha-build-0446" />
+        <dependency id="Newtonsoft.Json" version="5.0.8" />
+      </group>
+      <group targetFramework="K1.0">
+        <dependency id="Common" version="1.0.0" />
+        <dependency id="Microsoft.AspNet.Http" version="0.1-alpha-build-0444" />
+        <dependency id="Microsoft.AspNet.Mvc.ModelBinding" version="0.1-alpha-build-1268" />
+        <dependency id="Microsoft.AspNet.Routing" version="0.1-alpha-build-0577" />
+        <dependency id="Microsoft.AspNet.Security" version="0.1-alpha-build-0506" />
+        <dependency id="Microsoft.AspNet.Security.DataProtection" version="0.1-alpha-build-0153" />
+        <dependency id="Microsoft.CSharp" version="4.0.0.0" />
+        <dependency id="Microsoft.Framework.DependencyInjection" version="0.1-alpha-build-0389" />
+        <dependency id="Microsoft.Framework.Runtime.Interfaces" version="0.1-alpha-build-0446" />
+        <dependency id="Newtonsoft.Json" version="5.0.8" />
+        <dependency id="System.Collections" version="4.0.0.0" />
+        <dependency id="System.Collections.Concurrent" version="4.0.0.0" />
+        <dependency id="System.ComponentModel" version="4.0.0.0" />
+        <dependency id="System.Diagnostics.Contracts" version="4.0.0.0" />
+        <dependency id="System.Diagnostics.Debug" version="4.0.10.0" />
+        <dependency id="System.Diagnostics.Tools" version="4.0.0.0" />
+        <dependency id="System.Dynamic.Runtime" version="4.0.0.0" />
+        <dependency id="System.Globalization" version="4.0.10.0" />
+        <dependency id="System.IO" version="4.0.0.0" />
+        <dependency id="System.Linq" version="4.0.0.0" />
+        <dependency id="System.Linq.Expressions" version="4.0.0.0" />
+        <dependency id="System.Reflection" version="4.0.10.0" />
+        <dependency id="System.Reflection.Emit.ILGeneration" version="4.0.0.0" />
+        <dependency id="System.Reflection.Emit.Lightweight" version="4.0.0.0" />
+        <dependency id="System.Reflection.Extensions" version="4.0.0.0" />
+        <dependency id="System.Resources.ResourceManager" version="4.0.0.0" />
+        <dependency id="System.Runtime" version="4.0.20.0" />
+        <dependency id="System.Runtime.Extensions" version="4.0.10.0" />
+        <dependency id="System.Runtime.InteropServices" version="4.0.20.0" />
+        <dependency id="System.Security.Claims" version="0.1-alpha-build-0286" />
+        <dependency id="System.Security.Cryptography" version="4.0.0.0" />
+        <dependency id="System.Security.Cryptography.HashAlgorithms.SHA2" version="4.0.0.0" />
+        <dependency id="System.Security.Principal" version="4.0.0.0" />
+        <dependency id="System.Text.Encoding" version="4.0.20.0" />
+        <dependency id="System.Threading" version="4.0.0.0" />
+        <dependency id="System.Threading.Tasks" version="4.0.10.0" />
+      </group>
+    </dependencies>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm</licenseUrl>
+  </metadata>
+</package>

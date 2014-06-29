@@ -1,0 +1,31 @@
+﻿{
+    "dependencies": {
+        "Helios": "0.1-alpha-build-0585",
+        "Microsoft.AspNet.Mvc": "0.1-alpha-build-1268",
+        "Microsoft.AspNet.Identity.Entity": "0.1-alpha-build-1059",
+        "Microsoft.AspNet.Identity.Security": "0.1-alpha-build-1059",
+        "Microsoft.AspNet.Security.Cookies": "0.1-alpha-build-0506",
+        "Microsoft.AspNet.Server.WebListener": "0.1-alpha-build-0520",
+        "Microsoft.AspNet.StaticFiles": "0.1-alpha-build-0443",
+        "Microsoft.Data.Entity": "0.1-alpha-build-0863",
+        "Microsoft.Data.Entity.SqlServer": "0.1-alpha-build-0863",
+        "Microsoft.Framework.ConfigurationModel.Json": "0.1-alpha-build-0233",
+        "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0-alpha"
+    },
+    "commands": {
+        /* Change the port number when you are self hosting this application */
+        "web": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.WebListener",
+        "webWithUrl": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.WebListener --server.urls http://localhost:5000",
+        "webWithUrl2": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.WebListener --server.urls http://localhost:5001"
+    },
+    "configurations": {
+        "net45": {
+            "dependencies": {
+                "System.Data": "",
+                "System.ComponentModel.DataAnnotations": ""
+            }
+        },
+        "k10": {
+        }
+    }
+}
