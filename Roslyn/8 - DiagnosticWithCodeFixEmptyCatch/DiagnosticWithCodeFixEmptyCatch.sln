@@ -1,14 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22013.1
+VisualStudioVersion = 14.0.22310.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiagnosticAndCodeFix", "DiagnosticWithCodeFixEmptyCatch\DiagnosticAndCodeFix\DiagnosticAndCodeFix.csproj", "{38730538-F7B8-4352-8358-BE3ED0CAC4BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiagnosticWithCodeFixEmptyCatch", "DiagnosticWithCodeFixEmptyCatch\DiagnosticWithCodeFixEmptyCatch\DiagnosticWithCodeFixEmptyCatch.csproj", "{30E5F627-4F0B-484D-801E-743646FBDCCB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{3E233307-9884-4B62-943A-72BC68A386B2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{67178CA7-4EA3-4966-8059-90296388C4C7}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiagnosticWithCodeFixEmptyCatch.Vsix", "DiagnosticWithCodeFixEmptyCatch\DiagnosticWithCodeFixEmptyCatch.Vsix\DiagnosticWithCodeFixEmptyCatch.Vsix.csproj", "{038FB104-DE75-4492-BE25-5162A3F4E7D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,10 +18,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{38730538-F7B8-4352-8358-BE3ED0CAC4BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{38730538-F7B8-4352-8358-BE3ED0CAC4BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{38730538-F7B8-4352-8358-BE3ED0CAC4BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{38730538-F7B8-4352-8358-BE3ED0CAC4BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30E5F627-4F0B-484D-801E-743646FBDCCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30E5F627-4F0B-484D-801E-743646FBDCCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30E5F627-4F0B-484D-801E-743646FBDCCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30E5F627-4F0B-484D-801E-743646FBDCCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{038FB104-DE75-4492-BE25-5162A3F4E7D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{038FB104-DE75-4492-BE25-5162A3F4E7D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{038FB104-DE75-4492-BE25-5162A3F4E7D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{038FB104-DE75-4492-BE25-5162A3F4E7D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

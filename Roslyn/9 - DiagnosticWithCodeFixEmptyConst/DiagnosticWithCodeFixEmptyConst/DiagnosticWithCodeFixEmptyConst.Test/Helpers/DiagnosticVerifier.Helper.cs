@@ -4,6 +4,7 @@ using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Text;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Threading;
 
@@ -15,10 +16,10 @@ namespace TestHelper
     /// </summary>
     public abstract partial class DiagnosticVerifier
     {
-        private static readonly MetadataReference CorlibReference = new MetadataFileReference(typeof(object).Assembly.Location, MetadataImageKind.Assembly);
-        private static readonly MetadataReference SystemCoreReference = new MetadataFileReference(typeof(Enumerable).Assembly.Location, MetadataImageKind.Assembly);
-        private static readonly MetadataReference CSharpSymbolsReference = new MetadataFileReference(typeof(CSharpCompilation).Assembly.Location, MetadataImageKind.Assembly);
-        private static readonly MetadataReference CodeAnalysisReference = new MetadataFileReference(typeof(Compilation).Assembly.Location, MetadataImageKind.Assembly);
+        private static readonly MetadataReference CorlibReference = MetadataReference.CreateFromAssembly(typeof(object).Assembly);
+        private static readonly MetadataReference SystemCoreReference = MetadataReference.CreateFromAssembly(typeof(Enumerable).Assembly);
+        private static readonly MetadataReference CSharpSymbolsReference = MetadataReference.CreateFromAssembly(typeof(CSharpCompilation).Assembly);
+        private static readonly MetadataReference CodeAnalysisReference = MetadataReference.CreateFromAssembly(typeof(Compilation).Assembly);
 
         internal static string DefaultFilePathPrefix = "Test";
         internal static string CSharpDefaultFileExt = "cs";
@@ -36,7 +37,7 @@ namespace TestHelper
         /// <param name="language">The language the soruce classes are in</param>
         /// <param name="analyzer">The analyzer to be run on the sources</param>
         /// <returns>An IEnumerable of Diagnostics that surfaced in teh source code, sorted by Location</returns>
-        private static Diagnostic[] GetSortedDiagnostics(string[] sources, string language, IDiagnosticAnalyzer analyzer)
+        private static Diagnostic[] GetSortedDiagnostics(string[] sources, string language, DiagnosticAnalyzer analyzer)
         {
             return GetSortedDiagnosticsFromDocuments(analyzer, GetDocuments(sources, language));
         }
@@ -49,7 +50,7 @@ namespace TestHelper
         /// <param name="documents">The Documents that the analyzer will be run on</param>
         /// <param name="spans">Optional TextSpan indicating where a Diagnostic will be found</param>
         /// <returns>An IEnumerable of Diagnostics that surfaced in teh source code, sorted by Location</returns>
-        protected static Diagnostic[] GetSortedDiagnosticsFromDocuments(IDiagnosticAnalyzer analyzer, Document[] documents)
+        protected static Diagnostic[] GetSortedDiagnosticsFromDocuments(DiagnosticAnalyzer analyzer, Document[] documents)
         {
             var projects = new HashSet<Project>();
             foreach (var document in documents)
@@ -61,7 +62,9 @@ namespace TestHelper
             foreach (var project in projects)
             {
                 var compilation = project.GetCompilationAsync().Result;
-                var diags = AnalyzerDriver.GetDiagnostics(compilation, new[] { analyzer }, null, CancellationToken.None);
+                var driver = AnalyzerDriver.Create(compilation, ImmutableArray.Create(analyzer), null, out compilation, CancellationToken.None);
+                var discarded = compilation.GetDiagnostics();
+                var diags = driver.GetDiagnosticsAsync().Result;
                 foreach (var diag in diags)
                 {
                     if (diag.Location == Location.None || diag.Location.IsInMetadata)

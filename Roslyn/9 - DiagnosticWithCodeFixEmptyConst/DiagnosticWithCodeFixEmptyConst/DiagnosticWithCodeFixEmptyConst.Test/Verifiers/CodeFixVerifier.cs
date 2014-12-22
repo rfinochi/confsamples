@@ -1,8 +1,10 @@
 ﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CodeActions;
 using Microsoft.CodeAnalysis.CodeFixes;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Formatting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 
@@ -17,8 +19,8 @@ namespace TestHelper
         /// <summary>
         /// Returns the codefix being tested (C#) - to be implemented in non-abstract class
         /// </summary>
-        /// <returns>The ICodeFixProvider to be used for CSharp code</returns>
-        protected virtual ICodeFixProvider GetCSharpCodeFixProvider()
+        /// <returns>The CodeFixProvider to be used for CSharp code</returns>
+        protected virtual CodeFixProvider GetCSharpCodeFixProvider()
         {
             return null;
         }
@@ -26,8 +28,8 @@ namespace TestHelper
         /// <summary>
         /// Returns the codefix being tested (VB) - to be implemented in non-abstract class
         /// </summary>
-        /// <returns>The ICodeFixProvider to be used for VisualBasic code</returns>
-        protected virtual ICodeFixProvider GetBasicCodeFixProvider()
+        /// <returns>The CodeFixProvider to be used for VisualBasic code</returns>
+        protected virtual CodeFixProvider GetBasicCodeFixProvider()
         {
             return null;
         }
@@ -69,9 +71,8 @@ namespace TestHelper
         /// <param name="newSource">A class in the form of a string after the CodeFix was applied to it</param>
         /// <param name="codeFixIndex">Index determining which codefix to apply if there are multiple</param>
         /// <param name="allowNewCompilerDiagnostics">A bool controlling whether or not the test will fail if the CodeFix introduces other warnings after being applied</param>
-        private void VerifyFix(string language, IDiagnosticAnalyzer analyzer, ICodeFixProvider codeFixProvider, string oldSource, string newSource, int? codeFixIndex, bool allowNewCompilerDiagnostics)
+        private void VerifyFix(string language, DiagnosticAnalyzer analyzer, CodeFixProvider codeFixProvider, string oldSource, string newSource, int? codeFixIndex, bool allowNewCompilerDiagnostics)
         {
-
             var document = CreateDocument(oldSource, language);
             var analyzerDiagnostics = GetSortedDiagnosticsFromDocuments(analyzer, new[] { document });
             var compilerDiagnostics = GetCompilerDiagnostics(document);
@@ -79,7 +80,10 @@ namespace TestHelper
 
             for (int i = 0; i < attempts; ++i)
             {
-                var actions = codeFixProvider.GetFixesAsync(document, analyzerDiagnostics[0].Location.SourceSpan, analyzerDiagnostics, CancellationToken.None).Result;
+                var actions = new List<CodeAction>();
+                var context = new CodeFixContext(document, analyzerDiagnostics[0], (a, d) => actions.Add(a), CancellationToken.None);
+                codeFixProvider.ComputeFixesAsync(context).Wait();
+
                 if (!actions.Any())
                 {
                     break;
