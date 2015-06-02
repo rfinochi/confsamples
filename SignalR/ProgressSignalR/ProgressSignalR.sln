@@ -1,13 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FA7AB5B8-5448-4F74-8417-5A9A10EBB45F}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgressSignalR", "ProgressSignalR\ProgressSignalR.csproj", "{9A634B4D-24BE-4A0C-AC52-02BDA4CCD2FE}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgressSignalR", "ProgressSignalR\ProgressSignalR.csproj", "{B3146F8E-15AB-42AE-8031-B31D527C256E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9A634B4D-24BE-4A0C-AC52-02BDA4CCD2FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9A634B4D-24BE-4A0C-AC52-02BDA4CCD2FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9A634B4D-24BE-4A0C-AC52-02BDA4CCD2FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9A634B4D-24BE-4A0C-AC52-02BDA4CCD2FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3146F8E-15AB-42AE-8031-B31D527C256E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3146F8E-15AB-42AE-8031-B31D527C256E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3146F8E-15AB-42AE-8031-B31D527C256E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3146F8E-15AB-42AE-8031-B31D527C256E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,20 +1,21 @@
 ﻿using System.Threading;
 
-using SignalR.Hubs;
+using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Hubs;
 
 namespace ProgressSignalR
 {
     [HubName( "progress" )]
     public class ProgressHub : Hub
     {
-        public void StartProcessing( Person person )
+        public void StartProcessing( )
         {
-            Caller.notify( "We've started processing, " + person.Name );
-            Clients.setProgress( 0 );
+            Clients.Caller.notify( "We've started processing, " + person.Name );
+            Clients.All.setProgress( 0 );
 
             for ( int i = 0; i <= 100; i++ )
             {
-                Clients.setProgress( i );
+                Clients.Caller.setProgress( i );
                 if ( i <= 50 )
                 {
                     Thread.Sleep( 100 );
@@ -33,7 +34,7 @@ namespace ProgressSignalR
                 }
             }
 
-            Caller.notify( "And we're done!" );
+            Clients.Caller.notify( "And we're done!" );
         }
     }
 }

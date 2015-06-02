@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Web.Routing;
 
-using SignalR;
+using Microsoft.AspNet.SignalR;
 
 namespace TimeSignalR
 {
@@ -11,8 +11,6 @@ namespace TimeSignalR
     {
         protected void Application_Start( object sender, EventArgs e )
         {
-            RouteTable.Routes.MapConnection<TimeConnection>( "time", "time/{*operation}" );
-
             ThreadPool.QueueUserWorkItem( _ =>
             {
                 var connectionContext = GlobalHost.ConnectionManager.GetConnectionContext<TimeConnection>( );
