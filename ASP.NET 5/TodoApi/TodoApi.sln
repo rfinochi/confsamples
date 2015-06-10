@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22310.1
+VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{691AA3A1-A7E3-4443-80F4-3173ACEB4A6E}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TodoApi", "src\TodoApi\TodoApi.kproj", "{B98E2507-48AD-4D37-BF63-D783D2A83E8B}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TodoApi", "src\TodoApi\TodoApi.xproj", "{B98E2507-48AD-4D37-BF63-D783D2A83E8B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5CD6D619-565A-4AB2-8355-472C55029D91}"
 	ProjectSection(SolutionItems) = preProject

@@ -29,7 +29,9 @@ namespace Microsoft.Net.Runtime
 {
     [AssemblyNeutral]
     [AttributeUsage(AttributeTargets.All, Inherited = false, AllowMultiple = true)]
-    public sealed class AssemblyNeutralAttribute : Attribute { }
+    public sealed class AssemblyNeutralAttribute : Attribute
+    {
+    }
 }
 
 namespace Microsoft.Framework.DependencyInjection.ServiceLookup
