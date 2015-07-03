@@ -20,10 +20,10 @@ namespace KnockedTweetsSignalR
                                                 {
                                                     CredentialStore = new SingleUserInMemoryCredentialStore
                                                     {
-                                                        ConsumerKey = "EZfrBpOF1gFSW3uRmTIcoidbM",
-                                                        ConsumerSecret = "ZwGnEBFyWRZnpRNp95wrEOLEw3Ah3nGp70lNVXeI4vanww4u3O",
-                                                        AccessToken = "16930249-V14fiCkYRBwlSn6twcy4YUQ5yKL21dPhWn1FIHsk3",
-                                                        AccessTokenSecret = "351uV6pQZYRHZVMU0BSCU409bmtezaSTFXxGBrXyx5BbH"
+                                                        ConsumerKey = "",
+                                                        ConsumerSecret = "",
+                                                        AccessToken = "",
+                                                        AccessTokenSecret = ""
                                                     }
                                                 };
 
