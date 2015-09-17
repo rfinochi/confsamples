@@ -10,9 +10,9 @@ namespace TodoApi.Models
             set;
         }
 
-        protected override void OnConfiguring(EntityOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=tcp:XXXX.database.windows.net,1433;Database=Todo;User ID=XXXX;Password=XXXX;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;");
+            optionsBuilder.UseSqlServer("Server=tcp:XXXX.database.windows.net,1433;Database=Todo;User ID=XXXX@XXXX;Password=XXXX;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;");
         }
     }
 }

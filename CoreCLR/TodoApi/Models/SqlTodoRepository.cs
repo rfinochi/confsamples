@@ -5,7 +5,6 @@ using System.Linq;
 
 using Microsoft.Data.Entity;
 
-
 namespace TodoApi.Models
 {
     public class SqlTodoRepository : ITodoRepository
