@@ -1,6 +1,6 @@
 using Microsoft.AspNet.Builder;
-using Microsoft.Framework.DependencyInjection;
-using Microsoft.Framework.Logging;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace HelloMvc
 {
@@ -14,6 +14,10 @@ namespace HelloMvc
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole();
+            
+            app.UseIISPlatformHandler();
+            
+            app.UseDeveloperExceptionPage();
 
             app.UseMvcWithDefaultRoute();
 

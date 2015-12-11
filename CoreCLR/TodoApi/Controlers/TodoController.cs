@@ -39,15 +39,15 @@ namespace TodoApi.Controllers
         {
             if (!ModelState.IsValid)
             {
-                Context.Response.StatusCode = 400;
+                this.Response.StatusCode = 400;
             }
             else
             {
                 _repository.Add(item);
 
                 string url = Url.RouteUrl("GetByIdRoute", new { id = item.Id }, Request.Scheme, Request.Host.ToUriComponent());
-                Context.Response.StatusCode = 201;
-                Context.Response.Headers["Location"] = url;
+                this.Response.StatusCode = 201;
+                this.Response.Headers["Location"] = url;
             }
         }
 

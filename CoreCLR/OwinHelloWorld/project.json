@@ -1,12 +1,10 @@
 ﻿{
     "dependencies": {
 	"Microsoft.AspNet.Server.Kestrel": "1.0.0-*",
-        "Microsoft.AspNet.Diagnostics": "1.0.0-*",
-        "Microsoft.AspNet.Hosting": "1.0.0-*",
-        "Microsoft.AspNet.Server.WebListener": "1.0.0-*"
+        "Microsoft.AspNet.Diagnostics": "1.0.0-*"
     },
     "commands": {
-        "kestrel": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.Kestrel --server.urls http://localhost:5001"
+        "web": "Microsoft.AspNet.Server.Kestrel --server.urls http://*:5001"
     },
     "frameworks": {
         "dnx451": { },

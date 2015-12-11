@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Builder;
 
-namespace TodoApi
+namespace HelloWorldDocker
 {
     public class Startup
     {

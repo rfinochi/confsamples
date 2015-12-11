@@ -1,17 +1,15 @@
-﻿{
+﻿﻿{
     "dependencies": {
         "Microsoft.AspNet.Server.Kestrel": "1.0.0-*",
         "Microsoft.AspNet.Diagnostics": "1.0.0-*",
         "Microsoft.AspNet.Mvc": "6.0.0-*",
-        "Microsoft.AspNet.Hosting": "1.0.0-*",
-        "Microsoft.AspNet.Server.WebListener": "1.0.0-*",
-        "EntityFramework": "7.0.0-*",
-        "EntityFramework.SqlServer": "7.0.0-*",
+        "EntityFramework.Core": "7.0.0-*",
+        "EntityFramework.MicrosoftSqlServer": "7.0.0-*",
         "EntityFramework.Commands": "7.0.0-*",
-        "kestrel": "1.0.0-*"
+        "System.Net.Security": "4.0.0-*"
     },
     "commands": {
-        "kestrel": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.Kestrel --server.urls http://localhost:5003"
+        "web": "Microsoft.AspNet.Server.Kestrel --server.urls http://*:5003"
     },
     "frameworks": {
         "dnx451": { },

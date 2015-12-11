@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Builder;
 
-namespace TodoApi
+namespace OwinHelloWorld
 {
     public class Startup
     {

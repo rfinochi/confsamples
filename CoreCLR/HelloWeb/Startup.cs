@@ -1,5 +1,5 @@
 using Microsoft.AspNet.Builder;
-using Microsoft.Framework.Logging;
+using Microsoft.Extensions.Logging;
 
 namespace HelloWeb
 {
@@ -8,6 +8,7 @@ namespace HelloWeb
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole();
+            app.UseIISPlatformHandler();
             app.UseStaticFiles();
             app.UseWelcomePage();
         }
