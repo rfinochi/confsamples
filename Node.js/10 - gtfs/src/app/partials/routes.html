@@ -1,0 +1,8 @@
+<div ng-repeat="route in routes" style="background-color:#{{ route.route_color }};color:#{{ route.route_text_color }}">
+    <a href="/#/route/{{ route.route_id }}">{{ route.route_id }}</a>
+    {{ route.route_short_name }}
+    {{ route.route_long_name }}
+    {{ route.route_type == 3 ? "Transantiago" : "Metro" }}
+    {{ route.route_color }}
+    {{ route.route_text_color }}
+</div>

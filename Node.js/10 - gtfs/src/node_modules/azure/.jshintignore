@@ -1,0 +1,4 @@
+lib/common/node_modules/*
+lib/services/*/node_modules/*
+packages
+.git

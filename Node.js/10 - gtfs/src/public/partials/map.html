@@ -1,0 +1,47 @@
+<div ng-controller="Home" class="panel panel-default map">
+    <div class="panel-body">
+        <ui-gmap-google-map
+            center="map.center"
+            zoom="15"
+            pan="true"
+            bounds="map.bounds"
+            events="map.events"
+            refresh="map.refresh">
+            <ui-gmap-circle
+                center="map.circle.center"
+                radius="map.circle.radius"
+                fill="map.circle.fill"
+                stroke="map.circle.stroke"
+                clickable="true">
+            </ui-gmap-circle>
+            <ui-gmap-polyline ng-repeat="p in map.polylines"
+                path="p.path"
+                stroke="p.stroke"
+                visible="p.visible"
+                fit="false"
+                editable="false"
+                draggable="false">
+            </ui-gmap-polyline>
+            <ui-gmap-window
+                coords="map.window.coords"
+                show="map.window.show">
+                    <div>{{ map.window.content }}</div>
+                </ui-gmap-window>
+        </ui-gmap-google-map>
+    </div>
+    <div class="panel-footer">
+        <div class="pull-left">
+            <label>Radio</label>
+            <input type="number" class="radius" ng-model="map.circle.radius" step="50" /> metros
+            [ <a href="#">Actualizar</a> | <a href="#">Reset</a> ]
+        </div>
+        <div class="pull-right">
+            <label>Ubicación</label>
+            <span class="ubicacion">
+                {{ map.circle.center.latitude }},
+                {{ map.circle.center.longitude }}
+            </span>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

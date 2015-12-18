@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h3 class="modal-title">Acerca de</h3>
+</div>
+<div class="modal-body">
+    <table class="table">
+        <tr>
+            <th>Publisher</th>
+            <td>{{ feedinfo.feed_publisher_name }}</td>
+        </tr>
+        <tr>
+            <th>URL</th>
+            <td><a href="{{ feedinfo.feed_publisher_url }}">{{ feedinfo.feed_publisher_url }}</a></td>
+        </tr>
+        <tr>
+            <th>Language</th>
+            <td>{{ feedinfo.feed_lang }}</td>
+        </tr>
+        <tr>
+            <th>Version</th>
+            <td>{{ feedinfo.feed_version }}</td>
+        </tr>
+        <tr>
+            <th>Start date</th>
+            <td>{{ feedinfo.feed_start_date }}</td>
+        </tr>
+        <tr>
+            <th>End date</th>
+            <td>{{ feedinfo.feed_end_date }}</td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="dismiss()">Cerrar</button>
+</div>

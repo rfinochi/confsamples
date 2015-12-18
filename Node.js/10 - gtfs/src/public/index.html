@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Demo</title>
+        <link rel="stylesheet" href="ccs/bootstrap.min.css" />
+        <style type="text/css">
+            .map .angular-google-map-container { height: 500px; }
+            .map .panel-body { padding: 0; }
+            .map .radius { width: 60px; text-align: center; }
+            .map .ubicacion { font-size: 12px; }
+            .tab-content { margin-top: 10px; height: 500px; overflow: auto; }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div ng-include="'partials/nav.html'"></div>
+            <div class="row">
+                <div class="col-sm-6 col-md-6">
+                    <div ng-include="'partials/map.html'"></div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <uib-tabset>
+                        <uib-tab heading="Paraderos" active="tabs.t1">
+                            <div ng-include="'partials/stopsbydistance.html'"></div>
+                        </uib-tab>
+                        <uib-tab heading="Recorridos" active="tabs.t2">
+                            <div ng-include="'partials/routesbydistance.html'"></div>
+                        </uib-tab>
+                        <uib-tab heading="{{ currentRoute.info.route_id }} (ida)" active="tabs.t3">
+                            <spinner name="stopsbyroute1-spinner" img-src="images/spinner.gif">
+                                Cargando paraderos para recorrido {{ currentRoute.info.route_id }} (ida).
+                            </spinner>
+                            <table class="table table-hover table-condensed" ng-controller="Home">
+                                <tr ng-repeat="stop in currentRoute.stops1" ng-mouseenter="showOnMap(stop)" ng-mouseleave="hideOnMap(stop)">
+                                    <td>{{ stop.stop_name }}</td>
+                                </tr>
+                            </table>
+                        </uib-tab>
+                        <uib-tab heading="{{ currentRoute.info.route_id }} (vuelta)" active="tabs.t4">
+                            <spinner name="stopsbyroute2-spinner" img-src="images/spinner.gif">
+                                Cargando paraderos para recorrido {{ currentRoute.info.route_id }} (vuelta).
+                            </spinner>
+                            <table class="table table-hover table-condensed" ng-controller="Home">
+                                <tr ng-repeat="stop in currentRoute.stops2" ng-mouseenter="showOnMap(stop)" ng-mouseleave="hideOnMap(stop)">
+                                    <td>{{ stop.stop_name }}</td>
+                                </tr>
+                            </table>
+                        </uib-tab>
+                    </uib-tabset>
+                </div>
+            </div>
+        </div>
+        <script src="js/app.js"></script>
+    </body>
+</html>

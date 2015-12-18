@@ -1,0 +1,21 @@
+<uib-tab heading="{{ currentRoute.info.route_id }} (ida)">
+    <spinner name="stopsbyroute1-spinner" img-src="images/spinner.gif">
+        Cargando paraderos para recorrido {{ currentRoute.info.route_id }} (ida).
+    </spinner>
+    <table class="table table-striped table-hover table-condensed">
+        <tr ng-repeat="stop in currentRoute.stops1">
+            <td>{{ stop.stop_name }}</td>
+        </tr>
+    </table>
+</uib-tab>
+
+<uib-tab heading="{{ currentRoute.info.route_id }} (vuelva)">
+    <spinner name="stopsbyroute2-spinner" img-src="images/spinner.gif">
+        Cargando paraderos para recorrido {{ currentRoute.info.route_id }} (vuelta).
+    </spinner>
+    <table class="table table-striped table-hover table-condensed">
+        <tr ng-repeat="stop in currentRoute.stops2">
+            <td>{{ stop.stop_name }}</td>
+        </tr>
+    </table>
+</uib-tab>

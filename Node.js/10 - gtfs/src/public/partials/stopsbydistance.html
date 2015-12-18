@@ -1,0 +1,8 @@
+<spinner name="stopsbydistance-spinner" img-src="images/spinner.gif">
+    Cargando paraderos dentro del radio especificado.
+</spinner>
+<table class="table table-striped table-hover table-condensed" ng-controller="StopsByDistance">
+    <tr ng-repeat="stop in stops" ng-mouseenter="showOnMap(stop)" ng-mouseleave="hideOnMap(stop)">
+        <td>{{ stop.stop_name }}</td>
+    </tr>
+</table>
