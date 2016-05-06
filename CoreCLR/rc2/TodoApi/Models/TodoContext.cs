@@ -13,6 +13,7 @@ namespace TodoApi.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=tcp:XXXX,1433;Database=Todo;User ID=XXXX;Password=XXXX;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            //optionsBuilder.UseSqlite("Data Source=Todo.db");
         }
     }
 }

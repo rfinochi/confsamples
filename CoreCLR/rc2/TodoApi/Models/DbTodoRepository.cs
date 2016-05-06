@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace TodoApi.Models
 {
-    public class SqlTodoRepository : ITodoRepository
+    public class DbTodoRepository : ITodoRepository
     {
 	public IEnumerable<Item> AllItems
         {
@@ -21,6 +21,20 @@ namespace TodoApi.Models
             }
         }
 
+        public void Init()
+        {
+            using ( TodoContext context = new TodoContext( ) )
+            {
+                context.Database.ExecuteSqlCommand("CREATE TABLE Items (Id integer, Title varchar(150), IsDone integer);");
+                
+                context.Items.Add(new Item { Id = 1, Title = "In Memory Item 1", IsDone = true });
+                context.Items.Add(new Item { Id = 2, Title = "In Memory Item 2", IsDone = false });
+                context.Items.Add(new Item { Id = 3, Title = "In Memory Item 3", IsDone = true });
+                
+                context.SaveChanges();
+            }
+        }
+        
         public Item GetById( int id )
         {
             using ( TodoContext context = new TodoContext( ) )

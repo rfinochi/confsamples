@@ -13,7 +13,7 @@ namespace TodoApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddSingleton<ITodoRepository, SqlTodoRepository>();
+            services.AddSingleton<ITodoRepository, DbTodoRepository>();
          }
 
         public void Configure(IApplicationBuilder app)

@@ -24,7 +24,7 @@ namespace TodoApi.Controllers
             return _repository.AllItems;
         }
 
-        [HttpGet("{id:int}", Name = "GetByIdRoute")]
+        [HttpGet("{id:int}", Name = "GetById")]
         public IActionResult GetById(int id)
         {
             var item = _repository.GetById(id);
@@ -45,7 +45,7 @@ namespace TodoApi.Controllers
             {
                 _repository.Add(item);
 
-                string url = Url.RouteUrl("GetByIdRoute", new { id = item.Id }, Request.Scheme, Request.Host.ToUriComponent());
+                string url = Url.RouteUrl("GetById", new { id = item.Id }, Request.Scheme, Request.Host.ToUriComponent());
                 this.Response.StatusCode = 201;
                 this.Response.Headers["Location"] = url;
             }

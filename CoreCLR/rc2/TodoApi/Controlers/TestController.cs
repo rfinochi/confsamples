@@ -19,7 +19,24 @@ namespace TodoApi.Controllers
         }
 
         [HttpGet]
-        public string GetAll()
+        public string Init()
+        {
+            string ret = "OK";
+            
+            try
+            {
+                _repository.Init();
+            }
+            catch (Exception e) 
+            {
+                ret = e.Message + " " + e.InnerException.Message;
+            }                          
+            
+            return ret;
+        }
+        
+        [HttpGet("{id:int}")]
+        public string TestConnection(int id)
         {
             string ret = "OK";
             
@@ -29,7 +46,7 @@ namespace TodoApi.Controllers
             }
             catch (Exception e) 
             {
-                ret = e.Message ;
+                ret = e.Message + " " + e.InnerException.Message;
             }                          
             
             return ret;
