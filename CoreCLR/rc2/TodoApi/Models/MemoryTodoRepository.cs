@@ -8,7 +8,7 @@ namespace TodoApi.Models
     {
         private readonly List<Item> _items = new List<Item>()
         {
-            new Item { Id = 1, Title = "In Memory Item 1" }
+            new Item { Id = 1, Title = "In Memory Task 1", IsDone = true }
         };
 
         public IEnumerable<Item> AllItems
@@ -21,9 +21,9 @@ namespace TodoApi.Models
 
         public void Init()
         {
-            _items.Add(new Item { Id = 2, Title = "In Memory Item 2" });
-            _items.Add(new Item { Id = 3, Title = "In Memory Item 3" });
-            _items.Add(new Item { Id = 4, Title = "In Memory Item 4" });
+            _items.Add(new Item { Id = 2, Title = "In Memory Task 2", IsDone = true });
+            _items.Add(new Item { Id = 3, Title = "In Memory Task 3", IsDone = false });
+            _items.Add(new Item { Id = 4, Title = "In Memory Task 4", IsDone = true });
         }
         
         public Item GetById(int id)

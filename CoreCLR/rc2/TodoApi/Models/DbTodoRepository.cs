@@ -27,9 +27,9 @@ namespace TodoApi.Models
             {
                 context.Database.ExecuteSqlCommand("CREATE TABLE Items (Id integer, Title varchar(150), IsDone integer);");
                 
-                context.Items.Add(new Item { Id = 1, Title = "In Memory Item 1", IsDone = true });
-                context.Items.Add(new Item { Id = 2, Title = "In Memory Item 2", IsDone = false });
-                context.Items.Add(new Item { Id = 3, Title = "In Memory Item 3", IsDone = true });
+                context.Items.Add(new Item { Id = 1, Title = "Task 1", IsDone = true });
+                context.Items.Add(new Item { Id = 2, Title = "Task 2", IsDone = false });
+                context.Items.Add(new Item { Id = 3, Title = "Task 3", IsDone = true });
                 
                 context.SaveChanges();
             }
