@@ -16,6 +16,7 @@ http.createServer(function (req, res) {
     var tablee = [];
     var i = 0;
     
+    /* Battery */
     if (action == '/battery') {
         var battery = new ev3dev.PowerSupply();
         var str = '';
@@ -55,6 +56,7 @@ http.createServer(function (req, res) {
         ));
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end(str + JSON.stringify(battery));
+    /* Sensors */
     } else if (action == '/sensors') {
         var touchSensor = new ev3dev.TouchSensor();
         var colorSensor = new ev3dev.ColorSensor();
@@ -124,6 +126,7 @@ http.createServer(function (req, res) {
         
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end(str);
+    /* Watch */
     } else if (action == '/watch') {
         var ultrasonicSensor = new ev3dev.UltrasonicSensor();
 
@@ -146,6 +149,7 @@ http.createServer(function (req, res) {
         
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end(str);
+    /* Start Atttack */
     } else if (action == '/startAttack') {
         var motorA = new ev3dev.Motor(ev3dev.OUTPUT_A);
         var motorD = new ev3dev.Motor(ev3dev.OUTPUT_D);
@@ -173,6 +177,7 @@ http.createServer(function (req, res) {
 		        
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end(str);
+    /* Stop Attack */
     } else if (action == '/stopAttack') {
         var motorA = new ev3dev.Motor(ev3dev.OUTPUT_A);
         var motorD = new ev3dev.Motor(ev3dev.OUTPUT_D);
@@ -202,6 +207,7 @@ http.createServer(function (req, res) {
         res.end('Commands: /battery /sensors /watch /startAttack /stopAttack\n');
     }
 }).listen(port);
+
 console.log('Server is listening on port ' + port)
 
 function sendmsg(data) {
