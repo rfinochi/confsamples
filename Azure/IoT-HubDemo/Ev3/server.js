@@ -133,7 +133,7 @@ http.createServer(function (req, res) {
 		var str = '';
                
         if (ultrasonicSensor.connected) {
-			if (ultrasonicSensor.distanceCentimeters < 10) {
+			if (ultrasonicSensor.distanceCentimeters < 50) {
 				str = '#E70000';
 			}
 			else
@@ -151,46 +151,106 @@ http.createServer(function (req, res) {
         res.end(str);
     /* Start Atttack */
     } else if (action == '/startAttack') {
-        var motorA = new ev3dev.Motor(ev3dev.OUTPUT_A);
-        var motorD = new ev3dev.Motor(ev3dev.OUTPUT_D);
+		var touchSensor = new ev3dev.TouchSensor();
+		var motorA = new ev3dev.Motor(ev3dev.OUTPUT_A);
+		var motorB = new ev3dev.Motor(ev3dev.OUTPUT_B);
+		var motorC = new ev3dev.Motor(ev3dev.OUTPUT_C);
+		var motorD = new ev3dev.Motor(ev3dev.OUTPUT_D);
+
+		var step1 = false;
+		var step2 = false;
 
 		var str = '';
                
-        if (motorA.connected && motorD.connected && startAttackCancellationToken == null) {
-            motorA.speedRegulationEnabled = 'off';
-            motorD.speedRegulationEnabled = 'off';
+        if (touchSensor.connected &&
+			motorA.connected && 
+			motorB.connected && 
+			motorC.connected && 
+			motorD.connected && 
+			startAttackCancellationToken == null) {
+			
+			motorA.speedRegulationEnabled = 'off';
+			motorA.dutyCycleSp = 100;
+
+			motorD.speedRegulationEnabled = 'off';
+			motorD.dutyCycleSp = 100;
+
+			motorB.speedRegulationEnabled = 'on';
+			motorB.speedSp = 600;
+
+			motorC.speedRegulationEnabled = 'on';
+			motorC.speedSp = 600;
 
 			startAttackCancellationToken = setInterval(function() {
-				motorA.dutyCycleSp = 100;
-				motorA.command = 'run-forever';
+				if (touchSensor.isPressed) {
+					motorB.command = 'stop';
+					motorC.command = 'stop';
+
+					motorA.command = 'run-forever';
+					motorD.command = 'run-forever';
 				
-				motorD.dutyCycleSp = 100;
-				motorD.command = 'run-forever';
+					step1 = false;
+					step2 = false;
+				}
+				else if (motorC.state.indexOf("running") == -1 && step1 && !step2) {
+					motorA.command = 'stop';
+					motorD.command = 'stop';
+
+					motorB.command = 'stop';
+					motorC.timeSp = 1000;
+					motorC.command = "run-timed";
+
+					step2 = true;
+				}
+				else if (motorB.state.indexOf("running") == -1 &&
+						 motorC.state.indexOf("running") == -1 && !step2) {
+					motorA.command = 'stop';
+					motorD.command = 'stop';
+					
+					motorB.timeSp = 3000;
+					motorB.command = "run-timed";
+					motorC.timeSp = 3000;
+					motorC.command = "run-timed";
+
+					step1 = true;
+				}
+				else if (motorB.state.indexOf("running") == -1 &&
+						 motorC.state.indexOf("running") == -1 && step1 && step2) {
+					step1 = false;
+					step2 = false;
+				}
 			}, 10);
 
             str = 'Attack started';
         } else if (startAttackCancellationToken != null) {
             str = 'Attack already started';
 		} else {
-            str = 'No valid motors on port A or D';
+            str = 'Check connections of Touch Sensor and Motors (A, B, C or D)';
         }
 		        
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end(str);
     /* Stop Attack */
     } else if (action == '/stopAttack') {
-        var motorA = new ev3dev.Motor(ev3dev.OUTPUT_A);
-        var motorD = new ev3dev.Motor(ev3dev.OUTPUT_D);
+		var motorA = new ev3dev.Motor(ev3dev.OUTPUT_A);
+		var motorB = new ev3dev.Motor(ev3dev.OUTPUT_B);
+		var motorC = new ev3dev.Motor(ev3dev.OUTPUT_C);
+		var motorD = new ev3dev.Motor(ev3dev.OUTPUT_D);
 
 		var str = '';
 
-		if (motorA.connected && motorD.connected) {
+		if (motorA.connected && 
+			motorB.connected && 
+			motorC.connected && 
+			motorD.connected) {
 			if (startAttackCancellationToken != null) {
 				clearInterval(startAttackCancellationToken);
 				startAttackCancellationToken = null;
 			}
 
 			motorA.command = 'stop';
+			motorB.command = 'stop';
+			motorC.command = 'stop';
 			motorD.command = 'stop';
 
             str = 'Attack stopped';

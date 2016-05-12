@@ -37,6 +37,7 @@
     <Compile Include="monitor.js" />
     <Compile Include="server.js" />
     <Compile Include="test.js" />
+    <Compile Include="testAttack.js" />
     <Content Include="package.json" />
     <Content Include="packages.config" />
     <Content Include="README.md" />
