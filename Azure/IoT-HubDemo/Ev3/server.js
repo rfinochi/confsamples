@@ -128,12 +128,16 @@ http.createServer(function (req, res) {
         res.end(str);
     /* Watch */
     } else if (action == '/watch') {
+        var touchSensor = new ev3dev.TouchSensor();
         var ultrasonicSensor = new ev3dev.UltrasonicSensor();
 
 		var str = '';
                
-        if (ultrasonicSensor.connected) {
-			if (ultrasonicSensor.distanceCentimeters < 50) {
+        if (ultrasonicSensor.connected && touchSensor.connected) {
+            if (touchSensor.isPressed) {
+                str = '#FFFF00';
+            }
+            else if (ultrasonicSensor.distanceCentimeters < 50) {
 				str = '#E70000';
 			}
 			else
