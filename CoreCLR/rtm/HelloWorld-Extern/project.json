@@ -1,0 +1,16 @@
+{
+  "buildOptions": {
+    "preserveCompilationContext": true,
+    "emitEntryPoint": true,
+    "debugType": "portable"
+  },
+  "dependencies": {
+    "Microsoft.NETCore.App": {
+      "type": "platform",
+      "version": "1.0.0"
+    }
+  },
+  "frameworks": {
+    "netcoreapp1.0": { }
+  }
+}
