@@ -1,0 +1,14 @@
+@import "variables";
+
+input {
+    margin-bottom: $gutter-sm;
+}
+
+textarea {
+   resize: vertical;
+   margin-bottom: $gutter-sm;
+}
+
+progress-bar {
+    margin-bottom: $gutter-sm;
+}

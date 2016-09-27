@@ -1,0 +1,32 @@
+@import "variables";
+
+form {
+    margin-bottom: $gutter-sm;
+}
+
+.form-group-no-label {
+    margin-bottom: -25px;
+}
+
+.form-inline input {
+    width: 300px;
+}
+
+.property-row {
+	margin-bottom: $gutter-sm;
+}
+
+@media only screen and (max-width :$breakpoint-sm) {
+    .form-group-no-label {
+        margin-bottom: auto;       
+    }
+    
+    .form-inline input {
+        width: 100%;
+    }
+    
+    .btn-from-group-sm {
+        float: right;
+        margin-bottom: 10px;
+    }    
+}

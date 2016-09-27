@@ -1,0 +1,12 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <span class="navbar-brand navbar-brand-application ellipsis">
+                {{Resources.AppHeader.title}}
+            </span>
+        </div>
+    </div>
+    <div *ngIf=progress>
+        <application-loading-bar></application-loading-bar>
+    </div>
+</nav>

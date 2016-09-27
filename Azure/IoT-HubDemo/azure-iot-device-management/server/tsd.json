@@ -1,0 +1,66 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "body-parser/body-parser.d.ts": {
+      "commit": "c2b4ebb74caeb379c3691646b04cb3db26b53f95"
+    },
+    "serve-static/serve-static.d.ts": {
+      "commit": "dade4414712ce84e3c63393f1aae407e9e7e6af7"
+    },
+    "mime/mime.d.ts": {
+      "commit": "dade4414712ce84e3c63393f1aae407e9e7e6af7"
+    },
+    "express/express.d.ts": {
+      "commit": "dade4414712ce84e3c63393f1aae407e9e7e6af7"
+    },
+    "node/node.d.ts": {
+      "commit": "8d252184e421915fbc9f56a5debcb098e0d2d68d"
+    },
+    "cookie-parser/cookie-parser.d.ts": {
+      "commit": "c2b4ebb74caeb379c3691646b04cb3db26b53f95"
+    },
+    "debug/debug.d.ts": {
+      "commit": "c2b4ebb74caeb379c3691646b04cb3db26b53f95"
+    },
+    "morgan/morgan.d.ts": {
+      "commit": "c2b4ebb74caeb379c3691646b04cb3db26b53f95"
+    },
+    "async/async.d.ts": {
+      "commit": "bd269cad4cb2b495f940c7b6afc5825d568029be"
+    },
+    "supertest/supertest.d.ts": {
+      "commit": "bd269cad4cb2b495f940c7b6afc5825d568029be"
+    },
+    "superagent/superagent.d.ts": {
+      "commit": "bd269cad4cb2b495f940c7b6afc5825d568029be"
+    },
+    "cors/cors.d.ts": {
+      "commit": "dade4414712ce84e3c63393f1aae407e9e7e6af7"
+    },
+    "jasmine/jasmine.d.ts": {
+      "commit": "9f0f926a12026287b5a4a229e5672c01e7549313"
+    },
+    "node-uuid/node-uuid-base.d.ts": {
+      "commit": "8b3b453a104bb2a949580bbb4e8c81c2a10138b3"
+    },
+    "node-uuid/node-uuid.d.ts": {
+      "commit": "8b3b453a104bb2a949580bbb4e8c81c2a10138b3"
+    },
+    "node-uuid/node-uuid-cjs.d.ts": {
+      "commit": "8b3b453a104bb2a949580bbb4e8c81c2a10138b3"
+    },
+    "request/request.d.ts": {
+      "commit": "8d252184e421915fbc9f56a5debcb098e0d2d68d"
+    },
+    "form-data/form-data.d.ts": {
+      "commit": "8d252184e421915fbc9f56a5debcb098e0d2d68d"
+    },
+    "mongodb/mongodb.d.ts": {
+      "commit": "8d252184e421915fbc9f56a5debcb098e0d2d68d"
+    }
+  }
+}

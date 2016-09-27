@@ -1,0 +1,40 @@
+@import "variables";
+
+
+.fill-container {
+	width: 100%;
+}
+
+
+$tag-background: #5bc0de;
+$tag-border: $hr-width solid #46b8da;
+$tag-text-color: white;
+
+.tag {
+    background-color: $tag-background;
+	color: $tag-text-color;
+	border-right: none;
+	border: $tag-border;
+	border-right: 0px;
+	cursor: default;
+}
+
+.tag:last-of-type {
+	border-right: $tag-border;    
+}
+
+.tag > .glyphicon-remove {
+	margin-left: $gutter-xs;
+	font-size: 12px;
+	color: $tag-text-color;
+	text-decoration: none!important;
+	cursor: pointer;
+	
+	&:hover {
+		color: $btn-default-border;
+	} 
+}
+
+.input-group > .form-control:last-child {
+	border-left: none;
+}

@@ -1,0 +1,175 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Alfredo is watching you!</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon.png">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body class="app">
+
+    <script src="Scripts/jquery-3.1.0.min.js" type="text/javascript"></script>
+    <script src="Scripts/jquery.signalR-2.2.1.min.js" type="text/javascript"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    
+    <script type="text/javascript">
+        $(function () {
+            var connection = $.connection('/robot');
+
+            connection.received(function (data) {
+                var robotData = JSON.parse(data);
+
+                var batteryMeasuredVoltage = robotData.batteryMeasuredVoltage;
+                var batteryMaxVoltage = robotData.batteryMaxVoltage;
+
+                if (batteryMeasuredVoltage > batteryMaxVoltage)
+                    batteryMaxVoltage = batteryMeasuredVoltage;
+
+                $('#batteryMeasuredVoltage').text(Math.round((batteryMeasuredVoltage * 100) / batteryMaxVoltage) + '%');
+                $('#batteryMeasuredVoltageGraph').attr('width', Math.round((batteryMeasuredVoltage * 278) / batteryMaxVoltage) + 'px');
+
+                if (robotData.touchSensorIsPressed)
+                    $('#touchSensorIsPressed').text('Sí');
+                else
+                    $('#touchSensorIsPressed').text('No');
+
+                $('#colorSensorAmbientLightIntensity').text(robotData.colorSensorAmbientLightIntensity + '%');
+
+                $('#colorSensorColor').removeClass();
+                $('#colorSensorColor').addClass('data-value');
+
+                if (robotData.colorSensorColor == 0) {
+                    $('#colorSensorColor').addClass('data-value-white');
+                    $('#colorSensorColor').text('SIN COLOR');
+                } else if (robotData.colorSensorColor == 1) {
+                    $('#colorSensorColor').addClass('data-value-black');
+                    $('#colorSensorColor').text('NEGRO');
+                } else if (robotData.colorSensorColor == 2) {
+                    $('#colorSensorColor').addClass('default');
+                    $('#colorSensorColor').text('AZUL');
+                } else if (robotData.colorSensorColor == 3) {
+                    $('#colorSensorColor').addClass('data-value-green');
+                    $('#colorSensorColor').text('VERDE');
+                } else if (robotData.colorSensorColor == 4) {
+                    $('#colorSensorColor').addClass('data-value-yellow');
+                    $('#colorSensorColor').text('AMARILLO');
+                } else if (robotData.colorSensorColor == 5) {
+                    $('#colorSensorColor').addClass('data-value-red');
+                    $('#colorSensorColor').text('ROJO');
+                } else if (robotData.colorSensorColor == 6) {
+                    $('#colorSensorColor').addClass('data-value-grey');
+                    $('#colorSensorColor').text('BLANCO');
+                } else if (robotData.colorSensorColor == 7) {
+                    $('#colorSensorColor').addClass('data-value-brown');
+                    $('#colorSensorColor').text('MARRON');
+                }
+
+                $('#soundSensorSoundPressure').text(robotData.soundSensorSoundPressure + ' dB');
+
+                $('#ultrasonicSensorDistanceCentimeters').text(robotData.ultrasonicSensorDistanceCentimeters + ' CM');
+
+                if (robotData.touchSensorIsPressed) {
+                    $('#intruderAlarm').attr('src', 'assets/circleYellow.svg');
+                }
+                else if (robotData.ultrasonicSensorDistanceCentimeters < 50) {
+                    $('#intruderAlarm').attr('src', 'assets/circleRed.svg');
+                }
+                else {
+                    $('#intruderAlarm').attr('src', 'assets/circleGreen.svg');
+                }
+            });
+
+            connection.start();
+        });
+    </script>
+
+    <div class="grosseline"></div>
+    <div class="container-fluid">
+        <div class="col-lg-7">
+            <header class="header" role="heading">
+                <h1><span>Alfredo</span> is watching you!</h1>
+            </header>
+
+            <main id="view" role="main">
+                <div class="data-row">
+                    <section class="col-lg-6">
+                        <h2 class="title title-1">Batería <span id="batteryMeasuredVoltage">0%</span></h2>
+                        <figure class="data-img data-img-battery">
+                            <div id="batteryMeasuredVoltageGraph" class="battery-charge" width="278px"></div>
+                            <img src="assets/battery.svg" alt="" />
+                        </figure>
+                    </section>
+
+                    <section class="col-lg-6">
+                        <h2 class="title title-2">¿Mano apretada?</h2>
+                        <i class="fa fa-4x fa-hand-rock-o"></i>
+                        <span id="touchSensorIsPressed" class="data-value"></span>
+                    </section>
+                </div>
+
+                <div class="data-row">
+                    <section class="col-lg-6">
+                        <h2 class="title title-3">Intensidad de la luz</h2>
+                        <i class="fa fa-4x fa-lightbulb-o"></i>
+                        <span id="colorSensorAmbientLightIntensity" class="data-value"></span>
+                    </section>
+
+                    <section class="col-lg-6">
+                        <h2 class="title title-4">Color de la luz</h2>
+                        <i class="fa fa-3x fa-eyedropper"></i>
+                        <span id="colorSensorColor" class="data-value data-value-grey"></span>
+                    </section>
+                </div>
+
+                <div class="data-row">
+                    <section class="col-lg-6">
+                        <h2 class="title title-5">Sonido Ambiente</h2>
+                        <i class="fa fa-3x fa-volume-up"></i>
+                        <span id="soundSensorSoundPressure" class="data-value">0 dB</span>
+                    </section>
+
+                    <section class="col-lg-6">
+                        <h2 class="title title-6">Distancia</h2>
+                        <i class="distance-icon">
+                            <i class="fa fa-3x fa-long-arrow-right"></i>
+                            <i class="fa fa-3x fa-long-arrow-left"></i>
+                        </i>
+                        <span id="ultrasonicSensorDistanceCentimeters" class="data-value data-value-distance">0 CM</span>
+                    </section>
+                </div>
+
+                <div class="data-row">
+                    <section class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <figure class="pull-left data-img data-img-alarm data-img-alarm-red">
+                                    <img id="intruderAlarm" src="assets/circleGrey.svg">
+                                </figure>
+                            </div>
+                            <div class="col-lg-6 no-pad-left">
+                                <h2 class="title title-8 default">Alarma de Intrusos</h2>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+
+        <div class="col-lg-5">
+            <div class="logo pull-right" role="img">
+                <img src="assets/logoLagash.svg" alt="Logo Lagash">
+            </div>
+
+            <figure class="alfredo-img">
+                <img src="assets/alfredo.png" alt="" />
+            </figure>
+        </div>
+    </div>
+</body>
+</html>

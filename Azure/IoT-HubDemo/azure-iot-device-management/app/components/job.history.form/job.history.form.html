@@ -1,0 +1,76 @@
+<div>
+    <form class="form">
+        <div class="row">
+            <div class="col-md-2">
+                <label>{{Resources.JobDetails.titleJobId}}</label>
+            </div>
+            <div class="col-md-10">
+                <input type="text" value={{job.jobId}} readonly class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label>{{Resources.JobDetails.titleParentJobId}}</label>
+            </div>
+            <div class="col-md-10">
+                <input type="text" value={{job.parentJobId}} readonly class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label>{{Resources.JobDetails.titleDeviceId}}</label>
+            </div>
+            <div class="col-md-10">
+                <input type="text" value={{job.deviceId}} readonly class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label>{{Resources.JobDetails.titleStartTime}}</label>
+            </div>
+            <div class="col-md-10">
+                <input type="text" value={{job.startTimeUtc}} readonly class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label>{{Resources.JobDetails.titleEndTime}}</label>
+            </div>
+            <div class="col-md-10">
+                <input type="text" value={{job.endTimeUtc}} readonly class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label>{{Resources.JobDetails.titleJobType}}</label>
+            </div>
+            <div class="col-md-10">
+                <input type="text" value={{job.type}} readonly class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label>{{Resources.JobDetails.titleStatus}}</label>
+            </div>
+            <div class="col-md-10">
+                <input type="text" value={{job.status}} readonly class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label>{{Resources.JobDetails.titleStatusMessage}}</label>
+            </div>
+            <div class="col-md-10">
+                <textarea class="form-control" readonly>{{job.statusMessage}}</textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label>{{Resources.JobDetails.titleFailureReason}}</label>
+            </div>
+            <div class="col-md-10">
+                <textarea class="form-control" readonly>{{job.failureReason}}</textarea>
+            </div>
+        </div>
+    </form>
+</div>

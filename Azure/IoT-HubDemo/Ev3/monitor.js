@@ -4,7 +4,7 @@ var ev3dev = require('./node_modules/ev3dev-lang/bin/index.js');
 
 var device = require('azure-iot-device');
 var transportHttp = require('azure-iot-device-http').Http;
-var connectionString = 'HostName=Ev3.azure-devices.net;DeviceId=Ev3;SharedAccessKey=0Pjh/FCH+dZi/PGw9lmV01ed9NiCb34ooruFE3hDTYw=';
+var connectionString = '';
 
 var touchSensor = new ev3dev.TouchSensor();
 var colorSensor = new ev3dev.ColorSensor();
@@ -16,6 +16,7 @@ var battery = new ev3dev.PowerSupply();
 var tablee = [];
 var str = '';
 var i = 0;
+
 setInterval(function () {
     if (battery.connected) {
         str += '  Technology: ' + battery.technology + '\n';
@@ -82,8 +83,8 @@ setInterval(function () {
         str += '   otherSensorPresent: ' + ultrasonicSensor.otherSensorPresent + '\n';
         tablee[i] = JSON.stringify({
             Sensor: 'ultrasonicSensor', 
-            distanceCentimeters: ultrasonicSensor.reflectedLightIntensity, 
-            otherSensorPresent: ultrasonicSensor.ambientLightIntensity
+            distanceCentimeters: ultrasonicSensor.distanceCentimeters, 
+            otherSensorPresent: ultrasonicSensor.otherSensorPresent
         });
         i++;
     }
@@ -113,16 +114,16 @@ setInterval(function () {
         var client = device.Client.fromConnectionString(connectionString, transportHttp);
         var message = new device.Message(data);
         message.properties.add('Ev3Sensors', 'sensorData');
-        console.log("Sending message: " + message.getData());
+        console.log("Sending message: " + message.getData() + '\n\n');
         client.sendEvent(message, printResultFor('send'));
     }
     
     function printResultFor(op) {
         return function printResult(err, res) {
             if (err)
-                console.log(op + ' error: ' + err.toString());
+                console.log(op + ' error: ' + err.toString() + '\n\n');
             else
-                console.log(op + ' successful');
+                console.log(op + ' successful\n\n');
         };
     }
 }, 10);

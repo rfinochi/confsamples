@@ -10,8 +10,8 @@ namespace ProgressSignalR
     {
         public void StartProcessing( )
         {
-            Clients.Caller.notify( "We've started processing, " + person.Name );
-            Clients.All.setProgress( 0 );
+            Clients.Caller.notify( "We've started processing" );
+            Clients.Caller.setProgress( 0 );
 
             for ( int i = 0; i <= 100; i++ )
             {

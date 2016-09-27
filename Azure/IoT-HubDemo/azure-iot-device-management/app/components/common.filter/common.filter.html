@@ -1,0 +1,38 @@
+<div class="row spacer">
+    <div class="col-xs-12">
+        <button class="btn btn-default" (click)="add()">
+            <span class="glyphicon glyphicon-plus"></span> {{Resources.FilterEditor.titleButtonAddFilter}}
+        </button>
+    </div>
+</div>
+
+<div class="row spacer" *ngIf="allFiltersRemoved">
+    <div class="col-xs-12">
+        <span class="text-warning">{{Resources.FilterEditor.messageAllFiltersRemoved}}</span>
+    </div>
+</div>
+
+<div class="row spacer filters" *ngFor="let filter of currentFilters.value;let i = index">
+    <div class="col-xs-12 filter-containter">
+        <div class="filter-stack-left-control filter-operator-container">
+            <label class="filter-title">{{Resources.FilterEditor.titleLabelOperator}}</label>
+            <label class="filter-operator-value">{{Resources.FilterEditor.titleLabelOperatorValue}}</label>
+        </div>
+        <div class="filter-stack-left-control filter-column-container">
+            <label class="filter-title">{{Resources.FilterEditor.titleLabelColumn}}</label>
+            <select class="form-control" (change)="setFilter(filter, $event.target.value)" value="{{filter.option ? getId(filter.option) : ''}}">
+                <option value="">{{Resources.GridViewSelector.captionFilterDropdownSelectColumn}}</option>
+                <option *ngFor="let option of options" value="{{getId(option)}}">{{getLabel(option)}}</option>
+            </select>
+        </div>
+        <div class="filter-stack-left-control filter-value-container">
+            <label class="filter-title">{{Resources.FilterEditor.titleLabelValue}}</label>
+            <input type="text" class="form-control" maxlength="50" [(ngModel)]="filter.value"/>
+        </div>
+        <div class="filter-stack-left-control">
+            <button class="btn btn-danger btn-block" (click)="remove(filter)">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        </div>
+    </div>
+</div>

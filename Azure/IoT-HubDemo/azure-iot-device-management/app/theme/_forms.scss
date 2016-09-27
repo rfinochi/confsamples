@@ -1,0 +1,14 @@
+@import "variables";
+
+$required-color: red;
+$required-size: 1.4em;
+
+.required::after {
+    content: '*';
+    color: $required-color;
+    font-size: $required-size;
+    vertical-align: top;
+    position: relative;
+    top: -$gutter-xxs;
+    left: $gutter-xxs;
+}

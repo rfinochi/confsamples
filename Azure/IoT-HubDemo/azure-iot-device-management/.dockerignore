@@ -1,0 +1,15 @@
+# Development configs
+.*
+
+# Non-runtime directories
+node_modules/
+typings/
+dist/app/maps/
+dist/server/maps/
+dist/test/
+
+# Development configs
+user-config.json
+
+# Tests
+**/*.spec.js

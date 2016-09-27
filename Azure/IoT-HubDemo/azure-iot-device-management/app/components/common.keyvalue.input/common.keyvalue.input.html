@@ -1,0 +1,34 @@
+<div>
+	<form class="form form-inline" [ngFormModel]="form">
+		<div class="form-group">
+			<label>{{Resources.LabelKeyValueName}}</label><br/>
+			<input type="text" placeholder={{keyPlaceholder}} ngControl="key" class="form-control" [disabled]="disabled">
+		</div>
+
+		<div class="form-group">
+			<label>{{Resources.LabelKeyValueValue}}</label><br/>
+			<input type="text" placeholder={{valuePlaceholder}} ngControl="value" class="form-control" [disabled]="disabled">
+		</div>
+		<!-- compensate for no label -->
+		<div class="form-group form-group-no-label">			
+			<button class="btn btn-default btn-from-group-sm" [disabled]="disabled" (click)="addPair()">
+				<span class="glyphicon glyphicon-plus"></span>
+			</button>
+		</div>
+	</form>
+	<div class="property-row" *ngFor="let key of keys()">
+		<form class="form form-inline">
+			<div class="form-group">
+				<input type="text" value={{key}} class="form-control" disabled>
+			</div>
+			<div class="form-group">
+				<input type="text" value={{keyValueMap[key]}} class="form-control" disabled>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-danger btn-from-group-sm" [disabled]="disabled" (click)="removePair(key, $event)">
+					<span class="glyphicon glyphicon-trash"></span>
+				</button>
+			</div>
+		</form>
+	</div>
+</div>

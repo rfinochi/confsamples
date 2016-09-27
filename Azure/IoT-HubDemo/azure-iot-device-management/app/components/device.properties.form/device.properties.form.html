@@ -1,0 +1,47 @@
+<div>
+    <form class="form" [ngFormModel]="form">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="collapsible-header">
+                    <div class="collapsible-header-click">
+                        <h3><span (click)="isOpen = !isOpen" class="glyphicon" aria-hidden="true" [ngClass]="{ 'glyphicon-menu-down': isOpen, 'glyphicon-menu-right': !isOpen }"></span></h3>
+                    </div>
+                    <div class="collapsible-header-title">
+                        <h3>{{Resources.Device.titleDeviceProperties}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="isOpen">
+            <div class="row">
+                <div class="col-sm-2" *ngFor="let prop of readonlyProperties;">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="ellipsis">{{prop.label}}</label>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <input type="text" ngControl={{prop.key}} class="form-control" disabled>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-2" *ngFor="let prop of writeableProperties;">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label>{{prop.label}}</label>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <input type="text" ngControl={{prop.key}} class="form-control" [disabled]="isLoading">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>

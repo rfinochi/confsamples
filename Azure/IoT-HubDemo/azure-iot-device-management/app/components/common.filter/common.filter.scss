@@ -1,0 +1,55 @@
+@import "variables";
+
+.filter-containter {
+    padding-right: $gutter-xs;
+    margin-bottom: -$gutter-sm;
+}
+
+.filter-column-container {
+    width: $filter-column-container-width;
+}
+
+.filter-operator-value {
+    padding: $filter-operator-value-padding; 
+    text-align: right;
+    width: $filter-operator-value-width;
+}
+
+.filter-value-container {
+   width: calc(100% - #{$filter-remaining});  
+}
+
+.filters {
+    .filter-title {
+        display: none; 
+    }
+    .filter-operator-value {
+        visibility: visible; 
+    }
+     
+    &:first-child {
+        .filter-title {
+            display: block; 
+        }
+        .filter-operator-value {
+            visibility: hidden; 
+        }
+    }
+}
+
+@media only screen and (max-width :$breakpoint-xs) {
+    .filter-column-container {
+        width: auto;
+    }
+    .filter-value-container {
+        width: auto;        
+    }
+    .filters:first-child {
+        .filter-title {
+            display: none; 
+        }
+    }
+    .filter-btn-firstrowpad {
+        margin-top: 0px;  
+    }
+}

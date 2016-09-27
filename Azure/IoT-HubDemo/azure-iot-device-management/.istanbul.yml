@@ -1,0 +1,5 @@
+ reporting: 
+     dir: ./dist/test/coverage
+ instrumentation:
+    excludes: ['**/vendor/**']
+    include-all-sources : true

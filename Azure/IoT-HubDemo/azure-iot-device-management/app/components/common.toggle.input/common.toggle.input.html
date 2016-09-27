@@ -1,0 +1,12 @@
+<div class="btn-group">
+	<div class="btn"
+		[ngClass]="{'btn-success': value, 'btn-default': !value, 'disabled': disabled}"
+		(click)="setValue(true)">
+		{{onText}}
+	</div>
+	<div class="btn"
+		[ngClass]="{'btn-danger': !value, 'btn-default': value, 'disabled': disabled}"
+		(click)="setValue(false)">
+		{{offText}}
+	</div>	
+</div>

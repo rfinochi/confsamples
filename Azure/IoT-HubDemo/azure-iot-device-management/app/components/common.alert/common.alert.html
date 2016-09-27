@@ -1,0 +1,11 @@
+<div class="alert"
+  [ngClass]="[ 'alert-' + type ]"
+  role="alert">
+  <span *ngIf="dismissible" 
+  	class="glyphicon glyphicon-remove pull-right" 
+  	aria-hidden="true"
+  	(click)="dismiss($event)">
+  </span>
+
+  <ng-content></ng-content>
+</div>

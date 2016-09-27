@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 using Microsoft.Azure.Devices.Client;
 using Newtonsoft.Json;
@@ -13,7 +10,7 @@ namespace SimulatedDevice
     class Program
     {
         private static DeviceClient deviceClient;
-        private static string iotHubUri = "Ev3.azure-devices.net";
+        private static string iotHubUri = "ev3.azure-devices.net";
         private static string deviceKey = "";
 
         static void Main( string[] args )
@@ -27,19 +24,29 @@ namespace SimulatedDevice
 
         private static async void SendDeviceToCloudMessagesAsync( )
         {
-            double avgWindSpeed = 10;
             Random rand = new Random( );
 
             while ( true )
             {
-                double currentWindSpeed = avgWindSpeed + rand.NextDouble( ) * 4 - 2;
+                double data = 10 + rand.NextDouble( ) * 4 - 2;
 
+                /*
                 var telemetryDataPoint = new
                 {
-                    deviceId = "Ev3",
-                    windSpeed = currentWindSpeed
+                    batteryMeasuredVoltage= data,
+                    batteryMaxVoltage = 7800000,
+                    touchSensorIsPressed = false,
+                    colorSensorReflectedLightIntensity = 93,
+                    colorSensorAmbientLightIntensity = 22,
+                    colorSensorColor = 6,
+                    ultrasonicSensorDistanceCentimeters = 44, 
+                    soundSensorSoundPressure = data
                 };
+
                 var messageString = JsonConvert.SerializeObject( telemetryDataPoint );
+                */
+
+                var messageString = "{\"batteryMeasuredVoltage\":6647066,\"batteryMaxVoltage\":7500000,\"touchSensorIsPressed\":false,\"colorSensorReflectedLightIntensity\":93,\"colorSensorAmbientLightIntensity\":22,\"colorSensorColor\":6,\"ultrasonicSensorDistanceCentimeters\":44.3,\"soundSensorSoundPressure\":0}";
                 var message = new Message( Encoding.ASCII.GetBytes( messageString ) );
 
                 await deviceClient.SendEventAsync( message );

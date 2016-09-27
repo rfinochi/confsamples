@@ -1,0 +1,2 @@
+# This ensures dlls don't get modified by crlf correction
+*.png binary

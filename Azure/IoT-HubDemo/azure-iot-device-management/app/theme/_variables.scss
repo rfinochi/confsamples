@@ -1,0 +1,29 @@
+@import "common-theme";
+
+// Universal Variables
+$layer-overlay: 0.8 * $layer-step;
+
+// Universal gutter sizes
+$gutter-xxs: 2px;
+
+// Breakpoints: 320 <= ss < 480 <= xs < 768 <= sm < 992 <= md < 1200 <= lg
+$breakpoint-ss: 320px;
+
+// rule variables
+$hr-width: 1px;
+$hr-color: #ccc;
+
+// Filters
+$filter-column-container-width: 300px;
+$filter-operator-value-padding: 6px;
+$filter-operator-value-width: 60px;
+$filter-btn-firstrowpad-margin-top: 25px;
+$filter-btn-danger-width: 40px;
+$filter-total-gutter-sm: 4 * $gutter-sm;
+$filter-remaining: $filter-operator-value-width + $filter-column-container-width + $filter-btn-danger-width + $filter-total-gutter-sm;
+
+// button
+$button-total-height: 34px;
+
+$sm-text-color: darkgrey;
+$btn-label-margins: 7px 0px;

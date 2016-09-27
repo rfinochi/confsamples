@@ -6,6 +6,8 @@ var device = require('azure-iot-device');
 //var transportAmqpWs = require('azure-iot-device-amqp-ws').AmqpWs;
 //var transportMqtt = require('azure-iot-device-mqtt').Mqtt;
 var transportHttp = require('azure-iot-device-http').Http;
+var sound = require('./sound.js');
+
 var connectionString = '';
 var port = process.env.port || 1337
 var startAttackCancellationToken = null;
@@ -97,8 +99,8 @@ http.createServer(function (req, res) {
             str += '   otherSensorPresent: ' + ultrasonicSensor.otherSensorPresent + '\n';
             tablee[i] = JSON.stringify({
                 Sensor: 'ultrasonicSensor', 
-                distanceCentimeters: ultrasonicSensor.reflectedLightIntensity, 
-                otherSensorPresent: ultrasonicSensor.ambientLightIntensity
+                distanceCentimeters: ultrasonicSensor.distanceCentimeters, 
+                otherSensorPresent: ultrasonicSensor.otherSensorPresent
             });
             i++;
         }
@@ -265,10 +267,57 @@ http.createServer(function (req, res) {
         
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end(str);
-    }
-	else {
+    /* Sound Init */
+    } else if (action == '/soundInit') {
+        sound.init();
+
         res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end('Commands: /battery /sensors /watch /startAttack /stopAttack\n');
+        res.end('Sound Init Ok\n');
+    /* Sound Intro */
+    } else if (action == '/soundIntro') {
+        sound.intro();
+
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Sound Intro Ok\n');
+    /* Sound Dead */
+    } else if (action == '/soundDead') {
+        sound.dead();
+
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Sound Dead Ok\n');
+    /* Sound Tada */
+    } else if (action == '/soundTada') {
+        sound.tada();
+
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Sound Beep Ok\n');
+    /* Sound High Beep */
+    } else if (action == '/soundHighBeep') {
+        sound.highBeep();
+
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Sound High Beep Ok\n');
+    /* Speech Hello */
+    } else if (action == '/speechHello') {
+        sound.hello();
+
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Speech Hello Ok\n');
+    /* Speech Yes */
+    } else if (action == '/speechYes') {
+        sound.yes();
+
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Speech Yes Ok\n');
+    /* Speech No */
+    } else if (action == '/speechNo') {
+        sound.no();
+
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Speech No Ok\n');
+    } else {
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Commands: /battery /sensors /watch /startAttack /stopAttack /soundInit /soundIntro /soundTada /soundBeep /soundHighBeep /speechHello /speechYes /speechNo\n');
     }
 }).listen(port);
 

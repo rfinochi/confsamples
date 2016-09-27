@@ -1,0 +1,39 @@
+// A task runner that calls the NPM scripts
+// This builds all tsc, sass, lint etc
+{
+    "version": "0.1.0",
+    // The command is npm.
+    "command": "npm",
+    // The command is a shell script
+    "isShellCommand": true,
+    // Show the output window
+    "showOutput": "always",
+    "args": [
+        "run"
+    ],
+    "tasks": [
+        {
+            "taskName": "build",
+            // Tell npm to run the script build
+            "args": [],
+            "isWatching": false,
+            "isBuildCommand": true
+        },
+        {
+            "taskName": "test",
+            // Tell npm to run the script test
+            "args": [],
+            "isWatching": false,
+            "isBuildCommand": false,
+            "isTestCommand": true
+        },
+        {
+            "taskName": "develop",
+            // Tell npm to run the script start:dev for incremantal build and debug
+            "args": [],
+            "isWatching": true,
+            "isBuildCommand": false,
+            "isTestCommand": false
+        }
+    ]
+}

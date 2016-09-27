@@ -1,0 +1,17 @@
+<button class="btn btn-default"
+    [ngClass]="{'active': Resources.AppNavRoutes.deviceGrid === router.hostComponent.name }"
+    (click)="navigateTo(Resources.AppNavRoutes.deviceGrid)">            
+    <!--<span class="glyphicon glyphicon-th-list"></span>-->
+    <span>{{Resources.AppNavLabels.deviceGrid}}</span>
+</button><!--
+--><button class="btn btn-default"
+    [ngClass]="{'active': Resources.AppNavRoutes.historyGrid === router.hostComponent.name }"
+    (click)="navigateTo(Resources.AppNavRoutes.historyGrid)">            
+    <span>{{Resources.AppNavLabels.historyGrid}}</span>
+</button><!--
+--><div class="vertical-rule"></div><!--
+--><button class="btn btn-default"
+    [ngClass]="{'active': Resources.AppNavRoutes.device === router.hostComponent.name }"
+    (click)="navigateTo(Resources.AppNavRoutes.device)">            
+    <span>{{Resources.AppNavLabels.device}}</span>
+</button>

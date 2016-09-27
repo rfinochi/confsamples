@@ -1,0 +1,105 @@
+@import "variables";
+
+body {
+    padding: 65px 0 $gutter-md 0;
+}
+ 
+hr {
+    margin: $gutter-sm $gutter-md $gutter-sm $gutter-md;
+    border-color: $hr-color;
+}
+
+.vertical-rule {
+    height: $button-total-height;
+    border-left: $hr-width solid $hr-color;
+    vertical-align: top;
+    display: inline-block;
+    
+    margin-right: $gutter-sm;
+}
+
+
+h2 {
+    margin-top: 0;
+    margin-bottom: $gutter-md;
+}
+
+.resizing-columns, .resizing-columns * {
+    cursor: col-resize !important;
+}
+
+.spacer {
+    margin-bottom: $gutter-sm;
+}
+
+.stack-left-control {
+    float: left;
+    margin-right: $gutter-sm;
+}
+
+.filter-stack-left-control {
+    float: left;
+    margin-right: $gutter-sm;
+    margin-bottom: $gutter-sm;     
+}
+
+.ellipsis {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.collapsible-header {
+    display: table-cell;
+}
+
+.collapsible-header-click {
+    float: left;
+    cursor: pointer;
+    padding-right: $gutter-xs;
+    vertical-align: center;
+}
+
+.collapsible-header-click > h2 > span {
+    font-size: 0.8em;
+}
+
+.collapsible-header-title {
+    float: left;
+    vertical-align: center;
+}
+
+@media only screen and (max-width :$breakpoint-sm) {
+    .stack-left-control {
+        margin-bottom: $gutter-sm;        
+    }
+}
+
+.btn-bar {
+    margin-bottom: -$gutter-sm;
+    
+    .btn {
+        margin-bottom: $gutter-sm;
+    }
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+@media only screen and (min-width :$breakpoint-sm) {
+    .view-selector-dropdown {
+        max-width: 300px;
+    }
+
+    .search-bar {
+        max-width: 300px;
+        float: right;
+    }
+}
+
+
+
+

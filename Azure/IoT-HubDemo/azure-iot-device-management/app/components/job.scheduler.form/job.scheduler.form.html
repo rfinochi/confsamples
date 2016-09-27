@@ -1,0 +1,21 @@
+<div>
+    <form class="form" [ngFormModel]="form">
+        <div *ngFor="let item of items" class="row">
+            <div class="col-md-2">
+                <label>{{item.label}}</label>
+            </div>
+            <div class="col-md-10">
+                <div *ngIf="!item.required">
+                    <input type="text" placeholder={{item.defaultValue}} ngControl={{item.label}} class="form-control">
+                </div>
+                <div *ngIf="item.required">
+                    <input type="text" placeholder={{item.defaultValue}} ngControl={{item.label}} class="form-control" required>
+                </div>
+            </div>
+        </div>
+        <div class="pull-right">
+            <button type="button" (click)="onClickSubmit()" class="btn btn-default" [disabled]='!form.valid'>{{Resources.Common.submit}}</button>
+            <button type="button" (click)="onClickCancel()" class="btn btn-default">{{Resources.Common.cancel}}</button>
+        </div>
+    </form>
+</div>

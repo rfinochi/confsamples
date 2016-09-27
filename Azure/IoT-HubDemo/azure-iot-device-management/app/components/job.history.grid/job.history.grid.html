@@ -1,0 +1,121 @@
+<!-- placeholder implementation -->
+<div class="container-fluid">
+    <div class="btn-bar row">
+        <div class="col-sm-7">
+            <app-nav></app-nav>
+        </div>
+
+        <div class="col-sm-5">
+            <div class="input-group search-bar">
+                <input type="text" class="form-control" placeholder={{Resources.HistoryGrid.findJobPlaceHolder}} [(ngModel)]="searchJob"
+                value="{{searchJob}}" (keypress)="searchKeyPress($event)">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" (click)="findJob()"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <hr/>
+    </div>
+
+    <div class="btn-bar row">
+        <div class="col-md-12">
+            <common-menu style="margin-right:-10px" [availableRels]="currentValidRels" [activeButton]="currentActiveNavButton" [buttons]="gridNavConfigurationJobActions.GridNavButtons"
+            (onClick)="gridNavAction($event)"></common-menu>
+        </div>
+    </div>
+
+    <div class="row">
+        <hr/>
+    </div>
+
+    <div class="row" *ngIf="!!alert && !hideDetails">
+        <div class="col-xs-12">
+            <alert [type]="alert.type" [dismissible]="alert.dismissible" [dismissOnTimeout]="alert.dismissOnTimeout" (close)="alert = null">
+                {{alert.msg}}
+            </alert>
+        </div>
+    </div>
+
+    <div [hidden]="hideDetails">
+        <history-form [job]="currentJob" [alert]="alert"></history-form>
+        <div class="row">
+            <hr/>
+        </div>
+    </div>
+
+    
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+
+            <button class="btn btn-default stack-left-control" (click)="toggleEditor()" [ngClass]="{'active': editorVisible}">
+                <span class="glyphicon glyphicon-filter"></span>
+            </button>
+            <button class="btn btn-default stack-left-control" (click)="saveConfiguration()" [disabled]="selectedConfiguration.value.name.length===0">
+                {{Resources.Common.save}}
+            </button>
+
+            <div class="input-group view-selector-dropdown" dropdown>
+                <input id="configuration" type="text" maxlength="50" class="form-control" [value]="selectedConfiguration.value.name" [ngClass]="{'font-bold': gridConfigurationUnsaved}" (input)="selectedConfiguration.value.name=$event.target.value"
+                />
+                <ul class="dropdown-menu">
+                    <li *ngFor="let configuration of availableConfigurations">
+                        <a class="dropdown-item" (click)="selectConfiguration(configuration)">{{configuration.name}}</a>
+                    </li>
+                </ul>
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" dropdownToggle>
+                        <span class="caret"></span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="editorVisible">
+        <div class="row">
+            <hr/>
+            <div class="col-md-1">
+                <b>{{Resources.GridViewSelector.headingColumns}}</b>
+            </div>
+            <div class="col-md-11">
+                <set-editor [available]="availableColumns" [current]="currentColumns" [getLabel]="getColumnLabel"></set-editor>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-1">
+                <b>{{Resources.GridViewSelector.headingFilter}}</b>
+            </div>
+            <div class="col-md-11">
+                <filter-editor [getId]="getColumnId" [getLabel]="getColumnLabel" [options]="availableFilters" [currentFilters]="currentFilters"></filter-editor>
+                <button class="btn btn-default pull-right" (click)="applyFilter()">
+                    <span class="glyphicon glyphicon-ok"></span> {{Resources.FilterEditor.titleButtonApply}}
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <hr/>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="!!alert && hideDetails">
+        <div class="row spacer"></div>
+        <div class="col-xs-12">
+            <alert [type]="alert.type" [dismissible]="alert.dismissible" [dismissOnTimeout]="alert.dismissOnTimeout" (close)="alert = null">
+                {{alert.msg}}
+            </alert>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <grid [source]="gridSource" [configuration]="gridConfiguration" (selectionChanged)="updateSelection($event)" [poll]="gridSource.poll"
+            [currentPresentation]="GridBreakpoints" (rowDoubleClick)="onJobDoubleClick($event)"></grid>
+        </div>
+    </div>
+</div>

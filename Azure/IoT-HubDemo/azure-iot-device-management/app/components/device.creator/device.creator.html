@@ -1,0 +1,95 @@
+<div class="container-fluid">
+    <div class="btn-bar row">
+        <div class="col-md-12">
+            <app-nav></app-nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <hr/>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>{{Resources.AppNavLabels.device}}</h2>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="!!alert">
+        <div class="col-md-12">
+            <alert [type]="alert.type" [dismissible]="alert.dismissible" [dismissOnTimeout]="alert.dismissOnTimeout"
+            (close)="alert = null">
+                {{alert.msg}}
+            </alert>
+        </div>
+    </div>
+    
+    <div class="row" *ngIf="!!creationAlert">
+        <div class="col-md-12">
+            <alert [type]="creationAlert.type" [dismissible]="creationAlert.dismissible" [dismissOnTimeout]="creationAlert.dismissOnTimeout"
+            (close)="creationAlert = null">
+                {{Resources.Device.titleAlertAddDeviceSuccess}} <a href="#/edit/{{createdDevice.deviceId}}">{{Resources.Device.titleClickHereToEdit}}</a>
+            </alert>
+        </div>
+    </div>
+
+    <service-properties-form [deviceConnectionString]="deviceConnectionString" [device]="createdDevice" title="Service Properties"></service-properties-form>
+
+    <div class="btn-bar row">
+        <div class="col-md-6 col-md-offset-6">
+            <div class="pull-right">
+                <button (click)="resetAddDeviceForm()" type="button" class="btn btn-default right-gutter-xs" [style.display]="createdDevice ? 'inline' : 'none'">{{Resources.Device.titleButtonAddNewDevice}}</button>
+                <button type="button" (click)="addDevice()" class="btn btn-default" [disabled]="createdDevice || !addFormValid()">{{Resources.Device.titleButtonSingleSave}}</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <hr/>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>{{Resources.Device.titleBulkAdd}}</h2>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="!!bulkAlert">
+        <div class="col-md-12">
+            <alert [type]="bulkAlert.type" [dismissible]="bulkAlert.dismissible" [dismissOnTimeout]="bulkAlert.dismissOnTimeout" (close)="bulkAlert = null">
+                {{bulkAlert.msg}}
+            </alert>
+        </div>
+    </div>
+
+    <div class="row">
+        <form class="form" (submit)="addDevices()">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-2">
+                        <label>{{Resources.Device.titleTextBoxBulkAddDevices}} <a href="{{exampleCSVurl}}" download="example-device.csv">{{Resources.ExampleFile}}</a></label>
+                    </div>
+                    <div class="col-md-10">
+
+                        <input id="file" class="hidden" type="file" ng2FileSelect [uploader]="model.bulkAddFileUploader">
+
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <label class="btn btn-default" for="file">{{Resources.Common.browse}}</label>
+                            </span>
+                            <input placeholder="{{Resources.Common.browseForFile}}" type="text" class="form-control" readonly id="bulk-add-file-label" [(ngModel)]="model.bulkAddFileName">
+                        </div>
+                    </div>
+                </div>
+                <div class="row spacer"></div>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-6">
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-default pull-right" [disabled]="model.bulkAddIsDisabled">{{Resources.Device.titleButtonBulkAdd}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

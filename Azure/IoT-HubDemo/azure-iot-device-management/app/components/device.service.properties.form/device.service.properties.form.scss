@@ -1,0 +1,24 @@
+@import "variables";
+@import "forms";
+
+.row {
+	margin-bottom: $gutter-sm;
+}
+
+h2 {
+	margin-top: -5px;
+}
+
+.form-inline input {
+    width: 300px;
+}
+
+@media only screen and (max-width :$breakpoint-sm) {
+    .form-group-no-label {
+        margin-bottom: auto;       
+    }
+    
+    .form-inline input {
+        width: 100%;
+    }    
+}

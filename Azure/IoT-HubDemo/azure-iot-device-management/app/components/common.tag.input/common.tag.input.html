@@ -1,0 +1,10 @@
+<div class="fill-container input-group">
+    <span class="tag input-group-addon" *ngFor="let tag of tags" >
+    	{{tag}} 
+    	<a class="glyphicon glyphicon-remove" *ngIf="!disabled" (click)="removeTag(tag)"></a>
+    </span>
+    <input placeholder="{{placeholderText}}" type="text" class="form-control" [disabled]="disabled" [value]="value" (input)="value=$event.target.value" (keyup)="onKeyDown($event)"/>
+    <span class="input-group-btn">
+        <button class="btn btn-default" type="button" (click)="addTag()">{{Resources.AddTag}}</button>
+    </span>
+</div>

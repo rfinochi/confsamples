@@ -1,0 +1,20 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+       {
+            "name": "Attach Chrome Debug",
+            "type": "chrome",
+            "request": "attach",
+            "webRoot": "./",
+            "sourceMaps": true,
+            "port":9222,
+            "preLaunchTask": "develop"
+        },
+        {
+            "name": "Attach Server Debug",
+            "type": "node",
+            "request": "attach",
+            "port": 5858
+        }
+	]
+}

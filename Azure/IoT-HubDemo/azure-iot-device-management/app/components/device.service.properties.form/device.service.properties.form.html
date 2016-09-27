@@ -1,0 +1,92 @@
+<div>
+    <form class="form" [ngFormModel]="form">
+        <div class="row">
+            <div class="col-md-2">
+                <label>{{Resources.Device.titleStatus}}</label>
+            </div>
+            <div class="col-md-10">
+                <div>
+                    <toggle-input [disabled]="isReadonly" [value]="enabled()">
+                    </toggle-input>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label [ngClass]="{ required: !device}">{{Resources.Device.titleTextBoxSingleAddDeviceId}}</label>
+            </div>
+            <div class="col-md-10">
+                <input placeholder="{{Resources.Common.deviceIdText}}" type="text" value={{deviceId()}} ngControl="deviceId" class="form-control" [disabled]="device">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label>{{Resources.Device.titleConnectionString}}</label>
+            </div>
+            <div class="col-md-10">
+
+                <div class="input-group">
+                    <input placeholder="{{Resources.Common.connectionStringText}}" type="text" value={{connectionString()}} ngControl="connectionString" class="form-control" [disabled]="true">
+                    <span class="input-group-btn">
+                         <button class="btn btn-default" type="button" (click)="copyToClipboard(connectionString())" ><span class="glyphicon glyphicon-copy"></span></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="collapsible-header">
+                    <div class="collapsible-header-click">
+                        <h3><span (click)="isOpen = !isOpen" class="glyphicon" aria-hidden="true" [ngClass]="{ 'glyphicon-menu-down': isOpen, 'glyphicon-menu-right': !isOpen }"></span></h3>
+                    </div>
+                    <div class="collapsible-header-title">
+                        <h3>{{title}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="isOpen">
+            <div class="row">
+                <div class="col-md-2">
+                    <label>{{Resources.Device.titleTextBoxSingleAddTags}}</label>
+                </div>
+                <div class="col-md-10">
+                    <tag-input [placeholderText]="Resources.Common.tagEnterText" [tags]="tags()" [disabled]="isReadonly"></tag-input>
+                </div>
+            </div>
+
+            <div class="row spacer"></div>
+
+            <div class="row">
+                <div class="col-md-2" style="vertical-align: middle">
+                    <label>{{Resources.Device.titleAuthentication}}</label>
+                </div>
+                <div class="col-md-10">
+                    <form class="form-inline" [ngFormModel]="form">
+                        <div class="form-group">
+                            <label>{{Resources.Device.titleTextBoxSingleAddPrimaryKey}}</label><br/>
+                            <input type="text" value={{primaryKey()}} placeholder="{{Resources.Common.autoGenIfBlank}}" ngControl="primaryKey" class="form-control" [disabled]="device">
+                        </div>
+
+                        <div class="form-group">
+                            <label>{{Resources.Device.titleTextBoxSingleAddSecondaryKey}}</label><br/>
+                            <input type="text" value={{secondaryKey()}} placeholder="{{Resources.Common.autoGenIfBlank}}" ngControl="secondaryKey" class="form-control" [disabled]="device">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">
+                    <label>{{Resources.Device.titleProperties}}</label>
+                </div>
+                <div class="col-md-10">
+                    <key-value-input [disabled]="isReadonly" keyPlaceholder="{{Resources.Device.titlePropertyKeyPlaceholder}}" valuePlaceholder="{{Resources.Device.titlePropertyValuePlaceholder}}" [keyValueMap]="properties()"></key-value-input>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

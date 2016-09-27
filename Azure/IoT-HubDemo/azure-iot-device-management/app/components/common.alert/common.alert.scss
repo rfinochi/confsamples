@@ -1,0 +1,12 @@
+.alert > .glyphicon-remove {
+  cursor: pointer; 
+  opacity: .4; 
+
+  &:hover {
+	opacity: .8; 
+  }
+
+  &:before {
+    vertical-align: sub;
+  }
+}

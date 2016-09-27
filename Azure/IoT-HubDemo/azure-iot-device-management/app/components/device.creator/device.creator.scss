@@ -1,0 +1,38 @@
+@import "variables";
+@import "forms";
+
+h2 {
+    margin-top: 0;
+    margin-bottom: $gutter-md;
+}
+
+input {
+    margin-bottom: $gutter-sm;
+}
+
+select {
+    margin-bottom: $gutter-sm;
+}
+
+.pad-bottom {
+    margin-bottom: $gutter-sm;
+}
+
+@media only screen and (max-width :$breakpoint-md) {
+    form > div > .input-group {
+        margin-bottom: $gutter-sm !important;
+    }
+}
+
+input.hidden {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.right-gutter-xs {
+    margin-right: $gutter-xs;
+}

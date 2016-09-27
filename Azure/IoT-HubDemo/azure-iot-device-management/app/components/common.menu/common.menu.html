@@ -1,0 +1,7 @@
+<button *ngFor="let button of buttons;"
+    class="btn btn-default"
+    [ngClass]="{'active': activeButton && activeButton.rel === button.rel}"
+    (click)="clickHandler(button)"
+    [disabled]="isButtonDisabled(button.rel)">
+        {{button.label}}
+</button>

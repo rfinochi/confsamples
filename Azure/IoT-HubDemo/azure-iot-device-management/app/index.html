@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Loading...</title>
+    <link rel="icon" href="data:;base64,=">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="/dist/app/components/application/application.css" rel="stylesheet" />
+
+    <script src="node_modules/es5-shim/es5-shim.js"></script>
+    <script src="node_modules/es6-shim/es6-shim.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/underscore/underscore.js"></script>
+
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    
+    <script src="systemjs.config.js"></script>
+    <script src="node_modules/@azure-iot/common-ux/client.js"></script>
+    <script src="node_modules/@azure-iot/logging/client/client.js"></script>
+    <script src="client.bundle.js"></script>
+    
+    <script src="//localhost:9091"></script>
+
+    <script>
+        System.import('dist/app/boot.js') 
+            .then(null, console.error.bind(console));
+    </script>
+
+    <base href="/">
+</head>
+
+
+<body>
+    <application></application>
+</body>
+
+</html>

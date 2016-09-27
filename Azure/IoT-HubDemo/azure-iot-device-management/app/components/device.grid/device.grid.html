@@ -1,0 +1,209 @@
+<div class="container-fluid">
+    <div class="btn-bar row">
+        <div class="col-sm-7">
+            <app-nav></app-nav>
+        </div>
+        <div class="col-sm-5">
+            <div class="input-group search-bar">
+                <input type="text" class="form-control" placeholder={{Resources.DeviceGrid.findDevicePlaceHolder}} [(ngModel)]="searchDevice"
+                value="{{searchDevice}}" (keypress)="searchKeyPress($event)">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" (click)="findDeviceClicked()"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <hr/>
+    </div>
+
+    <div class="btn-bar row">
+        <div class="col-md-12">
+            <common-menu [availableRels]="currentValidRels" [activeButton]="currentActiveNavButton" [buttons]="gridNavConfigurationDevice.GridNavButtons"
+            (onClick)="gridNavAction($event)"></common-menu><!--
+            --><div class="vertical-rule hidden-xs"></div><!--
+            --><div class="jobs">
+                <label>{{Resources.LabelJobs}}</label>
+                <select class="form-control" [(ngModel)]="currentJobRel" [ngClass]="{'disabled': editLoadingDevice || editFormVisible}">
+                    <option value="">{{Resources.LabelSelectJob}}</option>
+                    <option value="jobs:jobReboot">{{Resources.ConfirmRebootDevices}}</option>
+                    <option value="jobs:jobFirmware">{{Resources.Common.firmwareUpdate}}</option>
+                    <option value="jobs:jobReset">{{Resources.Common.factoryReset}}</option>
+                </select>
+                <div class="btn btn-default" (click)="startJob()" [ngClass]="{'disabled': editLoadingDevice || editFormVisible}">{{Resources.LabelExecuteJob}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <hr/>
+    </div>
+
+    <div *ngIf="schedulerVisible">
+        <div class="row">
+            <div class="col-md-12">
+                <jobscheduler-form [items]="jobSchedulerFormItems" (submit)="onJobSchedulerSuccess($event)" (cancel)="onJobSchedulerCancel()"></jobscheduler-form>
+            </div>
+        </div>
+        <div class="row">
+            <hr/>
+        </div>
+    </div>
+    <div *ngIf="editFormVisible || editLoadingDevice" class="edit-form">
+        <div class="edit-form-overlay" *ngIf="editDeviceConfiguration" [ngFormModel]="deviceConfigurationForm">
+            <div class="edit-form-container">
+                <div class="edit-form-configuration" [ngClass]="{'disabled': editLoadingDevice}">
+                    <h2>{{Resources.Device.titleConfiguration}}</h2>
+                    <textarea class="config-form" ngControl="configuration"></textarea>
+                    <div class="message">{{Resources.Device.warningConfigurationAction}}</div>
+                    <div class="actions text-right">
+                        <button type="button" class="btn btn-primary" (click)="onConfigurationSubmit()">{{Resources.Common.submit}}</button>
+                        <button type="button" class="btn btn-default" (click)="editDeviceConfiguration = false">{{Resources.Common.cancel}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="!!alert">
+            <div class="col-xs-12">
+                <alert [type]="alert.type" [dismissible]="alert.dismissible" [dismissOnTimeout]="alert.dismissOnTimeout" (close)="alert = null">
+                    {{alert.msg}}
+                </alert>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>{{Resources.DeviceGrid.titleEditDevice}}</h2>
+            </div>
+            <div class="col-md-6">
+                <div class="pull-right-device-buttons">
+                    <button type="button" class="btn btn-default v-align-top" (click)="refreshCurrentDevice()">
+                        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> {{Resources.DeviceGrid.labelRefreshDevice}}
+                    </button>
+                    <button type="button" class="btn btn-default v-align-top" (click)="editDeviceConfiguration = !editDeviceConfiguration">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> {{Resources.Device.titleConfigurationChange}}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" *ngIf="editableDevice">
+                <service-properties-form [device]="editableDevice" title="Service Properties" [deviceConnectionString]="deviceConnectionString"></service-properties-form>
+                <device-properties-form [device]="editableDevice" (refresh)="refreshDeviceProperties($event)"></device-properties-form>
+                <div class="pull-right">
+                    <button type="button" (click)="onBulkEditFormSubmit()" class="btn btn-default" [disabled]="editLoadingDevice || editLoadingDeviceProperties">
+                        {{Resources.Common.saveChanges}}
+                    </button>
+                    <button type="button" (click)="onBulkEditFormCancel()" class="btn btn-default" [disabled]="editLoadingDevice || editLoadingDeviceProperties">
+                        {{Resources.Common.cancel}}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <hr/>
+        </div>
+    </div>
+
+    <div class="row" [ngClass]="{'disabled': editFormVisible || schedulerVisible}">
+        <div class="col-xs-12 col-sm-6">
+
+            <button class="btn btn-default stack-left-control" (click)="toggleEditor()" [ngClass]="{'active': editorVisible}">
+                <span class="glyphicon glyphicon-filter"></span>
+            </button>
+            <button class="btn btn-default stack-left-control" (click)="saveConfiguration()" [disabled]="selectedConfiguration.value.name.length===0">
+                {{Resources.Common.save}}
+            </button>
+
+            <div class="input-group view-selector-dropdown" dropdown>
+                <input id="configuration" type="text" maxlength="50" class="form-control" [value]="selectedConfiguration.value.name" [ngClass]="{'font-bold': gridConfigurationUnsaved}"
+                (input)="selectedConfiguration.value.name=$event.target.value" />
+                <ul class="dropdown-menu">
+                    <li *ngFor="let configuration of availableConfigurations">
+                        <a class="dropdown-item" (click)="selectConfiguration(configuration)">{{configuration.name}}</a>
+                    </li>
+                </ul>
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" dropdownToggle>
+                        <span class="caret"></span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="editorVisible">
+        <div class="row">
+            <hr/>
+            <div class="col-md-1">
+                <b>{{Resources.GridViewSelector.headingColumns}}</b>
+            </div>
+            <div class="col-md-11">
+                <set-editor [available]="availableColumns" [current]="currentColumns" [getLabel]="getColumnLabel"></set-editor>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-1">
+                <b>{{Resources.GridViewSelector.headingFilter}}</b>
+            </div>
+            <div class="col-md-11">
+                <filter-editor [getId]="getColumnId" [getLabel]="getColumnLabel" [options]="availableFilters" [currentFilters]="currentFilters"></filter-editor>
+                <button class="btn btn-default pull-right" (click)="applyFilter()">
+                    <span class="glyphicon glyphicon-ok"></span> {{Resources.FilterEditor.titleButtonApply}}
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <hr/>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="!!alert && !editFormVisible && !editLoadingDevice">
+        <div class="spacer"></div>
+        <div class="col-xs-12">
+            <alert [type]="alert.type" [dismissible]="alert.dismissible" [dismissOnTimeout]="alert.dismissOnTimeout" (close)="alert = null">
+                {{alert.msg}}
+            </alert>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="!!jobSuccessAlert && !editFormVisible && !editLoadingDevice">
+        <div class="spacer"></div>
+        <div class="col-xs-12">
+            <alert [type]="jobSuccessAlert.type" [dismissible]="jobSuccessAlert.dismissible" [dismissOnTimeout]="jobSuccessAlert.dismissOnTimeout" (close)="jobSuccessAlert = null">
+                {{Resources.Common.allJobsScheduled.actionStarted}}<a href="#/history">{{Resources.Common.allJobsScheduled.historyHref}}</a>{{Resources.Common.allJobsScheduled.trackProgress}}
+            </alert>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="spacer above-sm-breakpoint"></div>
+        <div class="col-md-12">
+            <div class="registry-status">
+                {{gridSource.registryStats.totalDeviceCount}} {{Resources.DeviceGrid.labelDisplayingDevices}} {{gridSource.visibleRowCount}}
+            </div>
+            <div class="poll-status">
+                <span>{{Resources.DeviceGrid.labelPoll}}: <input type="checkbox" (change)="gridSource.poll(!gridSource.poll())" [checked]="gridSource.poll()"></span> {{Resources.DeviceGrid.labelLastUpdated}}: {{gridSource.lastUpdated.toLocaleTimeString()}}            
+            </div>
+        </div>
+        <div class="spacer"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12" [ngClass]="{'disabled': editFormVisible}">
+            <grid [source]="gridSource" [configuration]="gridConfiguration" (selectionChanged)="updateSelection($event)" 
+            [currentPresentation]="GridBreakpoints" (rowDoubleClick)="findDevice($event.deviceId)"></grid>
+        </div>
+    </div>
+</div>
+
+<modal [title]="confirmTitle" [successText]="Resources.Yes" [cancelText]="Resources.No" [isVisible]="isConfirming" (onSuccess)="confirm()"
+(onCancel)="cancel()">
+    <p>{{confirmMessage}}</p>
+</modal>
+
+<modal title="Device Details" successText="Ok" [isVisible]="!!deviceDetailsJSON" (onSuccess)="confirm()">
+    <pre>{{deviceDetailsJSON}}</pre>
+</modal>
