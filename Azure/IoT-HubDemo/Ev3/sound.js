@@ -29,6 +29,13 @@ exports.tada = function () {
     exec('aplay ' + __dirname + '/data/tada.wav');
 }
 
+exports.blah = function () {
+    exec('aplay ' + __dirname + '/data/blah.wav');
+}
+
+exports.pssst = function () {
+    exec('aplay ' + __dirname + '/data/pssst.wav');
+}
 exports.beep = function () {
     exec('beep -f 400 -l 50');
 }

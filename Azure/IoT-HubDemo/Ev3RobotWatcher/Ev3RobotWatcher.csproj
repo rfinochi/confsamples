@@ -131,6 +131,7 @@
     <Content Include="fonts\Poppins-Medium.ttf" />
     <Content Include="fonts\Poppins-Regular.ttf" />
     <Content Include="fonts\Poppins-SemiBold.ttf" />
+    <None Include="Properties\PublishProfiles\AlfredoTheRobot - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

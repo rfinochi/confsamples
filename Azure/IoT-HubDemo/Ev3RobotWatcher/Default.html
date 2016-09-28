@@ -17,7 +17,7 @@
     <script src="Scripts/jquery-3.1.0.min.js" type="text/javascript"></script>
     <script src="Scripts/jquery.signalR-2.2.1.min.js" type="text/javascript"></script>
     <script src="Scripts/bootstrap.min.js"></script>
-    
+
     <script type="text/javascript">
         $(function () {
             var connection = $.connection('/robot');
@@ -45,7 +45,7 @@
                 $('#colorSensorColor').addClass('data-value');
 
                 if (robotData.colorSensorColor == 0) {
-                    $('#colorSensorColor').addClass('data-value-white');
+                    $('#colorSensorColor').addClass('data-value-grey');
                     $('#colorSensorColor').text('SIN COLOR');
                 } else if (robotData.colorSensorColor == 1) {
                     $('#colorSensorColor').addClass('data-value-black');
@@ -91,68 +91,74 @@
 
     <div class="grosseline"></div>
     <div class="container-fluid">
-        <div class="col-lg-7">
+        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
             <header class="header" role="heading">
+                <div class="logo-mobile">
+                    <img src="assets/logoLagash.svg" alt="Logo Lagash">
+                </div>
                 <h1><span>Alfredo</span> is watching you!</h1>
             </header>
 
             <main id="view" role="main">
                 <div class="data-row">
-                    <section class="col-lg-6">
-                        <h2 class="title title-1">Batería <span id="batteryMeasuredVoltage">0%</span></h2>
-                        <figure class="data-img data-img-battery">
-                            <div id="batteryMeasuredVoltageGraph" class="battery-charge" width="278px"></div>
-                            <img src="assets/battery.svg" alt="" />
-                        </figure>
+                    <section class="col-lg-6 col-md-6 col-sm-6 col-xs-12 item-container">
+                        <div class="items item-battery">
+                            <h2 class="title title-1">Batería <span id="batteryMeasuredVoltage">0%</span></h2>
+                            <figure class="data-img data-img-battery">
+                                <div id="batteryMeasuredVoltageGraph" class="battery-charge" width="278px"></div>
+                                <img src="assets/battery.svg" alt="" />
+                            </figure>
+                        </div>
                     </section>
 
-                    <section class="col-lg-6">
-                        <h2 class="title title-2">¿Mano apretada?</h2>
-                        <i class="fa fa-4x fa-hand-rock-o"></i>
-                        <span id="touchSensorIsPressed" class="data-value"></span>
-                    </section>
-                </div>
-
-                <div class="data-row">
-                    <section class="col-lg-6">
-                        <h2 class="title title-3">Intensidad de la luz</h2>
-                        <i class="fa fa-4x fa-lightbulb-o"></i>
-                        <span id="colorSensorAmbientLightIntensity" class="data-value"></span>
-                    </section>
-
-                    <section class="col-lg-6">
-                        <h2 class="title title-4">Color de la luz</h2>
-                        <i class="fa fa-3x fa-eyedropper"></i>
-                        <span id="colorSensorColor" class="data-value data-value-grey"></span>
+                    <section class="col-lg-6 col-md-6 col-sm-6 col-xs-12 item-container">
+                        <div class="items item-mano">
+                            <h2 class="title title-2"><i class="fa fa-4x fa-hand-rock-o"></i> ¿Mano apretada?</h2>
+                            <span id="touchSensorIsPressed" class="data-value"></span>
+                        </div>
                     </section>
                 </div>
 
                 <div class="data-row">
-                    <section class="col-lg-6">
-                        <h2 class="title title-5">Sonido Ambiente</h2>
-                        <i class="fa fa-3x fa-volume-up"></i>
-                        <span id="soundSensorSoundPressure" class="data-value">0 dB</span>
+                    <section class="col-lg-6 col-md-6 col-sm-6 col-xs-12 item-container">
+                        <div class="items item-luz">
+                            <h2 class="title title-3"><i class="fa fa-4x fa-lightbulb-o"></i> Intensidad de la luz</h2>
+                            <span id="colorSensorAmbientLightIntensity" class="data-value"></span>
+                        </div>
                     </section>
 
-                    <section class="col-lg-6">
-                        <h2 class="title title-6">Distancia</h2>
-                        <i class="distance-icon">
-                            <i class="fa fa-3x fa-long-arrow-right"></i>
-                            <i class="fa fa-3x fa-long-arrow-left"></i>
-                        </i>
-                        <span id="ultrasonicSensorDistanceCentimeters" class="data-value data-value-distance">0 CM</span>
+                    <section class="col-lg-6 col-md-6 col-sm-6 col-xs-12 item-container">
+                        <div class="items item-color">
+                            <h2 class="title title-4"><i class="fa fa-3x fa-eyedropper"></i> Color de la luz</h2>
+                            <span id="colorSensorColor" class="data-value data-value-grey"></span>
+                        </div>
+                    </section>
+                </div>
+                <div class="data-row">
+                    <section class="col-lg-6 col-md-6 col-sm-6 col-xs-12 item-container">
+                        <div class="items item-sonido">
+                            <h2 class="title title-5"><i class="fa fa-3x fa-volume-up"></i> Sonido Ambiente</h2>
+                            <span id="soundSensorSoundPressure" class="data-value">0 dB</span>
+                        </div>
+                    </section>
+
+                    <section class="col-lg-6 col-md-6 col-sm-6 col-xs-12 item-container">
+                        <div class="items item-dis">
+                            <h2 class="title title-6"><i class="fa fa-3x fa-exchange"></i> Distancia</h2>
+                            <span id="ultrasonicSensorDistanceCentimeters" class="data-value data-value-distance">0 CM</span>
+                        </div>
                     </section>
                 </div>
 
                 <div class="data-row">
-                    <section class="col-lg-6">
+                    <section class="col-lg-6 col-md-12 col-sm-12 col-xs-12 item-container">
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-12 item-special">
                                 <figure class="pull-left data-img data-img-alarm data-img-alarm-red">
-                                    <img id="intruderAlarm" src="assets/circleGrey.svg">
+                                    <img id="intruderAlarm" src="assets/circleGrey.svg" class="img-responsive">
                                 </figure>
                             </div>
-                            <div class="col-lg-6 no-pad-left">
+                            <div class="col-lg-6 col-md-12 col-xs-12 no-pad-left item-special">
                                 <h2 class="title title-8 default">Alarma de Intrusos</h2>
                             </div>
                         </div>
@@ -160,14 +166,12 @@
                 </div>
             </main>
         </div>
-
-        <div class="col-lg-5">
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
             <div class="logo pull-right" role="img">
                 <img src="assets/logoLagash.svg" alt="Logo Lagash">
             </div>
-
             <figure class="alfredo-img">
-                <img src="assets/alfredo.png" alt="" />
+                <img src="assets/alfredo.png" alt="" class="img-responsive col-xs-12 alfredo-responsive" />
             </figure>
         </div>
     </div>

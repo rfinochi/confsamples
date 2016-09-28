@@ -290,6 +290,24 @@ http.createServer(function (req, res) {
         sound.tada();
 
         res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Sound Tada Ok\n');
+        /* Sound Blah */
+    } else if (action == '/soundBlah') {
+        sound.blah();
+
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Sound Blah Ok\n');
+        /* Sound Pssst */
+    } else if (action == '/soundPssst') {
+        sound.pssst();
+
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Sound Pssst Ok\n');
+    /* Sound Beep */
+    } else if (action == '/soundBeep') {
+        sound.beep();
+
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('Sound Beep Ok\n');
     /* Sound High Beep */
     } else if (action == '/soundHighBeep') {
@@ -317,7 +335,7 @@ http.createServer(function (req, res) {
         res.end('Speech No Ok\n');
     } else {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end('Commands: /battery /sensors /watch /startAttack /stopAttack /soundInit /soundIntro /soundTada /soundBeep /soundHighBeep /speechHello /speechYes /speechNo\n');
+        res.end('Commands: /battery /sensors /watch /startAttack /stopAttack /soundInit /soundIntro /soundTada /soundBlah /soundPssst /soundBeep /soundHighBeep /speechHello /speechYes /speechNo\n');
     }
 }).listen(port);
 

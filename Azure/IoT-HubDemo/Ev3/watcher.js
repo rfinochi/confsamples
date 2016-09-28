@@ -10,6 +10,7 @@ var touchSensor = new ev3dev.TouchSensor();
 var colorSensor = new ev3dev.ColorSensor();
 var ultrasonicSensor = new ev3dev.UltrasonicSensor();
 var soundSensor = new ev3dev.SoundSensor();
+var soundSensor2 = new ev3dev.Sensor(4);
 var battery = new ev3dev.PowerSupply();
 
 var ret = '';
@@ -23,7 +24,9 @@ setInterval(function () {
             colorSensorAmbientLightIntensity: colorSensor.ambientLightIntensity,
             colorSensorColor: colorSensor.color, //0: No color, 1: Black, 2: Blue, 3: Green, 4: Yellow, 5: Red , 6: White, 7: Brown
             ultrasonicSensorDistanceCentimeters: ultrasonicSensor.distanceCentimeters,
-            soundSensorSoundPressure: 0 //soundSensor.soundPressure //db
+            //soundSensorSoundPressure: 0 soundSensor.soundPressure //db
+            //soundSensorSoundPressure: soundSensor2.numValues //db
+            soundSensorSoundPressure: 0
         };
 
     sendmsg(JSON.stringify( 

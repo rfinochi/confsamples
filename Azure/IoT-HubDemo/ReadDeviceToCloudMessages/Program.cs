@@ -34,6 +34,7 @@ namespace ReadDeviceToCloudMessages
                 EventData eventData = await eventHubReceiver.ReceiveAsync( );
                 if ( eventData == null )
                     continue;
+
                 Console.WriteLine( string.Format( "Message received. Partition: {0} Data: '{1}'", partition, Encoding.UTF8.GetString( eventData.GetBytes( ) ) ) );
             }
         }
