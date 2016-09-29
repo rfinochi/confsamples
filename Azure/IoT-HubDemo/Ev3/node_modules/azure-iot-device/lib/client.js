@@ -11,6 +11,7 @@ var SharedAccessSignature = require('./shared_access_signature.js');
 var EventEmitter = require('events').EventEmitter;
 var util = require('util');
 var debug = require('debug')('azure-iot-device.Client');
+var BlobUploadClient = require('./blob_upload').BlobUploadClient;
 
 /**
  * @class           module:azure-iot-device.Client
@@ -18,24 +19,26 @@ var debug = require('debug')('azure-iot-device.Client');
  *                  call the factory method,
  *                  {@link module:azure-iot-device.Client.fromConnectionString|fromConnectionString},
  *                  to create an IoT Hub device client.
- * @param {Object}  transport   An object that implements the interface
- *                              expected of a transport object, e.g.,
- *                              {@link module:azure-iot-device~Http|Http}.
- * @param {String}  connStr     A connection string (optional: when not provided, updateSharedAccessSignature must be called to set the SharedAccessSignature token directly).
+ * @param {Object}  transport         An object that implements the interface
+ *                                    expected of a transport object, e.g.,
+ *                                    {@link module:azure-iot-device~Http|Http}.
+ * @param {String}  connStr           A connection string (optional: when not provided, updateSharedAccessSignature must be called to set the SharedAccessSignature token directly).
+ * @param {Object}  blobUploadClient  An object that is capable of uploading a stream to a blob.
  */
-var Client = function (transport, connStr) {
+var Client = function (transport, connStr, blobUploadClient) {
   EventEmitter.call(this);
   /*Codes_SRS_NODE_DEVICE_CLIENT_05_001: [The Client constructor shall throw ReferenceError if the transport argument is falsy.]*/
   if (!transport) throw new ReferenceError('transport is \'' + transport + '\'');
 
   /*Codes_SRS_NODE_DEVICE_CLIENT_16_026: [The Client constructor shall accept a connection string as an optional second argument] */
-  if (connStr) {
-    this._connectionString = connStr;
-    /*Codes_SRS_NODE_DEVICE_CLIENT_16_027: [If a connection string argument is provided, the Client shall automatically generate and renew SAS tokens.] */
+  this._connectionString = connStr;
+
+  if (this._connectionString && ConnectionString.parse(this._connectionString).SharedAccessKey) {
+    /*Codes_SRS_NODE_DEVICE_CLIENT_16_027: [If a connection string argument is provided and is using SharedAccessKey authentication, the Client shall automatically generate and renew SAS tokens.] */
     this._sharedAccessSignatureRenewalInterval = setInterval(this._renewSharedAccessSignature.bind(this), 2700000); // SAS token created by the client have a lifetime of 60 minutes, renew every 45 minutes
-  } else {
-    this._connectionString = null;
   }
+
+  this.blobUploadClient = blobUploadClient;
 
   this._transport = transport;
   this._receiver = null;
@@ -112,17 +115,20 @@ Client.fromConnectionString = function fromConnectionString(connStr, Transport) 
 
   /*Codes_SRS_NODE_DEVICE_CLIENT_05_005: [fromConnectionString shall derive and transform the needed parts from the connection string in order to create a new instance of Transport.]*/
   var cn = ConnectionString.parse(connStr);
-  var sas = SharedAccessSignature.create(cn.HostName, cn.DeviceId, cn.SharedAccessKey, anHourFromNow());
 
   var config = {
     host: cn.HostName,
     deviceId: cn.DeviceId,
-    hubName: cn.HostName.split('.')[0],
-    sharedAccessSignature: sas.toString()
+    hubName: cn.HostName.split('.')[0]
   };
 
+  if (cn.hasOwnProperty('SharedAccessKey')) {
+    var sas = SharedAccessSignature.create(cn.HostName, cn.DeviceId, cn.SharedAccessKey, anHourFromNow());
+    config.sharedAccessSignature = sas.toString();
+  }
+
   /*Codes_SRS_NODE_DEVICE_CLIENT_05_006: [The fromConnectionString method shall return a new instance of the Client object, as by a call to new Client(new Transport(...)).]*/
-  return new Client(new Transport(config), connStr);
+  return new Client(new Transport(config), connStr, new BlobUploadClient(config));
 };
 
 /**
@@ -153,7 +159,7 @@ Client.fromSharedAccessSignature = function (sharedAccessSignature, Transport) {
   };
 
   /*Codes_SRS_NODE_DEVICE_CLIENT_16_030: [The fromSharedAccessSignature method shall return a new instance of the Client object] */
-  return new Client(new Transport(config));
+  return new Client(new Transport(config), null, new BlobUploadClient(config));
 };
 
 /**
@@ -169,6 +175,8 @@ Client.fromSharedAccessSignature = function (sharedAccessSignature, Transport) {
 Client.prototype.updateSharedAccessSignature = function (sharedAccessSignature, done) {
   /*Codes_SRS_NODE_DEVICE_CLIENT_16_031: [The updateSharedAccessSignature method shall throw a ReferenceError if the sharedAccessSignature parameter is falsy.]*/
   if (!sharedAccessSignature) throw new ReferenceError('sharedAccessSignature is falsy');
+
+  this.blobUploadClient.updateSharedAccessSignature(sharedAccessSignature);
 
   /*Codes_SRS_NODE_DEVICE_CLIENT_16_032: [The updateSharedAccessSignature method shall call the updateSharedAccessSignature method of the transport currently inuse with the sharedAccessSignature parameter.]*/
   this._transport.updateSharedAccessSignature(sharedAccessSignature, function (err, result) {
@@ -198,6 +206,10 @@ Client.prototype.updateSharedAccessSignature = function (sharedAccessSignature, 
   }.bind(this));
 };
 
+Client.prototype._disconnectHandler = function (err) {
+  this.emit('disconnect', new results.Disconnected(err));
+};
+
 /**
  * @method            module:azure-iot-device.Client#open
  * @description       Call the transport layer CONNECT function if the
@@ -207,24 +219,27 @@ Client.prototype.updateSharedAccessSignature = function (sharedAccessSignature, 
  *                              completes execution.
  */
 Client.prototype.open = function (done) {
+  var self = this;
   var connectReceiverIfListening = function () {
-    if (this.listeners('message').length > 0) {
+    if (self.listeners('message').length > 0) {
       debug('Connecting the receiver since there\'s already someone listening on the \'message\' event');
-      this._connectReceiver();
+      self._connectReceiver();
     }
-  }.bind(this);
+  };
 
   /* Codes_SRS_NODE_DEVICE_CLIENT_12_001: [The open function shall call the transport’s connect function, if it exists.] */
-  if (typeof this._transport.connect === 'function') {
-    this._transport.connect(function (err, res) {
+  if (typeof self._transport.connect === 'function') {
+    self._transport.connect(function (err, res) {
       if (err) {
         done(err);
       } else {
         debug('Open transport successful');
+        /*Codes_SRS_NODE_DEVICE_CLIENT_16_045: [If the transport successfully establishes a connection the `open` method shall subscribe to the `disconnect` event of the transport.]*/
+        self._transport.on('disconnect', self._disconnectHandler.bind(self));
         connectReceiverIfListening();
         done(null, res);
       }
-    }.bind(this));
+    });
   } else {
     /*Codes_SRS_NODE_DEVICE_CLIENT_16_020: [The ‘open’ function should start listening for C2D messages if there are listeners on the ‘message’ event] */
     connectReceiverIfListening();
@@ -286,6 +301,8 @@ Client.prototype.close = function (done) {
       if (err) {
         done(err);
       } else {
+        /*Codes_SRS_NODE_DEVICE_CLIENT_16_046: [The `close` method shall remove the listener that has been attached to the transport `disconnect` event.]*/
+        this._transport.removeAllListeners('disconnect');
         done(null, result);
       }
     }.bind(this));
@@ -296,6 +313,7 @@ Client.prototype.close = function (done) {
 };
 
 /**
+ * @deprecated      Use Client.setOptions instead.
  * @method          module:azure-iot-device.Client#setTransportOptions
  * @description     The `setTransportOptions` method configures transport-specific options for the client and its underlying transport object.
  *
@@ -308,18 +326,44 @@ Client.prototype.setTransportOptions = function (options, done) {
   /*Codes_SRS_NODE_DEVICE_CLIENT_16_025: [The ‘setTransportOptions’ method shall throw a ‘NotImplementedError’ if the transport doesn’t implement a ‘setOption’ method.] */
   if (typeof this._transport.setOptions !== 'function') throw new errors.NotImplementedError('setOptions does not exist on this transport');
 
+  var clientOptions = {
+    http: {
+      receivePolicy: options
+    }
+  };
+
   /*Codes_SRS_NODE_DEVICE_CLIENT_16_021: [The ‘setTransportOptions’ method shall call the ‘setOptions’ method on the transport object.]*/
-  this._transport.setOptions(options, function (err, result) {
-    /*Codes_SRS_NODE_DEVICE_CLIENT_16_022: [The ‘done’ callback shall be invoked with a null error object and a ‘SetOptionsResult’ object nce the transport has been configured.]*/
-    /*Codes_SRS_NODE_DEVICE_CLIENT_16_023: [The ‘done’ callback shall be invoked with a standard javascript Error object and no result object if the transport could not be configued as requested.]*/
+  this._transport.setOptions(clientOptions, function(err) {
     if (err) {
       done(err);
     } else {
-      done(null, result);
+      done(null, new results.TransportConfigured());
     }
   });
 };
 
+/**
+ * @method          module:azure-iot-device.Client#setOptions
+ * @description     The `setOptions` method let the user configure the client.
+ * 
+ * @param  {Object}    options  The options structure
+ * @param  {Function}  done     The callback that shall be called when setOptions is finished.
+ * 
+ * @throws {ReferenceError}     If the options structure is falsy
+ */
+
+Client.prototype.setOptions = function (options, done) {
+  /*Codes_SRS_NODE_DEVICE_CLIENT_16_042: [The `setOptions` method shall throw a `ReferenceError` if the options object is falsy.]*/
+  if (!options) throw new ReferenceError('options cannot be falsy.');
+
+  this._transport.setOptions(options, function(err) {
+    /*Codes_SRS_NODE_DEVICE_CLIENT_16_043: [The `done` callback shall be invoked no parameters when it has successfully finished setting the client and/or transport options.]*/
+    /*Codes_SRS_NODE_DEVICE_CLIENT_16_044: [The `done` callback shall be invoked with a standard javascript `Error` object and no result object if the client could not be configured as requested.]*/
+    if (done) {
+      done(err);
+    }
+  });
+};
 
 /**
  * @method           module:azure-iot-device.Client#complete
@@ -328,7 +372,7 @@ Client.prototype.setTransportOptions = function (options, done) {
  * @param {Message}  message    The message to settle.
  * @param {Function} done       The callback to call when the message is completed.
  *
- * @throws {ReferenceException} If the message is falsy.
+ * @throws {ReferenceError} If the message is falsy.
  */
 Client.prototype.complete = function (message, done) {
   /*Codes_SRS_NODE_DEVICE_CLIENT_16_016: [The ‘complete’ method shall throw a ReferenceError if the ‘message’ parameter is falsy.] */
@@ -395,4 +439,29 @@ Client.prototype.abandon = function (message, done) {
     }
   });
 };
+
+/**
+ * @method           module:azure-iot-device.Client#uploadToBlob
+ * @description      The `uploadToBlob` method uploads a stream to a blob.
+ *
+ * @param {String}   blobName         The name to use for the blob that will be created with the content of the stream.
+ * @param {Stream}   stream           The data to that should be uploaded to the blob.
+ * @param {Number}   streamLength     The size of the data to that should be uploaded to the blob.
+ * @param {Function} done             The callback to call when the upload is complete.
+ *
+ * @throws {ReferenceException} If blobName or stream or streamLength is falsy.
+ */
+Client.prototype.uploadToBlob = function (blobName, stream, streamLength, done) {
+  /*Codes_SRS_NODE_DEVICE_CLIENT_16_037: [The `uploadToBlob` method shall throw a `ReferenceError` if `blobName` is falsy.]*/
+  if (!blobName) throw new ReferenceError('blobName cannot be \'' + blobName + '\'');
+  /*Codes_SRS_NODE_DEVICE_CLIENT_16_038: [The `uploadToBlob` method shall throw a `ReferenceError` if `stream` is falsy.]*/
+  if (!stream) throw new ReferenceError('stream cannot be \'' + stream + '\'');
+  /*Codes_SRS_NODE_DEVICE_CLIENT_16_039: [The `uploadToBlob` method shall throw a `ReferenceError` if `streamLength` is falsy.]*/
+  if (!streamLength) throw new ReferenceError('streamLength cannot be \'' + streamLength + '\'');
+
+  /*Codes_SRS_NODE_DEVICE_CLIENT_16_040: [The `uploadToBlob` method shall call the `done` callback with an `Error` object if the upload fails.]*/
+  /*Codes_SRS_NODE_DEVICE_CLIENT_16_041: [The `uploadToBlob` method shall call the `done` callback no parameters if the upload succeeds.]*/
+  this.blobUploadClient.uploadToBlob(blobName, stream, streamLength, done);
+};
+
 module.exports = Client;

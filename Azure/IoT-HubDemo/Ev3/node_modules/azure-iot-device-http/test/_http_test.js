@@ -26,7 +26,7 @@ describe('Http', function () {
 
     receiver = new DummyReceiver();
 
-    transport = new Http({ host: 'hub.host.name', hubName: 'hub', deviceId: 'deviceId', sas: 'sas.key' });
+    transport = new Http({ host: 'hub.host.name', hubName: 'hub', deviceId: 'deviceId', sharedAccessSignature: 'sas.key' });
     transport._receiver = receiver;
   });
 
@@ -35,16 +35,151 @@ describe('Http', function () {
     receiver = null;
   });
 
-  describe('#setOptions', function () {
-    /*Tests_SRS_NODE_DEVICE_HTTP_16_004: [The ‘setOptions’ method shall call the setOptions method of the HTTP Receiver with the options parameter.] */
-    /*Tests_SRS_NODE_DEVICE_HTTP_16_005: [The ‘setOptions’ method shall call the ‘done’ callback when finished.] */
+  describe('#sendEvent', function() {
+    /*Tests_SRS_NODE_DEVICE_HTTP_13_002: [ sendEventBatch shall prefix the key name for all message properties with the string iothub-app. ]*/
+    it('prefixes message properties with iothub-app-', function(done) {
+      // setup test
+      var MockHttp = {
+        buildRequest: function() {}
+      };
+      var spy = sinon.stub(MockHttp, 'buildRequest').returns({
+        write: function() {},
+        end: function() {}
+      });
+      transport._http = MockHttp;
 
-    it('calls the receiver `setOptions` method', function () {
-      var testOptions = { foo: 42 };
-      transport.setOptions(testOptions, function (err, result) {
+      var msg = new Message("boo");
+      var i;
+      var propsCount = 3;
+      for(i = 1; i <= propsCount; ++i) {
+        msg.properties.add('k' + i.toString(), 'v' + i.toString());
+      }
+
+      // act
+      transport.sendEvent(msg, function() {});
+
+      // assert
+      assert(spy.calledOnce);
+      assert.isOk(spy.args[0]);
+      assert.isOk(spy.args[0][2]);
+      var headers = spy.args[0][2];
+      for(i = 1; i <= propsCount; ++i) {
+        var key = 'iothub-app-k' + i.toString();
+        assert.isOk(headers[key]);
+        assert.strictEqual(headers[key], 'v' + i.toString());
+      }
+
+      // cleanup
+      done();
+    });
+  });
+
+  describe('#sendEventBatch', function() {
+    /*Tests_SRS_NODE_DEVICE_HTTP_13_002: [ sendEventBatch shall prefix the key name for all message properties with the string iothub-app. ]*/
+    it('prefixes message properties with iothub-app-', function(done) {
+      // setup test
+      var MockRequest = {
+        write: function() {},
+        end: function() {}
+      };
+      var requestSpy = sinon.spy(MockRequest, 'write');
+
+      var MockHttp = {
+        buildRequest: function() {}
+      };
+      sinon.stub(MockHttp, 'buildRequest').returns(MockRequest);
+      transport._http = MockHttp;
+
+      // create 3 messages
+      var messageCount = 3, propsCount = 3, msg;
+      var i, j;
+      var messages = [];
+      for(j = 1; j <= messageCount; ++j) {
+        msg = new Message("msg" + j.toString());
+        for(i = 1; i <= propsCount; ++i) {
+          msg.properties.add(
+            'k_' + j.toString() + '_' + i.toString(),
+            'v_' + j.toString() + '_' + i.toString()
+          );
+        }
+        messages.push(msg);
+      }
+
+      // act
+      transport.sendEventBatch(messages, function() {});
+
+      // assert
+      assert(requestSpy.calledOnce);
+      assert.isOk(requestSpy.args[0]);
+      assert.isOk(requestSpy.args[0][0]);
+      var batchMessages = JSON.parse(requestSpy.args[0][0]);
+      assert.isOk(batchMessages);
+      assert.isArray(batchMessages);
+      assert.strictEqual(batchMessages.length, messageCount);
+      for(j = 1; j <= messageCount; ++j) {
+        msg = batchMessages[j - 1];
+        assert.isOk(msg.properties);
+        for(i = 1; i <= propsCount; ++i) {
+          var key = 'iothub-app-k_' + j.toString() + '_' + i.toString();
+          assert.isOk(msg.properties[key]);
+          assert.strictEqual(msg.properties[key], 'v_' + j.toString() + '_' + i.toString());
+        }
+      }
+
+      // cleanup
+      done();
+    });
+  });
+
+  describe('#setOptions', function () {
+    var testOptions = {
+      http: {
+        receivePolicy: {interval: 1}
+      }
+    };
+
+    /*Tests_SRS_NODE_DEVICE_HTTP_16_004: [The `setOptions` method shall call the `setOptions` method of the HTTP Receiver with the content of the `http.receivePolicy` property of the `options` parameter.]*/
+    it('calls the receiver `setOptions` method', function (done) {
+      transport.setOptions(testOptions, function (err) {
         assert.isNull(err);
-        assert.equal(result.constructor.name, 'TransportConfigured');
-        assert(receiver.setOptions.calledWith(testOptions));
+        assert(receiver.setOptions.calledWith(testOptions.http.receivePolicy));
+        done();
+      });
+    });
+    
+    it('instanciate the receiver if necessary', function() {
+      var transport = new Http({ host: 'hub.host.name', hubName: 'hub', deviceId: 'deviceId', sas: 'sas.key' });
+      assert.doesNotThrow(function() {
+        transport.setOptions(testOptions, function(err){
+          assert.isNull(err);
+        });
+      });
+    });
+
+    /*Tests_SRS_NODE_DEVICE_HTTP_16_005: [If `done` has been specified the `setOptions` method shall call the `done` callback with no arguments when successful.]*/
+    it('calls the done callback with no arguments if successful', function(done) {
+      var transport = new Http({ host: 'hub.host.name', hubName: 'hub', deviceId: 'deviceId', sas: 'sas.key' });
+      transport.setOptions(testOptions, done);
+    });
+
+    /*Tests_SRS_NODE_DEVICE_HTTP_16_009: [If `done` has been specified the `setOptions` method shall call the `done` callback with a standard javascript `Error` object when unsuccessful.]*/
+    it('calls the done callback with an error object if the method is unsuccessful', function(done) {
+      var transport = new Http({ host: 'hub.host.name', hubName: 'hub', deviceId: 'deviceId', sas: 'sas.key' });
+      transport.getReceiver = function(callback) {
+        callback(new Error('fake error'));
+      };
+
+      transport.setOptions(testOptions, function(err) {
+        assert.instanceOf(err, Error);
+        done();
+      });
+    });
+
+    /*Tests_SRS_NODE_DEVICE_HTTP_16_010: [`setOptions` should not throw if `done` has not been specified.]*/
+    it('does not throw if `done` is not specified', function() {
+      var transport = new Http({ host: 'hub.host.name', hubName: 'hub', deviceId: 'deviceId', sas: 'sas.key' });
+      assert.doesNotThrow(function() {
+        transport.setOptions({});
       });
     });
   });

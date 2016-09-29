@@ -11,7 +11,7 @@ var sinon = require('sinon');
 
 var FakeHttp = function () { };
 
-FakeHttp.prototype.buildRequest = function (method, path, httpHeaders, host, done) {
+FakeHttp.prototype.buildRequest = function (method, path, httpHeaders, host, sslOptions, done) {
   return {
     end: function () {
       if (this.messageCount > 0) {
@@ -133,6 +133,34 @@ describe('HttpReceiver', function () {
       receiver.on('message', function () {
         received++;
         if (received === msgCount) done();
+      });
+      receiver.receive();
+    });
+
+    it('emits messages only when all requests are done', function(done){
+      var config = { deviceId: "deviceId", hubName: "hubName", host: "hubname.azure-devices.net", sharedAccessSignature: "sas" };
+      var fakeHttp = new FakeHttp();
+      var requestsCount = 0;
+      fakeHttp.buildRequest = function (method, path, httpHeaders, host, sslOptions, done) {
+        requestsCount++;
+        return {
+          end: function () {
+            if (this.messageCount > 0) {
+              this.messageCount--;
+              done(null, "foo", { statusCode: 204 });
+            } else {
+              done(null, "", { statusCode: 204 });
+            }
+          }.bind(this)
+        };
+      };
+
+      var receiver = new HttpReceiver(config, fakeHttp);
+      fakeHttp.setMessageCount(1);
+      receiver.setOptions({ manualPolling: true, drain: true });
+      receiver.on('message', function () {
+        assert.equal(requestsCount, 2);
+        done();
       });
       receiver.receive();
     });
@@ -299,6 +327,37 @@ describe('HttpReceiver', function () {
         assert.equal(result.constructor.name, 'MessageCompleted');
         done();
       });
+    });
+  });
+
+  describe('updateSharedAccessSignature', function() {
+    /*Tests_SRS_NODE_DEVICE_HTTP_RECEIVER_16_032: [** `updateSharedAccessSignature` shall throw a `ReferenceError` if the `sharedAccessSignature` argument is falsy.]*/
+    [null, undefined, ''].forEach(function(invalidSas) {
+      it('throws if sharedAccessSignature is \'' + invalidSas + '\'', function() {
+        var transport = new FakeHttp();
+        var receiver = new HttpReceiver({ deviceId: 'deviceId', sharedAccessSignature: 'sharedAccessSignature' }, transport);
+        assert.throws(function() {
+          receiver.updateSharedAccessSignature(invalidSas);
+        }, ReferenceError);
+      });
+    });
+
+    /*Tests_SRS_NODE_DEVICE_HTTP_RECEIVER_16_033: [** All subsequent HTTP requests shall use the value of the `sharedAccessSignature` argument in their headers.]*/
+    it('uses the new sharedAccessSignature in subsequent HTTP requests', function(done) {
+        var newSignature = 'newSignature';
+        var transport = new FakeHttp();
+        transport.buildRequest = function (method, path, httpHeaders) {
+          assert.equal(httpHeaders.Authorization, newSignature);
+          return {
+            end: function () {
+              done();
+            }
+          };
+        };
+
+        var receiver = new HttpReceiver({ deviceId: 'deviceId', sharedAccessSignature: 'sharedAccessSignature' }, transport);
+        receiver.updateSharedAccessSignature(newSignature);
+        receiver.receive();
     });
   });
 });
