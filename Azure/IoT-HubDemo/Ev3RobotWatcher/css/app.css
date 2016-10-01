@@ -119,13 +119,15 @@ i.distance-icon > i:nth-child(2) {
 
 .data-row .data-img.data-img-battery > .battery-charge {
     background-color: #1e4bf0;
-    width: 278px;
+    /*width: 278px;*/
     height: 64px;
     display: block;
     position: absolute;
     top: 6px;
     left: 6px;
     border-radius: 7px;
+    resize: horizontal;
+    overflow: auto;
 }
 
 .data-row .data-value {
@@ -137,7 +139,7 @@ i.distance-icon > i:nth-child(2) {
 .data-row .data-value {
 }
 
-.datsa-row .data-value-red {
+.data-row .data-value-red {
     color: #be223f;
 }
 

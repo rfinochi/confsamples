@@ -32,7 +32,7 @@
                     batteryMaxVoltage = batteryMeasuredVoltage;
 
                 $('#batteryMeasuredVoltage').text(Math.round((batteryMeasuredVoltage * 100) / batteryMaxVoltage) + '%');
-                $('#batteryMeasuredVoltageGraph').attr('width', Math.round((batteryMeasuredVoltage * 278) / batteryMaxVoltage) + 'px');
+                $('#batteryMeasuredVoltageGraph').css('width', Math.round((batteryMeasuredVoltage * 278) / batteryMaxVoltage) + 'px');
 
                 if (robotData.touchSensorIsPressed)
                     $('#touchSensorIsPressed').text('Sí');
@@ -105,7 +105,7 @@
                         <div class="items item-battery">
                             <h2 class="title title-1">Batería <span id="batteryMeasuredVoltage">0%</span></h2>
                             <figure class="data-img data-img-battery">
-                                <div id="batteryMeasuredVoltageGraph" class="battery-charge" width="278px"></div>
+                                <div id="batteryMeasuredVoltageGraph" class="battery-charge"></div>
                                 <img src="assets/battery.svg" alt="" />
                             </figure>
                         </div>

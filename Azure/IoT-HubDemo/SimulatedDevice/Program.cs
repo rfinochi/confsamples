@@ -46,7 +46,7 @@ namespace SimulatedDevice
                 var messageString = JsonConvert.SerializeObject( telemetryDataPoint );
                 */
 
-                var messageString = "{\"batteryMeasuredVoltage\":6647066,\"batteryMaxVoltage\":7500000,\"touchSensorIsPressed\":false,\"colorSensorReflectedLightIntensity\":93,\"colorSensorAmbientLightIntensity\":22,\"colorSensorColor\":6,\"ultrasonicSensorDistanceCentimeters\":44.3,\"soundSensorSoundPressure\":0}";
+                var messageString = "{\"batteryMeasuredVoltage\":2647066,\"batteryMaxVoltage\":7500000,\"touchSensorIsPressed\":false,\"colorSensorReflectedLightIntensity\":93,\"colorSensorAmbientLightIntensity\":22,\"colorSensorColor\":5,\"ultrasonicSensorDistanceCentimeters\":44.3,\"soundSensorSoundPressure\":0}";
                 var message = new Message( Encoding.ASCII.GetBytes( messageString ) );
 
                 await deviceClient.SendEventAsync( message );
