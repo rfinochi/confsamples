@@ -40,6 +40,7 @@
     <Compile Include="test.js" />
     <Compile Include="testAttack.js" />
     <Compile Include="watcher.js" />
+    <Content Include="commands.html" />
     <Content Include="data\blah.wav" />
     <Content Include="data\pssst.wav" />
     <Content Include="data\tada.wav" />
