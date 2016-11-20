@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:1.0.1-sdk-projectjson
+FROM microsoft/dotnet:latest
 EXPOSE 5004/tcp
 
 COPY . /app
