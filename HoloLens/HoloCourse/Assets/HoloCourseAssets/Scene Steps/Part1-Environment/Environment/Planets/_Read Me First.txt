@@ -1,0 +1,35 @@
+ ------------------------------------------------------------------------------
+ PLANET EXPANSION PACK 01      (for SPACE UNITY - Space Scene Construction Kit)
+ ------------------------------------------------------------------------------
+
+ Thank you for purchasing this expansion pack :) Although you can use these
+ textures and materials separately they are design to integrate and act as
+ an expansion to "SPACE UNITY - Space Scene Construction Kit" for Unity3D. 
+
+ If you don't own SPACE UNITY, have a look at this asset in the Unity Asset
+ Store to get the most out of this expansion pack:
+
+ http://XXXXX
+
+ This first expansion pack contains 28 new planets all with high resolution
+ (4096x4096) diffuse maps, normal maps, and optional night city and lava
+ illumination maps.
+
+ ------------------------------------------------------------------------------
+ INSTRUCTIONS:
+ ------------------------------------------------------------------------------
+ 1. Import this package to your "SPACE UNITY" project which contains the
+    editor extension and default content such as stars, nebulas, galaxies,
+    planets, etc.
+
+ 2. The hierarchy in the package is design so the materials and textures will
+    end up in the correct place and the editor extension will automatically
+    index the new materials in this expansion pack.
+
+
+ ------------------------------------------------------------------------------
+ Have fun with your new planets and I hope you find good use for them in your
+ games.
+
+ Please visit http://www.spaceunity.com to find additional content and news
+ regarding SPACE UNITY.

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Holo Course", "Holo Course.csproj", "{EA477322-EF88-6E92-4123-14544C667BC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Holo Course.Editor", "Holo Course.Editor.csproj", "{68A77C55-91D5-AA25-DA03-0E51776022DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA477322-EF88-6E92-4123-14544C667BC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA477322-EF88-6E92-4123-14544C667BC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA477322-EF88-6E92-4123-14544C667BC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA477322-EF88-6E92-4123-14544C667BC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68A77C55-91D5-AA25-DA03-0E51776022DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68A77C55-91D5-AA25-DA03-0E51776022DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68A77C55-91D5-AA25-DA03-0E51776022DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68A77C55-91D5-AA25-DA03-0E51776022DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
