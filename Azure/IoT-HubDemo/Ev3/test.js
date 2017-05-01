@@ -11,24 +11,22 @@ if(!motorA.connected) {
     console.error("No valid motor was found in port A");
     process.exit(1);
 }
-motorA.speedRegulationEnabled = 'off';
 
 var motorB = new ev3dev.Motor(ev3dev.OUTPUT_D);
 if(!motorB.connected) {
     console.error("No valid motor was found in port B");
     process.exit(1);
 }
-motorB.speedRegulationEnabled = 'off';
 
 setInterval(function() {
 	console.log("Distance " + ultrasonicSensor.distanceCentimeters);
 
 	if (ultrasonicSensor.distanceCentimeters < 10) {
 		motorA.dutyCycleSp = 100;
-		motorA.command = 'run-forever';
+		motorA.command = 'run-direct';
 		
 		motorB.dutyCycleSp = 100;
-		motorB.command = 'run-forever';
+		motorB.command = 'run-direct';
 	}
 	else
 	{

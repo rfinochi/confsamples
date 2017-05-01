@@ -8,7 +8,7 @@ var device = require('azure-iot-device');
 var transportHttp = require('azure-iot-device-http').Http;
 var sound = require('./sound.js');
 
-var connectionString = '';
+var connectionString = 'HostName=ev3.azure-devices.net;DeviceId=Ev3;SharedAccessKey=0Pjh/FCH+dZi/PGw9lmV01ed9NiCb34ooruFE3hDTYw=';
 var port = process.env.port || 1337
 var startAttackCancellationToken = null;
 
@@ -175,16 +175,9 @@ http.createServer(function (req, res) {
 			motorD.connected && 
 			startAttackCancellationToken == null) {
 			
-			motorA.speedRegulationEnabled = 'off';
 			motorA.dutyCycleSp = 100;
-
-			motorD.speedRegulationEnabled = 'off';
 			motorD.dutyCycleSp = 100;
-
-			motorB.speedRegulationEnabled = 'on';
 			motorB.speedSp = 600;
-
-			motorC.speedRegulationEnabled = 'on';
 			motorC.speedSp = 600;
 
 			startAttackCancellationToken = setInterval(function() {
@@ -192,8 +185,8 @@ http.createServer(function (req, res) {
 					motorB.command = 'stop';
 					motorC.command = 'stop';
 
-					motorA.command = 'run-forever';
-					motorD.command = 'run-forever';
+					motorA.command = 'run-direct';
+					motorD.command = 'run-direct';
 				
 					step1 = false;
 					step2 = false;

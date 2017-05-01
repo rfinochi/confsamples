@@ -33,16 +33,9 @@ if(!motorD.connected) {
 var step1 = false;
 var step2 = false;
 
-motorA.speedRegulationEnabled = 'off';
 motorA.dutyCycleSp = 100;
-
-motorD.speedRegulationEnabled = 'off';
 motorD.dutyCycleSp = 100;
-
-motorB.speedRegulationEnabled = 'on';
 motorB.speedSp = 600;
-
-motorC.speedRegulationEnabled = 'on';
 motorC.speedSp = 600;
 
 setInterval(function() {
@@ -59,8 +52,8 @@ setInterval(function() {
 		motorB.command = 'stop';
 		motorC.command = 'stop';
 
-		motorA.command = 'run-forever';
-		motorD.command = 'run-forever';
+		motorA.command = 'run-direct';
+		motorD.command = 'run-direct';
 	
 		step1 = false;
 		step2 = false;
