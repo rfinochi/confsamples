@@ -24,7 +24,7 @@ setInterval(function () {
             colorSensorAmbientLightIntensity: colorSensor.ambientLightIntensity,
             colorSensorColor: colorSensor.color, //0: No color, 1: Black, 2: Blue, 3: Green, 4: Yellow, 5: Red , 6: White, 7: Brown
             ultrasonicSensorDistanceCentimeters: ultrasonicSensor.distanceCentimeters,
-            //soundSensorSoundPressure: 0 soundSensor.soundPressure //db
+            //soundSensorSoundPressure: soundSensor.soundPressure //db
             //soundSensorSoundPressure: soundSensor2.numValues //db
             soundSensorSoundPressure: 0
         };
