@@ -6,7 +6,6 @@ using System.Web;
 
 using Microsoft.AspNet.SignalR;
 using Microsoft.ServiceBus.Messaging;
-using Newtonsoft.Json;
 
 namespace Ev3RobotWatcher
 {
@@ -25,7 +24,9 @@ namespace Ev3RobotWatcher
                 var d2cPartitions = eventHubClient.GetRuntimeInformation( ).PartitionIds;
 
                 foreach ( string partition in d2cPartitions )
-                    ReceiveMessagesFromDeviceAsync( partition );
+                {
+                    var ret = ReceiveMessagesFromDeviceAsync( partition );
+                }
             } );
         }
 
@@ -40,7 +41,7 @@ namespace Ev3RobotWatcher
                 if ( eventData == null )
                     continue;
 
-                connectionContext.Connection.Broadcast( Encoding.UTF8.GetString( eventData.GetBytes( ) ) );
+                var ret = connectionContext.Connection.Broadcast( Encoding.UTF8.GetString( eventData.GetBytes( ) ) );
             }
         }
     }
