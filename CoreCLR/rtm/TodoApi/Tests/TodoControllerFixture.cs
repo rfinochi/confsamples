@@ -12,7 +12,6 @@ namespace TodoApi.Tests
     public class TodoControllerFixture : Controller
     {
         [Fact]
-
         public void GetAllOk()
         {
             var controller = new TodoController(new MemoryTodoRepository());
@@ -21,7 +20,6 @@ namespace TodoApi.Tests
         }
 
         [Fact]
-
         public void GetByIdOk()
         {
             var controller = new TodoController(new MemoryTodoRepository());
@@ -34,7 +32,6 @@ namespace TodoApi.Tests
         }
             
         [Fact]
-
         public void DeleteOk()
         {
             var controller = new TodoController(new MemoryTodoRepository());
