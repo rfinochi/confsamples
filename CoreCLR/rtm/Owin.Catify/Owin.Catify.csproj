@@ -7,11 +7,12 @@
     <OutputType>Exe</OutputType>
     <PackageId>Owin.Catify</PackageId>
     <RuntimeFrameworkVersion>1.1.2</RuntimeFrameworkVersion>
+    <RuntimeIdentifiers>win10-x64;osx.10.11-x64;ubuntu.16.04-x64</RuntimeIdentifiers>
     <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="wwwroot\**\*;Views\**\*;Areas\**\Views">
+    <None Update="wwwroot\**\*;Views\**\*;Areas\**\Views;Pictures\**\*">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
   </ItemGroup>

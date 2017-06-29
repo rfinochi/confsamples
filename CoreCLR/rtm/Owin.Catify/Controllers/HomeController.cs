@@ -14,7 +14,8 @@ namespace anotheraspnetapp.Controllers
 
         public IActionResult Index()
         {
-            return View("Index", _pictureService.GetRandomPicture());
+           ViewData["Title"] = "Home"; 
+	   return View("Index", _pictureService.GetRandomPicture());
         }
     }
 }
