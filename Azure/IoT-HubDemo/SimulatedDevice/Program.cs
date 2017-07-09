@@ -10,7 +10,7 @@ namespace SimulatedDevice
     class Program
     {
         private static DeviceClient deviceClient;
-        private static string iotHubUri = "ev3.azure-devices.net";
+        private static string iotHubUri = "fnord.azure-devices.net";
         private static string deviceKey = "";
 
         static void Main( string[] args )
