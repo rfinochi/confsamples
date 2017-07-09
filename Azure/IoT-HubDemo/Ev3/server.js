@@ -8,7 +8,7 @@ var device = require('azure-iot-device');
 var transportHttp = require('azure-iot-device-http').Http;
 var sound = require('./sound.js');
 
-var connectionString = 'HostName=ev3.azure-devices.net;DeviceId=Ev3;SharedAccessKey=0Pjh/FCH+dZi/PGw9lmV01ed9NiCb34ooruFE3hDTYw=';
+var connectionString = '';
 var port = process.env.port || 1337
 var startAttackCancellationToken = null;
 
