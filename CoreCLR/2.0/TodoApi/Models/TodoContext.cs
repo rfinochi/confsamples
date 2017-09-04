@@ -12,8 +12,9 @@ namespace TodoApi.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=tcp:fnord.database.windows.net;Database=Todo;User ID=fnord;Password=fnord;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            //optionsBuilder.UseSqlServer("Server=tcp:fnord.database.windows.net;Database=Todo;User ID=fnord;Password=fnord;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             //optionsBuilder.UseSqlite("Data Source=Todo.db");
+	    optionsBuilder.UseInMemoryDatabase();
         }
     }
 }

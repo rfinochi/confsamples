@@ -29,7 +29,7 @@ namespace TodoApi.Controllers
             }
             catch (Exception e) 
             {
-                ret = e.Message + " " + e.InnerException.Message;
+                ret = e.Message;
             }                          
             
             return ret;
@@ -46,7 +46,7 @@ namespace TodoApi.Controllers
             }
             catch (Exception e) 
             {
-                ret = e.Message + " " + e.InnerException.Message;
+                ret = e.Message;
             }                          
             
             return ret;
