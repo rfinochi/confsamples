@@ -1,1 +1,1 @@
-# A collection of code samples (some mine, others from a different sources) that I use in my conferences
+# A collection of code samples that I use in my conferences
