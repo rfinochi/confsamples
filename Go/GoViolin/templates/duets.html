@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- below line adds jQuery to the page -->
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<link href='https://fonts.googleapis.com/css?family=Rosario:400' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<title>{{.Title}}</title>
+</head>
+<body>
+
+<nav>
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="scale">Scales &amp; Arpeggios </a></li>
+  <li><a class="active" href="duets">Duets</a></li>
+</ul>
+</nav>
+
+
+<div class="mainbody">
+<h1>Practice Duets</h1>
+<p>Franz Wohlfahrt (7 March 1833 - 14 February 1884) was a violin teacher in Leipzig Germany. He wrote the following duets around scales.</p>
+</div>
+
+<div class="optionselect">
+  <form action="/duetshow" method="post">
+
+      <div class="duetselect">
+       {{range .DuetOptions}}
+         <input type="radio" name={{.Name}} value={{.Value}} {{if .IsDisabled}} disabled=true {{end}} {{if .IsChecked}}checked{{end}}> {{.Text}}
+       {{end}}<br>
+      </div>
+
+  </form>
+</div>
+
+<br>
+
+<div id="container">
+  <div id="left"><p>Listen to both parts</p>
+  {{with $3:= .DuetAudioBoth}}
+    <div class="audio">
+      <!-- to enable switching to animated gifs add onplay="audioPlay()" and onpause="audioPause()" to the audio controls -->
+      <audio controls id="myAudio">
+      <source src="/{{$3}}" type="audio/mp3">
+      Your browser does not support the audio element.
+      </audio> <div class ="looptext"><input type="checkbox" name="loop" onclick="loopClicker()">  Loop <br></div>
+    </div>
+    <script type="text/javascript">
+      function loopClicker(){
+        if (document.getElementById("myAudio").loop == false){
+          document.getElementById("myAudio").loop = true;
+        } else {
+          document.getElementById("myAudio").loop = false;
+        }
+      }
+    </script>
+  {{end}}</div>
+  <div id="right"><p>Listen to part 2</p>
+  {{with $3:= .DuetAudio2}}
+    <div class="audio">
+      <!-- to enable switching to animated gifs add onplay="audioPlay()" and onpause="audioPause()" to the audio controls -->
+      <audio controls id="myAudio2">
+      <source src="/{{$3}}" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio> <div class ="looptext"><input type="checkbox" name="loop" onclick="loopClicker2()">  Loop <br></div>
+    </div>
+    <script type="text/javascript">
+      function loopClicker2(){
+        if (document.getElementById("myAudio2").loop == false){
+          document.getElementById("myAudio2").loop = true;
+        } else {
+          document.getElementById("myAudio2").loop = false;
+        }
+      }
+    </script>
+  {{end}}</div>
+  <div id="center"><p>Listen to part 1</p>
+  {{with $3:= .DuetAudio1}}
+    <div class="audio">
+      <!-- to enable switching to animated gifs add onplay="audioPlay()" and onpause="audioPause()" to the audio controls -->
+      <audio controls id="myAudio3">
+      <source src="/{{$3}}" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio> <div class ="looptext"><input type="checkbox" name="loop" onclick="loopClicker3()">  Loop <br></div>
+    </div>
+    <script type="text/javascript">
+      function loopClicker3(){
+        if (document.getElementById("myAudio3").loop == false){
+          document.getElementById("myAudio3").loop = true;
+        } else {
+          document.getElementById("myAudio3").loop = false;
+        }
+      }
+    </script>
+  {{end}}</div>
+</div>
+
+<br>
+
+{{with $2:= .DuetImgPath}}
+  <div class="duet">
+    <img src="/{{$2}}" id="duetImage">
+  </div>
+{{end}}
+
+
+<!-- some jquery to make the selection form submit itself if the user changes the duet radio buttons -->
+<script type='text/javascript'>
+ $(document).ready(function() {
+   $('input[name=Duet]').change(function(){
+     $('form').submit();
+   });
+});
+</script>
+
+</body>
+</html>
