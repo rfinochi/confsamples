@@ -2,11 +2,11 @@ package main
 
 import "fmt"
 
+type Human struct{}
+
 type Animal interface {
 	Name() string
 }
-
-type Human struct{}
 
 type Dog struct{}
 
