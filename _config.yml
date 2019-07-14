@@ -6,3 +6,6 @@ theme: jekyll-theme-slate
 
 gems:
   - jekyll-mentions
+
+# Google Analytics
+google_analytics: UA-33705301-1
