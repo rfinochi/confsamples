@@ -2,7 +2,7 @@ title: Conferences Samples
 description: Code samples from my conferences
 show_downloads: true
 theme: jekyll-theme-slate
-google_analytics: UA-144163294-2
+google_analytics: G-HF0YNY4JWB
 
 gems:
   - jekyll-mentions
